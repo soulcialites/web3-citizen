@@ -9,6 +9,7 @@
   "scripts": {
     "cleanup": "rm -rf cache/ artifacts/",
     "clean": "rm -rf node_modules/",
+    "build": "hardhat --show-stack-traces --max-memory 8192 compile",
     "compile": "hardhat --show-stack-traces --max-memory 8192 compile",
     "coverage": "HIDE_DEPLOY_LOG=true OPTIMIZER_DISABLED=true hardhat coverage",
     "coverage:file": "HIDE_DEPLOY_LOG=true OPTIMIZER_DISABLED=true hardhat coverage --testfiles",
