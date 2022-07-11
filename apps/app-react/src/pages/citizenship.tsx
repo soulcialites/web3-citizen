@@ -47,16 +47,6 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
                 </a>{" "}
                 to set text fields.
               </p>
-              {/* {citizenData && (
-                <ModalEditCitizenProfile
-                  className="ml-0 mt-3 inline-block cursor-pointer"
-                  ensTextRecords={citizenData.traits}
-                >
-                  <span className="hover:text-blue-400 dark:hover:text-blue-200">
-                    Edit Profile
-                  </span>
-                </ModalEditCitizenProfile>
-              )} */}
             </div>
           </div>
           <div className="col-span-6 flex flex-col justify-center">

@@ -1,4 +1,4 @@
-import { IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
+import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
 import {
   useCitizenAlphaContractRead,
@@ -37,16 +37,30 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
         style={{ minHeight: "70vh" }}
         className="dark: mx-autobg-gradient-to-br flex items-center justify-center from-neutral-100 via-neutral-100 to-neutral-200 py-12 text-neutral-500 shadow-sm dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900 dark:text-white"
       >
-        <div className="card container mx-auto grid max-w-md grid-cols-12 gap-y-4 py-14">
-          <div className="col-span-12 text-left">
-            <IpfsUriImageBackgroundRender
-              className={
-                "h-96 w-full overflow-hidden rounded-lg border-2 border-white shadow-lg"
-              }
-              uri={citizenData?.img || ""}
-            />
+        <div className="card container mx-auto grid max-w-4xl grid-cols-12 gap-x-10 py-14">
+          <div className="col-span-6 -my-10 -ml-8 text-left">
+            <div className="h-96 w-full text-center">
+              <IpfsUriImageBackgroundRender
+                className={
+                  "h-96 w-full overflow-hidden rounded-2xl border-4 border-white border-opacity-30 shadow-lg hover:shadow-xl"
+                }
+                uri={citizenData?.img || ""}
+              />
+              <p className="text-xs">
+                Use the{" "}
+                <a
+                  target={"_blank"}
+                  href="https://app.ens.domains/"
+                  rel="noreferrer"
+                >
+                  {" "}
+                  Ethereum Name System app{" "}
+                </a>{" "}
+                to set text fields.
+              </p>
+            </div>
           </div>
-          <div className="col-span-12">
+          <div className="col-span-6 flex flex-col justify-center">
             <div className="">
               <h5 className="text-3xl font-light">
                 {citizenData?.description}
@@ -84,13 +98,13 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
                   </li>
                 )}
               </ul>
-              {/* <div className="mt-4 flex items-center">
+              <div className="mt-4">
                 <p className="">{citizenData?.traits?.description}</p>
-              </div> */}
-              <hr className="my-4 opacity-40" />
-              <h3 className="mt-2 text-center text-sm font-normal">
-                {citizenData?.name}
-              </h3>
+                <p className="text-xs">
+                  link: <Address truncate address={citizenData?.traits?.link} />
+                </p>
+                <p className="text-xs">{citizenData?.traits?.did}</p>
+              </div>
             </div>
           </div>
         </div>
