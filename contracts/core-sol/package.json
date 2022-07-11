@@ -27,7 +27,8 @@
     "remove-logs": "hardhat remove-logs",
     "test": "yarn cleanup && HIDE_DEPLOY_LOG=true OPTIMIZER_DISABLED=true hardhat test",
     "typechain": "typechain --target=ethers-v5 \"./abis/*.json\" --out-dir \"./types\"",
-    "prepack": "yarn compile"
+    "prepack": "yarn compile",
+    "prepare": "hardhat --show-stack-traces --max-memory 8192 compile"
   },
   "resolutions": {
     "hardhat/**/@ethereumjs/tx": "3.5.0"
