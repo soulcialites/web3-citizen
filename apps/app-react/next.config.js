@@ -7,8 +7,8 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['.'],
   },
-  assetPrefix: '/web3-citizen/',
-  basePath: '/web3-citizen',
+  // assetPrefix: '/web3-citizen/',
+  // basePath: '/web3-citizen',
   // assetPrefix: './',
   // basePath: '',
   experimental: {

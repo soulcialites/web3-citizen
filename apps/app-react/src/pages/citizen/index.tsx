@@ -115,6 +115,7 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
 
 const Citizenship = () => {
   const { query } = useRouter();
+
   const { data: isCitizen } = useCitizenAlphaContractRead(
     CitizenAlpha.address,
     "isCitizen",
