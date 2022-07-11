@@ -1,0 +1,64 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/main",
+  "globalDependencies": [
+    "$GITHUB_TOKEN",
+    "tsconfig.json",
+    ".env.*"
+  ],
+  "pipeline": {
+      "chain": {
+        "dependsOn": ["^chain"],
+          "outputs": [""],
+          "inputs": ["contracts/**/*.sol"]
+      },
+      "chain:fork": {
+        "dependsOn": ["^chain:fork"],
+          "outputs": [""],
+          "inputs": ["contracts/**/*.sol"]
+      },
+      "compile": {
+        "dependsOn": ["^compile"],
+          "outputs": [""],
+          "inputs": ["contracts/**/*.sol"]
+      },
+      "dev": {
+          "outputs": [""]
+      },
+      "lint": {
+          "outputs": [""]
+      },
+      "watch": {
+          "dependsOn": ["^watch"]
+      },
+      "build": {
+          "dependsOn": ["^build"]
+      },
+      "build:prd": {
+          "dependsOn": ["^build:prd"],
+          "outputs": [".next", "out"]
+      },
+      "clean": {
+            "dependsOn": ["^clean"]
+      },
+      "//#cleanself": {
+        "dependsOn": [],
+        "outputs": []
+      },
+      "lab": {
+          "dependsOn": [
+            "^watch", 
+            "^chain", 
+            "@web3-citizen/app-react#dev"
+          ],
+          "outputs": [""]
+      },
+      "lab:fork": {
+          "dependsOn": [
+            "^watch", 
+            "chain:fork", 
+            "@web3-citizen/app-react#dev"
+          ]
+      }
+  }
+}

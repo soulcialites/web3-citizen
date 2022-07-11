@@ -1,0 +1,21 @@
+import { useContractRead } from 'wagmi';
+import CitizenAlpha from '@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json';
+
+export function useCitizenAlphaContractRead(
+  address: string,
+  method: string,
+  args: any[]
+): any {
+  return useContractRead(
+    {
+      addressOrName: address,
+      contractInterface: CitizenAlpha.abi,
+    },
+    method,
+    {
+      args: args,
+    }
+  );
+}
+
+export default useCitizenAlphaContractRead;
