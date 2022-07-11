@@ -14,7 +14,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2.0.1
         name: Install pnpm
-        id: pnpm-install  --no-frozen-lockfile
+        id: pnpm-install
         with:
           version: 7
           run_install: false
@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build 💻
         run: pnpm build:prd
