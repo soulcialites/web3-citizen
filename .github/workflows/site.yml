@@ -35,6 +35,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      - name: Compile
+        run: pnpm compile
+        continue-on-error: false
+
       - name: Build 💻
         run: pnpm build:prd
         continue-on-error: false
