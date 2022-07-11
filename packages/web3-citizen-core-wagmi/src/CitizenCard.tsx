@@ -48,7 +48,7 @@ export const CitizenCard = ({
         <span className="block font-normal text-sm">
           Invited By: <Address truncate address={metadata?.traits['link']} />
         </span>
-        <a className='inline-block mt-2 text-sm' href={`/citizen/${walletAddress}`}>View Account</a>
+        <a className='inline-block mt-2 text-sm' href={`/citizen/?address=${walletAddress}`}>View Account</a>
       </div>
     </div>
   );
