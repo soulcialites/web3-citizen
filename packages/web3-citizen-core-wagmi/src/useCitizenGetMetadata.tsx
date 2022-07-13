@@ -37,11 +37,14 @@ export function useCitizenGetMetadata(
       (async () => {
         const json = Buffer.from(data.substring(29), 'base64').toString();
         const result = JSON.parse(json);
-        result.img = await parseAvatarString(
-          walletAddress,
-          result.image,
-          provider
-        );
+        console.log("result",result)
+        if(result.image) {
+          result.img = await parseAvatarString(
+            walletAddress,
+            result.image,
+            provider
+            );
+        }
         result.traits = {};
         result.attributes.forEach((element: any) => {
           result.traits = {
@@ -49,7 +52,6 @@ export function useCitizenGetMetadata(
             [element.trait_type]: element.value,
           };
         });
-
         setCitizenData(result);
       })();
     }

@@ -1,5 +1,5 @@
 import { IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
 import {
   useCitizenAlphaContractRead,
   useCitizenGetMetadata,

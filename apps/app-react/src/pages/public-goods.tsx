@@ -1,6 +1,6 @@
 import { ERC20TotalSupply } from "@turbo-eth/erc20-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
-import TrustToken from "@web3-citizen/core-sol/deployments/mainnet/TrustToken.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
+import TrustToken from "@web3-citizen/core-sol/deployments/localhost/TrustToken.json";
 import {
   CitizenCardList,
   NFTCard,

@@ -1,28 +1,14 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
 import {
   useCitizenAlphaContractRead,
   useCitizenGetMetadata,
 } from "@web3-citizen/core-wagmi";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { GitHub, Twitter } from "react-feather";
-import { useAccount } from "wagmi";
 
-import ModalCitizenshipIssue from "@/components/ModalCitizenshipIssue";
-import { ModalEditCitizenProfile } from "@/components/ModalEditCitizenProfile";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
-
-const Trait = ({ value, label }: any) => {
-  if (!value) return null;
-  return (
-    <div>
-      {label}: {value}
-    </div>
-  );
-};
 
 const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
   const citizenData = useCitizenGetMetadata(

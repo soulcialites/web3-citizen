@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import CitizenAlpha from '@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json';
+import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
 import { IpfsUriImageBackgroundRender } from '@turbo-eth/core-wagmi';
 import { Address } from '@turbo-eth/core-wagmi';
 import useCitizenGetMetadata from './useCitizenGetMetadata';
@@ -48,7 +48,12 @@ export const CitizenCard = ({
         <span className="block font-normal text-sm">
           Invited By: <Address truncate address={metadata?.traits['link']} />
         </span>
-        <a className='inline-block mt-2 text-sm' href={`/web3-citizen/citizen/?address=${walletAddress}`}>View Account</a>
+        <a
+          className="inline-block mt-2 text-sm"
+          href={`/web3-citizen/citizen/?address=${walletAddress}`}
+        >
+          View Account
+        </a>
       </div>
     </div>
   );

@@ -27,14 +27,14 @@ const networks: HardhatUserConfig['networks'] = {
   },
 };
 
-if(MAINNET_PK_DEPLOYER) {
+if (MAINNET_PK_DEPLOYER) {
   networks.mainnet = {
     url: ETHEREUM_MAINNET_RPC_URL,
     accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }
 
-if(TESTNET_PK_DEPLOYER) {
+if (TESTNET_PK_DEPLOYER) {
   networks.goerli = {
     url: ETHEREUM_GOERLI_RPC_URL,
     accounts: [TESTNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
@@ -48,7 +48,7 @@ if (ARCHIVE_NODE_RPC_URL && FORK_ENABLED) {
     hardfork: 'istanbul',
     forking: {
       url: ARCHIVE_NODE_RPC_URL,
-      blockNumber: Number(FORK_BLOCK_NUMBER) || 0
+      blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
     },
   };
 } else {

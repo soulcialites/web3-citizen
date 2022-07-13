@@ -9,24 +9,22 @@ describe('CitizenAlpha', () => {
   let wallet1: SignerWithAddress;
   let CitizenAlpha: Contract;
   let CitizenAlphaFactory: ContractFactory;
-  let CitizenAlphaMetadata: Contract;
-  let CitizenAlphaMetadataFactory: ContractFactory;
+  let CitizenMetadata: Contract;
+  let CitizenMetadataFactory: ContractFactory;
   let SVGColor: Contract;
   let SVGColorFactory: ContractFactory;
 
   before(async () => {
     [wallet0, wallet1] = await getSigners();
     CitizenAlphaFactory = await ethers.getContractFactory('CitizenAlpha');
-    CitizenAlphaMetadataFactory = await ethers.getContractFactory('CitizenAlphaMetadata');
+    CitizenMetadataFactory = await ethers.getContractFactory('CitizenMetadata');
     SVGColorFactory = await ethers.getContractFactory('SVGColor');
   });
 
   beforeEach(async () => {
     SVGColor = await SVGColorFactory.deploy();
-    CitizenAlphaMetadata = await CitizenAlphaMetadataFactory.deploy(SVGColor.address);
-    CitizenAlpha = await CitizenAlphaFactory.deploy(CitizenAlphaMetadata.address, [
-      wallet0.address,
-    ]);
+    CitizenMetadata = await CitizenMetadataFactory.deploy(SVGColor.address);
+    CitizenAlpha = await CitizenAlphaFactory.deploy(CitizenMetadata.address, [wallet0.address]);
   });
 
   /* ================================================================================ */

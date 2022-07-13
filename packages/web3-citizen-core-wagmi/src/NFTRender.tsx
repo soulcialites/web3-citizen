@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useContractRead } from 'wagmi';
 import classNames from 'classnames';
-import Molecule from '@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json';
+import Molecule from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
 
 interface NFTRenderProps {
   className?: string;

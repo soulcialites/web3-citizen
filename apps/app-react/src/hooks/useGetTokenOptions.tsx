@@ -1,5 +1,5 @@
-import TokenA from "@web3-citizen/core-sol/deployments/mainnet/TokenA.json";
-import TokenB from "@web3-citizen/core-sol/deployments/mainnet/TokenB.json";
+import TokenA from "@web3-citizen/core-sol/deployments/localhost/TokenA.json";
+import TokenB from "@web3-citizen/core-sol/deployments/localhost/TokenB.json";
 
 function useGetTokenOptions() {
   const optionsTokens = [

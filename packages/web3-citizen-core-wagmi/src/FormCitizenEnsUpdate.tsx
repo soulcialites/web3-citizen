@@ -67,7 +67,7 @@ export const FormCitizenEnsUpdate = ({
       'description',
       watchAllFields.description
     );
-    setInputs([url_.data, avatar_.data, did_.data, description_.data,]);
+    setInputs([url_.data, avatar_.data, did_.data, description_.data]);
     if (onUpdate) onUpdate(_data);
   };
 

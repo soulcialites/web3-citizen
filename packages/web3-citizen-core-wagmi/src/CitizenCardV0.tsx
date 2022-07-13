@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContractRead, useProvider } from 'wagmi';
 import classNames from 'classnames';
-import CitizenAlpha from '@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json';
+import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
 import { IpfsUriImageBackgroundRender } from '@turbo-eth/core-wagmi';
 import { Address } from '@turbo-eth/core-wagmi';
 import { parseAvatarString } from '@turbo-eth/ens-wagmi';

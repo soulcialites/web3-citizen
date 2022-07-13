@@ -15,38 +15,49 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     contract: "SVGColor",
     from: deployer,
     args: [],
-    skipIfAlreadyDeployed: true,
+    skipIfAlreadyDeployed: false,
     log: true,
   });
 
-  const CitizenAlphaMetadata = await deploy("CitizenAlphaMetadata", {
-    contract: "CitizenAlphaMetadata",
+  const ResolverENS = await deploy("ResolverENS", {
+    contract: "ResolverENS",
     from: deployer,
-    args: [svgColor.address],
-    skipIfAlreadyDeployed: true,
+    args: [],
+    skipIfAlreadyDeployed: false,
     log: true,
   });
 
+  const CitizenMetadata = await deploy("CitizenMetadata", {
+    contract: "CitizenMetadata",
+    from: deployer,
+    args: [svgColor.address ],
+    skipIfAlreadyDeployed: false,
+    log: true,
+  });
+  
   const CitizenAlpha = await deploy("CitizenAlpha", {
     contract: "CitizenAlpha",
     from: deployer,
-    args: [CitizenAlphaMetadata.address, [kames]],
-    skipIfAlreadyDeployed: true,
+    args: [CitizenMetadata.address, "Web3Citizen", "CIV"],
+    skipIfAlreadyDeployed: false,
     log: true,
   });
-
+  
   await deploy("TrustToken", {
     contract: "TrustToken",
     from: deployer,
     args: [CitizenAlpha.address, "Public Goods Protocol", "PGP.alpha"],
-    skipIfAlreadyDeployed: true,
+    skipIfAlreadyDeployed: false,
     log: true,
   });
 
-  const citizenAlphaMetadata = await ethers.getContractAt(
-    "CitizenAlphaMetadata",
-    CitizenAlphaMetadata.address
-  );
+  
+  const citizenAlpha = await ethers.getContractAt("CitizenAlpha", CitizenAlpha.address);
+  const citizenMetadata = await ethers.getContractAt("CitizenMetadata", CitizenMetadata.address);
 
-  await citizenAlphaMetadata.setToken(CitizenAlpha.address);
+  await citizenMetadata.appendSource(ResolverENS.address)
+  await citizenMetadata.setToken(CitizenAlpha.address);
+
+  await citizenAlpha.issue(kames, kames);
+  await citizenAlpha.issue(mcoso, kames);
 }
