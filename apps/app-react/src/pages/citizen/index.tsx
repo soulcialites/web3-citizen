@@ -1,7 +1,7 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
 import {
-  useCitizenAlphaContractRead,
+  useCitizenAlphaRead,
   useCitizenGetMetadata,
 } from "@web3-citizen/core-wagmi";
 import { useRouter } from "next/router";
@@ -116,13 +116,13 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
 const Citizenship = () => {
   const { query } = useRouter();
 
-  const { data: isCitizen } = useCitizenAlphaContractRead(
+  const { data: isCitizen } = useCitizenAlphaRead(
     CitizenAlpha.address,
     "isCitizen",
     [query.address]
   );
 
-  const { data: citizenId } = useCitizenAlphaContractRead(
+  const { data: citizenId } = useCitizenAlphaRead(
     CitizenAlpha.address,
     "getId",
     [query.address]

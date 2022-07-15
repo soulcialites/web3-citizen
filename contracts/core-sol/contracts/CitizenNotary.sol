@@ -3,10 +3,11 @@ pragma solidity 0.8.15;
 
 import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
 import { ISoulbound } from "./interfaces/ISoulbound.sol";
+import { CitizenAlpha } from "./CitizenAlpha.sol";
 
 contract CitizenNotary is AccessControl {
   /// @notice CitizenToken with mintable controls set to address(this);
-  ISoulbound private _citizenToken;
+  address private _citizenToken;
 
   /// @notice Notary Role to enforce access controls
   bytes32 private constant NOTARY = keccak256("NOTARY");
@@ -20,15 +21,20 @@ contract CitizenNotary is AccessControl {
    * @notice CitizenNotary Construction
    * @param _founders Array of Founding Citizens
    */
-  constructor(address _citizenToken, address[] memory _founders) {
+  constructor(address _citizenToken_, address[] memory _founders) {
+    _citizenToken = _citizenToken_;
+    _roleInitialized[DEFAULT_ADMIN_ROLE] = true;
     _roleInitialized[NOTARY] = true;
     _roleInitialized[FOUNDER] = true;
 
     // Grant Founders with
+    _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     for (uint256 i = 0; i < _founders.length; i++) {
-      _issue(_founders[i], 0x0000000000000000000000000000000000000000);
       _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
       _setupRole(FOUNDER, _founders[i]);
+      _setupRole(NOTARY, _founders[i]);
+      _setRoleAdmin(FOUNDER, DEFAULT_ADMIN_ROLE);
+      _setRoleAdmin(NOTARY, DEFAULT_ADMIN_ROLE);
     }
   }
 
@@ -44,7 +50,7 @@ contract CitizenNotary is AccessControl {
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function citizenToken() external view returns (ISoulbound) {
+  function citizenToken() external view returns (address) {
     return _citizenToken;
   }
 
@@ -53,9 +59,8 @@ contract CitizenNotary is AccessControl {
   }
 
   function hasRole(bytes32 role, address account) public view virtual override returns (bool) {
-    /// @dev IF the Role is toggled OFF everyone by default loses access to the role.
     if (!_roleInitialized[role]) {
-      return false; // Why? Why not?
+      return false;
     }
     return super.hasRole(role, account);
   }
@@ -65,7 +70,7 @@ contract CitizenNotary is AccessControl {
    * @param to address
    */
   function issue(address to) external _hasNotaryPermissions(_msgSender()) {
-    _issue(to, msg.sender);
+    _issue(to, _msgSender());
   }
 
   /**
@@ -74,7 +79,7 @@ contract CitizenNotary is AccessControl {
    */
   function issueBatch(address[] calldata to) external _hasNotaryPermissions(_msgSender()) {
     for (uint256 i = 0; i < to.length; i++) {
-      _issue(to[i], msg.sender);
+      _issue(to[i], _msgSender());
     }
   }
 
@@ -83,7 +88,7 @@ contract CitizenNotary is AccessControl {
    * @param from address
    */
   function revoke(address from) external _hasNotaryPermissions(_msgSender()) {
-    _revoke(from, msg.sender);
+    _revoke(from, _msgSender());
   }
 
   /**
@@ -106,7 +111,7 @@ contract CitizenNotary is AccessControl {
     onlyRole(getRoleAdmin(role))
   {
     require(_roleInitialized[role], "CitizenNotary:inactive-role");
-    grantRole(role, citizen);
+    _grantRole(role, citizen);
   }
 
   /**
@@ -120,8 +125,9 @@ contract CitizenNotary is AccessControl {
     override
     onlyRole(getRoleAdmin(role))
   {
+    require(role != DEFAULT_ADMIN_ROLE, "CitizenNotary:invalid-request");
     require(_roleInitialized[role], "CitizenNotary:inactive-role");
-    revokeRole(role, citizen);
+    _revokeRole(role, citizen);
   }
 
   /**
@@ -133,15 +139,24 @@ contract CitizenNotary is AccessControl {
     return hasRole(FOUNDER, citizen);
   }
 
+  /**
+   * @notice Check Founder status
+   * @param citizen address
+   * @return status bool
+   */
+  function isCitizen(address citizen) external view returns (bool status) {
+    return CitizenAlpha(_citizenToken).isCitizen(citizen);
+  }
+
   /* ===================================================================================== */
   /* Internal Functions                                                                    */
   /* ===================================================================================== */
 
   function _issue(address _to, address _link) internal {
-    _citizenToken.issue(_to, _link);
+    CitizenAlpha(_citizenToken).issue(_to, _link);
   }
 
   function _revoke(address _from, address _link) internal {
-    _citizenToken.revoke(_from, _link);
+    CitizenAlpha(_citizenToken).revoke(_from, _link);
   }
 }

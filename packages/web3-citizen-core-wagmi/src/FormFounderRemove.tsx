@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { useCitizenAlphaContractWrite } from './useCitizenAlphaContractWrite';
+import { useCitizenNotaryWrite } from './useCitizenNotaryWrite';
 import InputWithLabel from './InputWithLabel';
 
 interface FormFounderRemoveProps {
@@ -29,7 +29,7 @@ export const FormFounderRemove = ({
     },
   });
   const watchAllFields = watch();
-  const { write } = useCitizenAlphaContractWrite(
+  const { write } = useCitizenNotaryWrite(
     contractAddress,
     'removeFounder',
     [watchAllFields?.from]

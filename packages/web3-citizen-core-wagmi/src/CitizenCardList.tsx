@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import useCitizenAlphaContractRead from './useCitizenAlphaContractRead';
+import useCitizenAlphaContractRead from './useCitizenAlphaRead';
 import CitizenCard from './CitizenCard';
 
 interface CitizenCardListProps {

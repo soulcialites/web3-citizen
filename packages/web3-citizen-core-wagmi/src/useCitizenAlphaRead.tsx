@@ -1,7 +1,7 @@
 import { useContractRead } from 'wagmi';
 import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
 
-export function useCitizenAlphaContractRead(
+export function useCitizenAlphaRead(
   address: string,
   method: string,
   args: any[]
@@ -18,4 +18,4 @@ export function useCitizenAlphaContractRead(
   );
 }
 
-export default useCitizenAlphaContractRead;
+export default useCitizenAlphaRead;

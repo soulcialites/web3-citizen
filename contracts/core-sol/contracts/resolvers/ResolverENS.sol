@@ -2,7 +2,7 @@
 pragma solidity ^0.8.6;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { NameEncoder } from "../lib/NameEncoder.sol";
+import { NameEncoder } from "../libraries/NameEncoder.sol";
 import { IReverseRegistrar } from "../interfaces/IReverseRegistrar.sol";
 import { ITextResolver } from "../interfaces/ITextResolver.sol";
 import { IDefaultReverseResolver } from "../interfaces/IDefaultReverseResolver.sol";
@@ -30,7 +30,13 @@ contract ResolverENS is IMetadataSource, Ownable {
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function get(address _address)
+  function count(address _address) external view returns (uint256 count) {
+    (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
+    (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(traitKeys, node_, res_);
+    return keys_.length;
+  }
+
+  function getData(address _address)
     external
     view
     returns (string[] memory keys, string[] memory values)
@@ -40,15 +46,17 @@ contract ResolverENS is IMetadataSource, Ownable {
     return (keys_, values_);
   }
 
-  function count(address _address) external view returns (uint256 count) {
-    (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
-    (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(traitKeys, node_, res_);
-    return keys_.length;
-  }
-
-  function getAvatar(address _address) external view returns (string memory) {
-    (, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
-    return res_.text(node_, "avatar");
+  function getMetadata(address _address)
+    external
+    view
+    returns (
+      bytes32 node,
+      string memory name,
+      address resolver
+    )
+  {
+    (string memory name, bytes32 node, ITextResolver resolver) = _resolveOwner(_address);
+    return (node, name, address(resolver));
   }
 
   function getTextField(address _address, string memory _key)

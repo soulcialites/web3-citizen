@@ -43,6 +43,14 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     log: true,
   });
   
+  const CitizenNotary = await deploy("CitizenNotary", {
+    contract: "CitizenNotary",
+    from: deployer,
+    args: [CitizenAlpha.address, [kames, deployer]],
+    skipIfAlreadyDeployed: false,
+    log: true,
+  });
+  
   await deploy("TrustToken", {
     contract: "TrustToken",
     from: deployer,
@@ -54,10 +62,12 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
   
   const citizenAlpha = await ethers.getContractAt("CitizenAlpha", CitizenAlpha.address);
   const citizenMetadata = await ethers.getContractAt("CitizenMetadata", CitizenMetadata.address);
+  const citizenNotary = await ethers.getContractAt("CitizenNotary", CitizenNotary.address);
 
+  await citizenAlpha.setNotary(citizenNotary.address)
   await citizenMetadata.appendSource(ResolverENS.address)
   await citizenMetadata.setToken(CitizenAlpha.address);
 
-  await citizenAlpha.issue(kames, kames);
-  await citizenAlpha.issue(mcoso, kames);
+  await citizenNotary.issue(kames,);
+  await citizenNotary.issue(mcoso);
 }

@@ -1,9 +1,7 @@
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
-import { CitizenCardList, NFTCard } from "@web3-citizen/core-wagmi";
 import Link from "next/link";
 
-import ModalCitizenshipIssue from "@/components/ModalCitizenshipIssue";
-import { ModalEditCitizenProfile } from "@/components/ModalEditCitizenProfile";
+import { CitizenCardList } from "@/components/Citizen/CitizenCardList";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";

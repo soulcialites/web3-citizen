@@ -114,11 +114,11 @@ contract CitizenAlpha is ERC721, Ownable {
    * @notice Issue a new Citizenship
    * @param to address
    */
-  function issue(address to, address issuer) external {
+  function issue(address to, address link) external {
     require(_notary == _msgSender(), "CitizenAlpha:unauthorized-accesss");
     require(!_isCitizen(to), "CitizenAlpha:is-citizen");
     require(!_isPreviouslyIssued(to), "CitizenAlpha:revoked-citizenship");
-    _issue(to, issuer);
+    _issue(to, link);
   }
 
   /**

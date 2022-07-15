@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import useTrustTokenContractWrite from './useTrustTokenContractWrite';
+import useTrustTokenContractWrite from './useTrustTokenWrite';
 
 interface TrustTokenClaimProps {
   className?: string;

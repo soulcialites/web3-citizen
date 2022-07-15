@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { useCitizenAlphaContractWrite } from './useCitizenAlphaContractWrite';
+import { useCitizenNotaryWrite } from './useCitizenNotaryWrite';
 import InputWithLabel from './InputWithLabel';
 
 interface FormCitizenIssueProps {
@@ -25,24 +25,27 @@ export const FormCitizenIssue = ({
     formState: {},
   } = useForm({
     defaultValues: {
-      from: '',
+      to: '',
     },
   });
   const watchAllFields = watch();
-  const { write } = useCitizenAlphaContractWrite(contractAddress, 'issue', [
-    watchAllFields?.from,
+  const { write, error } = useCitizenNotaryWrite(contractAddress, 'issue', [
+    watchAllFields?.to,
   ]);
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);
   };
+  React.useEffect( () => { 
+    console.log(error)
+  }, [error])
 
   return (
     <div className={styleForm}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-4">
           <InputWithLabel
-            name="from"
+            name="to"
             label="Citizen"
             placeholder="weboftrust.eth"
             register={register}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { useCitizenAlphaContractWrite } from './useCitizenAlphaContractWrite';
+import { useCitizenNotaryWrite } from './useCitizenNotaryWrite';
 import InputWithLabel from './InputWithLabel';
 
 interface FormCitizenRevokeProps {
@@ -29,7 +29,7 @@ export const FormCitizenRevoke = ({
     },
   });
   const watchAllFields = watch();
-  const { write } = useCitizenAlphaContractWrite(contractAddress, 'revoke', [
+  const { write } = useCitizenNotaryWrite(contractAddress, 'revoke', [
     watchAllFields?.from,
   ]);
   const onSubmit = (_data: any) => {

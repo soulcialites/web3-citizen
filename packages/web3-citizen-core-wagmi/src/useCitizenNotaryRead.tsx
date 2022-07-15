@@ -1,7 +1,7 @@
 import { useContractRead } from 'wagmi';
-import CitizenNotary from '@web3-citizen/core-sol/deployments/localhost/CitizenNotary.json';
+import CitizenNotary from '@web3-citizen/core-sol/artifacts/contracts/CitizenNotary.sol/CitizenNotary.json';
 
-export function useCitizenNotaryContractRead(
+export function useCitizenNotaryRead(
   address: string,
   method: string,
   args: any[]
@@ -18,4 +18,4 @@ export function useCitizenNotaryContractRead(
   );
 }
 
-export default useCitizenNotaryContractRead;
+export default useCitizenNotaryRead;

@@ -4,7 +4,7 @@ import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAl
 import { IpfsUriImageBackgroundRender } from '@turbo-eth/core-wagmi';
 import { Address } from '@turbo-eth/core-wagmi';
 import useCitizenGetMetadata from './useCitizenGetMetadata';
-import useCitizenAlphaContractRead from './useCitizenAlphaContractRead';
+import useCitizenAlphaContractRead from './useCitizenAlphaRead';
 
 interface CitizenCardProps {
   className?: string;
@@ -50,7 +50,7 @@ export const CitizenCard = ({
         </span>
         <a
           className="inline-block mt-2 text-sm"
-          href={`/web3-citizen/citizen/?address=${walletAddress}`}
+          href={`/citizen/?address=${walletAddress}`}
         >
           View Account
         </a>

@@ -1,7 +1,7 @@
 import { useContractWrite } from 'wagmi';
 import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
 
-export function useCitizenAlphaContractWrite(
+export function useCitizenAlphaWrite(
   address: string,
   method: string,
   args: any[]
@@ -18,4 +18,4 @@ export function useCitizenAlphaContractWrite(
   );
 }
 
-export default useCitizenAlphaContractWrite;
+export default useCitizenAlphaWrite;

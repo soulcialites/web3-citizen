@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import useCitizenAlphaContractRead from './useCitizenAlphaContractRead';
+import useCitizenAlphaContractRead from './useCitizenAlphaRead';
 import { Address } from '@turbo-eth/core-wagmi';
 interface CitizenLinkProps {
   className?: string;

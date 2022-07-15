@@ -1,3 +1,4 @@
+import './tailwind.css'
 export { CitizenCard } from './CitizenCard';
 export { CitizenLink } from './CitizenLink';
 export { CitizenCardList } from './CitizenCardList';
@@ -8,9 +9,17 @@ export { FormFounderAdd } from './FormFounderAdd';
 export { FormFounderRemove } from './FormFounderRemove';
 export { NFTName } from './NFTName';
 export { NFTRender } from './NFTRender';
+export { NotaryHasRole } from './Notary/NotaryHasRole';
+export { NotaryIsFounder } from './Notary/NotaryIsFounder';
+export { NotaryFormIsFounder } from './Notary/NotaryFormIsFounder';
+export { NotaryIsNotary } from './Notary/NotaryIsNotary';
 export { TrustTokenClaim } from './TrustTokenClaim';
 export { useCitizenGetMetadata } from './useCitizenGetMetadata';
-export { useCitizenAlphaContractRead } from './useCitizenAlphaContractRead';
-export { useCitizenAlphaContractWrite } from './useCitizenAlphaContractWrite';
-export { useTrustTokenContractRead } from './useTrustTokenContractRead';
-export { useTrustTokenContractWrite } from './useTrustTokenContractWrite';
+export { useCitizenAlphaRead } from './useCitizenAlphaRead';
+export { useCitizenAlphaWrite } from './useCitizenAlphaWrite';
+export { useCitizenNotaryRead } from './useCitizenNotaryRead';
+export { useCitizenNotaryWrite } from './useCitizenNotaryWrite';
+export { useCitizenNotaryContract } from './useCitizenNotaryContract';
+export { useTrustTokenRead } from './useTrustTokenRead';
+export { useTrustTokenWrite } from './useTrustTokenWrite';
+export { useTrustTokenContract } from './useTrustTokenContract';

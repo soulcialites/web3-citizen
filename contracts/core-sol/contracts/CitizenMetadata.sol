@@ -23,7 +23,7 @@ contract CitizenMetadata is MetadataResolver {
 
   function _constructTokenURI(uint256 _tokenId) internal view returns (string memory) {
     ISoulbound token_ = ISoulbound(_token);
-    Metadata memory _meta = getMetadata(token_.ownerOf(_tokenId), _tokenId);
+    Metadata memory _meta = _getMetadata(token_.ownerOf(_tokenId), _tokenId);
 
     return
       string(

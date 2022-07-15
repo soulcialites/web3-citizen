@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.6;
+pragma solidity 0.8.15;
 
 import "hardhat/console.sol";
 import { Base64 } from "base64-sol/base64.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
-import { svg } from "./lib/SVG.sol";
-import { svgUtils } from "./lib/SVGUtils.sol";
-import { SVGColor } from "./lib/SVGColor.sol";
+import { svg } from "./libraries/SVG.sol";
+import { svgUtils } from "./libraries/SVGUtils.sol";
+import { SVGColor } from "./libraries/SVGColor.sol";
 import { IMetadataSource } from "./interfaces/IMetadataSource.sol";
 import { ISoulbound } from "./interfaces/ISoulbound.sol";
 import { CitizenAlpha } from "./CitizenAlpha.sol";
@@ -20,7 +20,6 @@ contract MetadataResolver is Ownable {
 
   address public svgColor;
   address internal _token;
-
   address[] private _sources;
 
   struct Metadata {
@@ -28,14 +27,19 @@ contract MetadataResolver is Ownable {
     string description;
     string avatar;
     string did;
-    string ensAddress;
+    string ensAlias;
     string ensNode;
+    string ensResolver;
     string traits;
   }
 
-  constructor(address _svgColor) public {
+  constructor(address _svgColor) {
     svgColor = _svgColor;
   }
+
+  /* ===================================================================================== */
+  /* External Functions                                                                    */
+  /* ===================================================================================== */
 
   function appendSource(address source) external onlyOwner {
     _sources.push(source);
@@ -54,32 +58,66 @@ contract MetadataResolver is Ownable {
     _token;
   }
 
-  function getMetadata(address user, uint256 tokenId) public view returns (Metadata memory) {
-    string memory alias_ = "kames.eth";
-    address link_ = ISoulbound(_token).getLink(user);
-    string memory name_ = string(abi.encodePacked("Citizen #", tokenId.toString()));
-    string memory description_ = bytes(alias_).length > 0 ? alias_ : "";
+  function getMetadata(address user) external view returns (Metadata memory) {
+    return _getMetadata(user, CitizenAlpha(_token).getId(user));
+  }
 
-    /// @dev ENS resolver must always be in the first slot. TODO: solve later.
-    ResolverENS _resolverEns = ResolverENS(_sources[0]);
-    string memory did_ = _resolverEns.getTextField(user, "did");
-    string memory avatar_ = _resolverEns.getTextField(user, "avatar");
-    string memory traits_ = _getUnwrappedTraits(user);
+  /* ===================================================================================== */
+  /* Internal Functions                                                                    */
+  /* ===================================================================================== */
+
+  function _getMetadata(address user, uint256 tokenId) internal view returns (Metadata memory) {
+    ExternalMetadata memory externalMetadata_ = _getExternalMetadata(user);
+    string memory name_ = string(abi.encodePacked("Citizen #", tokenId.toString()));
+    string memory description_ = bytes(externalMetadata_.ensAlias).length > 0
+      ? externalMetadata_.ensAlias
+      : Strings.toHexString(uint256(uint160(user)), 20);
+    address link_ = ISoulbound(_token).getLink(user);
 
     Metadata memory _meta = Metadata({
       name: name_,
       description: description_,
-      avatar: avatar_,
-      did: did_,
-      ensAddress: "",
-      ensNode: "",
+      avatar: externalMetadata_.avatar,
+      did: externalMetadata_.did,
+      ensNode: externalMetadata_.ensNode,
+      ensAlias: externalMetadata_.ensAlias,
+      ensResolver: externalMetadata_.ensResolver,
       traits: string.concat(
-        traits_,
+        externalMetadata_.traits,
         _generateTrait("link", Strings.toHexString(uint256(uint160(link_)), 20))
       )
     });
 
     return _meta;
+  }
+
+  struct ExternalMetadata {
+    string avatar;
+    string did;
+    string ensNode;
+    string ensAlias;
+    string ensResolver;
+    string traits;
+  }
+
+  function _getExternalMetadata(address user) internal view returns (ExternalMetadata memory) {
+    /// @dev ENS resolver must always be in the first slot. TODO: make better
+    ResolverENS _resolverEns = ResolverENS(_sources[0]);
+    string memory did_ = _resolverEns.getTextField(user, "did");
+    string memory avatar_ = _resolverEns.getTextField(user, "avatar");
+    (bytes32 node, string memory alias_, address resolver_) = _resolverEns.getMetadata(user);
+    string memory traits_ = _getUnwrappedTraits(user);
+    return
+      ExternalMetadata({
+        avatar: avatar_,
+        did: did_,
+        ensNode: string(abi.encodePacked(node)),
+        ensAlias: string(alias_),
+        ensResolver: resolver_ != 0x0000000000000000000000000000000000000000
+          ? Strings.toHexString(uint256(uint160(resolver_)), 20)
+          : "",
+        traits: traits_
+      });
   }
 
   function _getUnwrappedTraits(address user) internal view returns (string memory) {
@@ -92,14 +130,11 @@ contract MetadataResolver is Ownable {
     string[] memory keys_ = new string[](count);
     string[] memory values_ = new string[](count);
 
-    console.log(count);
-    console.log(keys_.length);
     uint256 __start;
     for (uint256 i = 0; i < _sources.length; i++) {
       IMetadataSource _source = IMetadataSource(_sources[i]);
-      (string[] memory keys__, string[] memory values__) = _source.get(user);
+      (string[] memory keys__, string[] memory values__) = _source.getData(user);
       for (uint256 k = __start; k < count; k++) {
-        console.log(k, "k");
         keys_[k] = (keys__[k]);
         values_[k] = values__[k];
       }

@@ -2,14 +2,14 @@ import "../styles/global.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {
+  RainbowKitProvider,
   connectorsForWallets,
   getDefaultWallets,
-  RainbowKitProvider,
   wallet,
 } from "@rainbow-me/rainbowkit";
 import type { AppProps } from "next/app";
 import { ModalProvider } from "react-modal-hook";
-import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
+import { WagmiConfig, chain, configureChains, createClient } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { publicProvider } from "wagmi/providers/public";

@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 import { ColorMode } from "@/components/App/ColorMode";
 import { AppConfig } from "@/utils/AppConfig";
@@ -58,9 +58,9 @@ const Main = (props: IMainProps) => (
               </Link>
             </li>
             <li className="mr-6">
-              <Link href="/town-hall/">
+              <Link href="/notary/">
                 <a className="border-none text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
-                  Town Hall
+                  Notary
                 </a>
               </Link>
             </li>
