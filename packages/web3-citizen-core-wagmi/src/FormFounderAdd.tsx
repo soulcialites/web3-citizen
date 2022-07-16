@@ -29,11 +29,9 @@ export const FormFounderAdd = ({
     },
   });
   const watchAllFields = watch();
-  const { write } = useCitizenNotaryWrite(
-    contractAddress,
-    'addFounder',
-    [watchAllFields?.from]
-  );
+  const { write } = useCitizenNotaryWrite(contractAddress, 'addFounder', [
+    watchAllFields?.from,
+  ]);
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);

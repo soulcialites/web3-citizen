@@ -9,16 +9,21 @@ interface NotaryHasRoleProps {
   role?: string;
 }
 
-export const NotaryHasRole = ({ className, contractAddress, userAddress, role }: NotaryHasRoleProps) => {
+export const NotaryHasRole = ({
+  className,
+  contractAddress,
+  userAddress,
+  role,
+}: NotaryHasRoleProps) => {
   const containerClassName = classNames(className, 'NotaryHasRole');
 
   const { data, isError } = useCitizenNotaryRead(
-    contractAddress || "",
+    contractAddress || '',
     'hasRole',
-    [role, userAddress],
+    [role, userAddress]
   );
 
-  if (isError) return null
+  if (isError) return null;
 
   return <div className={containerClassName}>{data}</div>;
 };

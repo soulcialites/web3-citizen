@@ -44,11 +44,11 @@ export const FormCitizenRevoke = ({
           <InputWithLabel
             name="from"
             label="Citizen"
-            placeholder="weboftrust.eth"
+            placeholder="vitalik.eth"
             register={register}
           />
         </div>
-        <button className="btn btn-blue w-full mt-4" type="submit">
+        <button className="btn btn-default my-3 w-full" type="submit">
           Revoke Citizenship
         </button>
       </form>

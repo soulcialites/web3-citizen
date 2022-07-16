@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
 import {

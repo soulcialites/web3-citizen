@@ -1,5 +1,5 @@
 import { useContractRead, useProvider } from 'wagmi';
-import CitizenAlpha from '@web3-citizen/core-sol/artifacts/contracts/CitizenAlpha.sol/CitizenAlpha.json';
+import CitizenAlpha from '@web3-citizen/core-sol/abis/contracts/CitizenAlpha.sol/CitizenAlpha.json';
 import { useEffect, useState } from 'react';
 import { parseAvatarString } from '@turbo-eth/ens-wagmi';
 
@@ -12,7 +12,7 @@ export function useCitizenGetMetadata(
   const { data } = useContractRead(
     {
       addressOrName: address,
-      contractInterface: CitizenAlpha.abi,
+      contractInterface: CitizenAlpha,
     },
     'tokenURI',
     {
@@ -37,13 +37,13 @@ export function useCitizenGetMetadata(
       (async () => {
         const json = Buffer.from(data.substring(29), 'base64').toString();
         const result = JSON.parse(json);
-        console.log("result",result)
-        if(result.image) {
+        console.log('result', result);
+        if (result.image) {
           result.img = await parseAvatarString(
             walletAddress,
             result.image,
             provider
-            );
+          );
         }
         result.traits = {};
         result.attributes.forEach((element: any) => {

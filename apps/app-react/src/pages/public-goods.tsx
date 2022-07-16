@@ -1,17 +1,7 @@
 import { ERC20TotalSupply } from "@turbo-eth/erc20-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
 import TrustToken from "@web3-citizen/core-sol/deployments/localhost/TrustToken.json";
-import {
-  CitizenCardList,
-  NFTCard,
-  TrustTokenClaim,
-} from "@web3-citizen/core-wagmi";
+import { TrustTokenClaim } from "@web3-citizen/core-wagmi";
 
-import ModalCitizenshipIssue from "@/components/ModalCitizenshipIssue";
-import ModalCitizenshipRevoke from "@/components/ModalCitizenshipRevoke";
-import { ModalEditCitizenProfile } from "@/components/ModalEditCitizenProfile";
-import ModalFounderAdd from "@/components/ModalFounderAdd";
-import ModalFounderRemove from "@/components/ModalFounderRemove";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
@@ -47,12 +37,13 @@ const Index = () => {
       <section>
         <div className="container mx-auto max-w-screen-lg py-10">
           <h3 className="text-3xl font-normal">Claim Tokens</h3>
-          <p className="text-lg">Citizens can claim 1,000 PGP.alpha tokens.</p>
+          <p className="text-lg">
+            Citizens can (currently) claim 10,000 PGP.alpha tokens.
+          </p>
           <p className="">
-            <span className="font-bold">
-              The tokens have ZERO financial value.
-            </span>{" "}
-            And will only be used for coordination experiments.
+            <span className="font-bold">Tokens have ZERO financial value.</span>{" "}
+            <span className="italic">None.</span> And will only be used for Web3
+            of Trust coordination experiments.
           </p>
           <TrustTokenClaim
             contractAddress={TrustToken.address}
@@ -61,6 +52,28 @@ const Index = () => {
           <p className="text-xs">
             Notice: Refresh the page after claiming to see updated total supply.
           </p>
+          <hr className="my-5" />
+          <h5 className="leading-2 text-xl font-light">Useful Resources</h5>
+          <ul className="my-3 list-disc pl-8 text-sm">
+            <li>
+              <a
+                target={"_blank"}
+                href="https://en.wikipedia.org/wiki/Web_of_trust"
+                rel="noreferrer"
+              >
+                Web of Trust
+              </a>
+            </li>
+            <li>
+              <a
+                target={"_blank"}
+                href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy"
+                rel="noreferrer"
+              >
+                PGP (Pretty Good Privacy)
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
     </Main>

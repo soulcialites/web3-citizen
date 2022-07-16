@@ -1,5 +1,5 @@
 import { useContractRead } from 'wagmi';
-import TrustToken from '@web3-citizen/core-sol/abis/contracts/TrustToken.sol/TrustToken.json';
+import TrustToken from '@web3-citizen/core-sol/abis/contracts/experiments/TrustToken.sol/TrustToken.json';
 
 export function useTrustTokenRead(
   address: string,

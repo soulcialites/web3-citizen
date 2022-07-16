@@ -2,11 +2,10 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import { useCitizenNotaryWrite } from '../useCitizenNotaryWrite';
-import { FOUNDER } from '../constants';
+import { NOTARY } from '../constants';
 import { useLogError } from '../hooks';
-import InputWithSideLabel from '../InputWithSideLabel';
 
-interface NotaryFormIsFounderProps {
+interface NotaryFormIsNotaryProps {
   className?: string;
   label: string;
   onUpdate?: Function;
@@ -14,13 +13,13 @@ interface NotaryFormIsFounderProps {
   contractAddress: string;
 }
 
-export const NotaryFormIsFounder = ({
+export const NotaryFormIsNotary = ({
   className,
   label,
   onUpdate,
   contractAddress,
-}: NotaryFormIsFounderProps) => {
-  const classes_ = classNames(className, 'NotaryFormIsFounder');
+}: NotaryFormIsNotaryProps) => {
+  const classes_ = classNames(className, 'NotaryFormIsNotary');
 
   const {
     register,
@@ -36,7 +35,7 @@ export const NotaryFormIsFounder = ({
   const { write, error, data } = useCitizenNotaryWrite(
     contractAddress,
     'hasRole',
-    [FOUNDER, watchAllFields?.citizen]
+    [NOTARY, watchAllFields?.citizen]
   );
   useLogError(error);
   const onSubmit = (_data: any) => {
@@ -49,13 +48,13 @@ export const NotaryFormIsFounder = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-12 gap-x-4 w-full">
           <div className="col-span-8">
-          <InputWithSideLabel 
-            name="citizen"
-            placeholder="vitalik.eth"
-            label="Citizen"
-            register={register} />
+            <input
+              className="input"
+              placeholder="weboftrust.eth"
+              {...register('citizen', { required: true })}
+            />
           </div>
-          <div className="col-span-4 bg-slate-800 rounded-md text-white flex items-center justify-center p-2">
+          <div className="col-span-4 bg-neutral-900 flex items-center justify-center p-2">
             <span className="">
               <span className="font-semibold">Status:</span>{' '}
               {data ? 'Yes' : 'No'}
@@ -73,8 +72,8 @@ export const NotaryFormIsFounder = ({
   );
 };
 
-NotaryFormIsFounder.defaultProps = {
+NotaryFormIsNotary.defaultProps = {
   label: 'Check Status',
 };
 
-export default NotaryFormIsFounder;
+export default NotaryFormIsNotary;

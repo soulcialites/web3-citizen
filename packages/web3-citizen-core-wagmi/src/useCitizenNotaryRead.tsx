@@ -1,5 +1,5 @@
 import { useContractRead } from 'wagmi';
-import CitizenNotary from '@web3-citizen/core-sol/artifacts/contracts/CitizenNotary.sol/CitizenNotary.json';
+import Notary from '@web3-citizen/core-sol/abis/contracts/Notary/Notary.sol/Notary.json';
 
 export function useCitizenNotaryRead(
   address: string,
@@ -9,7 +9,7 @@ export function useCitizenNotaryRead(
   return useContractRead(
     {
       addressOrName: address,
-      contractInterface: CitizenNotary.abi,
+      contractInterface: Notary,
     },
     method,
     {

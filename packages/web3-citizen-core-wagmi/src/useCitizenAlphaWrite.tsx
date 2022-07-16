@@ -1,5 +1,5 @@
 import { useContractWrite } from 'wagmi';
-import CitizenAlpha from '@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json';
+import CitizenAlpha from '@web3-citizen/core-sol/abis/contracts/CitizenAlpha.sol/CitizenAlpha.json';
 
 export function useCitizenAlphaWrite(
   address: string,
@@ -9,7 +9,7 @@ export function useCitizenAlphaWrite(
   return useContractWrite(
     {
       addressOrName: address,
-      contractInterface: CitizenAlpha.abi,
+      contractInterface: CitizenAlpha,
     },
     method,
     {

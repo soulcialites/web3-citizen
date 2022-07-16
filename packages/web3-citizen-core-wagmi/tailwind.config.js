@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {},
   },
+  mode: 'jit',
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './stories/*'],
   purge: {
-    enabled: process.env.NODE_ENV === 'publish',
+    enabled: false,
     content: ['./src/**/*.{js,jsx,ts,tsx}']
   },
   plugins: [],

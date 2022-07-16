@@ -2,7 +2,7 @@ import * as React from "react";
 import { IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import { Address } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
-import CitizenNotary from "@web3-citizen/core-sol/deployments/localhost/CitizenNotary.json";
+import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
 import {
   NotaryIsFounder,
   NotaryIsNotary,
@@ -49,30 +49,27 @@ export const CitizenCard = ({
           metadata?.description
         )}
       </h3>
-      <div className="block">
-        <span className="block text-sm font-bold">{metadata?.name}</span>
-        <span className="block text-sm font-normal">
-          Invited By: <Address truncate address={metadata?.traits.link} />
-        </span>
-        <Link
-          className="mt-2 inline-block text-sm"
-          href={`/citizen/?address=${walletAddress}`}
-        >
-          View Account
-        </Link>
-      </div>
-      <div className="">
+      {/* <div className="flex items-center">
         <NotaryIsFounder
+          className="text-xs font-semibold"
           labelActive
-          labelTrue="Yesss"
+          labelTrue="Yes"
           labelFalse="No"
-          contractAddress={CitizenNotary.address}
+          contractAddress={Notary.address}
           userAddress={walletAddress || ""}
         />
         <NotaryIsNotary
-          contractAddress={CitizenNotary.address}
+          className="ml-3 text-xs font-semibold"
+          contractAddress={Notary.address}
           userAddress={walletAddress || ""}
         />
+      </div> */}
+      <hr className="my-3" />
+      <div className="flex items-center justify-between">
+        <span className="block text-sm font-bold">{metadata?.name}</span>
+        <Link href={`/citizen/?address=${walletAddress}`}>
+          <span className="cursor-pointer text-xs font-bold">View Account</span>
+        </Link>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
+import { InputWithSideLabel } from '../InputWithSideLabel';
 import { useCitizenNotaryWrite } from '../useCitizenNotaryWrite';
-import { FOUNDER } from '../constants';
 import { useLogError } from '../hooks';
-import InputWithSideLabel from '../InputWithSideLabel';
+import { utils } from 'ethers';
 
-interface NotaryFormIsFounderProps {
+interface NotaryFormHasRoleProps {
   className?: string;
   label: string;
   onUpdate?: Function;
@@ -14,13 +14,13 @@ interface NotaryFormIsFounderProps {
   contractAddress: string;
 }
 
-export const NotaryFormIsFounder = ({
+export const NotaryFormHasRole = ({
   className,
   label,
   onUpdate,
   contractAddress,
-}: NotaryFormIsFounderProps) => {
-  const classes_ = classNames(className, 'NotaryFormIsFounder');
+}: NotaryFormHasRoleProps) => {
+  const classes_ = classNames(className, 'NotaryFormHasRole');
 
   const {
     register,
@@ -30,13 +30,17 @@ export const NotaryFormIsFounder = ({
   } = useForm({
     defaultValues: {
       citizen: '',
+      role: '',
     },
   });
   const watchAllFields = watch();
   const { write, error, data } = useCitizenNotaryWrite(
     contractAddress,
     'hasRole',
-    [FOUNDER, watchAllFields?.citizen]
+    [
+      utils.keccak256(utils.toUtf8Bytes(watchAllFields.role)),
+      watchAllFields?.citizen,
+    ]
   );
   useLogError(error);
   const onSubmit = (_data: any) => {
@@ -49,13 +53,19 @@ export const NotaryFormIsFounder = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-12 gap-x-4 w-full">
           <div className="col-span-8">
-          <InputWithSideLabel 
+            <InputWithSideLabel 
+            name="role"
+            placeholder="FOUNDER"
+            label="Role"
+            register={register} />
+            <InputWithSideLabel 
             name="citizen"
+            className='mt-3'
             placeholder="vitalik.eth"
             label="Citizen"
             register={register} />
           </div>
-          <div className="col-span-4 bg-slate-800 rounded-md text-white flex items-center justify-center p-2">
+          <div className="col-span-4 bg-slate-700 rounded-md text-white flex items-center justify-center p-2">
             <span className="">
               <span className="font-semibold">Status:</span>{' '}
               {data ? 'Yes' : 'No'}
@@ -73,8 +83,8 @@ export const NotaryFormIsFounder = ({
   );
 };
 
-NotaryFormIsFounder.defaultProps = {
+NotaryFormHasRole.defaultProps = {
   label: 'Check Status',
 };
 
-export default NotaryFormIsFounder;
+export default NotaryFormHasRole;

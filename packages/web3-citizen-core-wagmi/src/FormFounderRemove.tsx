@@ -29,11 +29,9 @@ export const FormFounderRemove = ({
     },
   });
   const watchAllFields = watch();
-  const { write } = useCitizenNotaryWrite(
-    contractAddress,
-    'removeFounder',
-    [watchAllFields?.from]
-  );
+  const { write } = useCitizenNotaryWrite(contractAddress, 'removeFounder', [
+    watchAllFields?.from,
+  ]);
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);

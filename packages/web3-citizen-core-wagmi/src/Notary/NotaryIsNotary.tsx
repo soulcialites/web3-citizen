@@ -11,24 +11,33 @@ interface NotaryIsNotaryProps {
   userAddress?: string;
 }
 
-
-export const NotaryIsNotary = ({ className, contractAddress, userAddress, labelTrue, labelFalse }: NotaryIsNotaryProps) => {
-    const containerClassName = classNames(className, 'NotaryHasRole');
+export const NotaryIsNotary = ({
+  className,
+  contractAddress,
+  userAddress,
+  labelTrue,
+  labelFalse,
+}: NotaryIsNotaryProps) => {
+  const containerClassName = classNames(className, 'NotaryHasRole');
 
   const { data, isError } = useCitizenNotaryRead(
-    contractAddress || "",
+    contractAddress || '',
     'hasRole',
-    [NOTARY, userAddress],
+    [NOTARY, userAddress]
   );
 
-  if (isError) return null
+  if (isError) return null;
 
-  return <div className={containerClassName}>Notary: {data ? labelTrue : labelFalse}</div>;
+  return (
+    <div className={containerClassName}>
+      Notary: {data ? labelTrue : labelFalse}
+    </div>
+  );
 };
 
 NotaryIsNotary.defaultProps = {
-    labelTrue: "Yes",
-    labelFalse: "No",
-}
+  labelTrue: 'Yes',
+  labelFalse: 'No',
+};
 
 export default NotaryIsNotary;
