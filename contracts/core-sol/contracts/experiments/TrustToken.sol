@@ -2,7 +2,7 @@
 pragma solidity 0.8.15;
 
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import { CitizenAlpha } from "./CitizenAlpha.sol";
+import { CitizenAlpha } from "../CitizenAlpha.sol";
 
 contract TrustToken is ERC20 {
   CitizenAlpha private citizenAlpha;

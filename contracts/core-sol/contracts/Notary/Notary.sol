@@ -2,10 +2,10 @@
 pragma solidity 0.8.15;
 
 import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
-import { ISoulbound } from "./interfaces/ISoulbound.sol";
-import { CitizenAlpha } from "./CitizenAlpha.sol";
+import { ISoulbound } from "../interfaces/ISoulbound.sol";
+import { CitizenAlpha } from "../CitizenAlpha.sol";
 
-contract CitizenNotary is AccessControl {
+contract Notary is AccessControl {
   /// @notice CitizenToken with mintable controls set to address(this);
   address private _citizenToken;
 
@@ -15,34 +15,32 @@ contract CitizenNotary is AccessControl {
   /// @notice Founder Role to enforce access controls
   bytes32 private constant FOUNDER = keccak256("FOUNDER");
 
-  mapping(bytes32 => bool) private _roleInitialized;
+  mapping(bytes32 => string) private _roleName;
+  mapping(bytes32 => bool) private _roleActive;
 
   /**
-   * @notice CitizenNotary Construction
+   * @notice Notary Construction
    * @param _founders Array of Founding Citizens
    */
   constructor(address _citizenToken_, address[] memory _founders) {
     _citizenToken = _citizenToken_;
-    _roleInitialized[DEFAULT_ADMIN_ROLE] = true;
-    _roleInitialized[NOTARY] = true;
-    _roleInitialized[FOUNDER] = true;
+    _roleActive[DEFAULT_ADMIN_ROLE] = true;
+    _roleActive[NOTARY] = true;
+    _roleActive[FOUNDER] = true;
 
     // Grant Founders with
     _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     for (uint256 i = 0; i < _founders.length; i++) {
       _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
-      _setupRole(FOUNDER, _founders[i]);
-      _setupRole(NOTARY, _founders[i]);
       _setRoleAdmin(FOUNDER, DEFAULT_ADMIN_ROLE);
       _setRoleAdmin(NOTARY, DEFAULT_ADMIN_ROLE);
+      _setupRole(FOUNDER, _founders[i]);
+      _setupRole(NOTARY, _founders[i]);
     }
   }
 
   modifier _hasNotaryPermissions(address _sender) {
-    require(
-      hasRole(NOTARY, _sender) || hasRole(FOUNDER, _sender),
-      "CitizenNotary:unauthorized-access"
-    );
+    require(hasRole(NOTARY, _sender) || hasRole(FOUNDER, _sender), "Notary:unauthorized-access");
     _;
   }
 
@@ -54,12 +52,12 @@ contract CitizenNotary is AccessControl {
     return _citizenToken;
   }
 
-  function isRole(bytes32 role) external view returns (bool active) {
-    return _roleInitialized[role];
+  function roleStatus(bytes32 role) external view returns (bool status) {
+    return _roleActive[role];
   }
 
   function hasRole(bytes32 role, address account) public view virtual override returns (bool) {
-    if (!_roleInitialized[role]) {
+    if (!_roleActive[role]) {
       return false;
     }
     return super.hasRole(role, account);
@@ -92,11 +90,24 @@ contract CitizenNotary is AccessControl {
   }
 
   /**
-   * @notice Toggle Role status
+   * @notice Enable Role status
+   * @param role bytes32
+   * @param adminRole bytes32
+   */
+  function enableRole(bytes32 role, bytes32 adminRole) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(_roleActive[role] == false, "Notary:role-enabled");
+    _setRoleAdmin(role, adminRole);
+    _roleActive[role] = true;
+  }
+
+  /**
+   * @notice Disable Role status
    * @param role bytes32
    */
-  function toggleRole(bytes32 role) external onlyRole(DEFAULT_ADMIN_ROLE) {
-    _roleInitialized[role] = !_roleInitialized[role];
+  function disableRole(bytes32 role) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    require(_roleActive[role] == true, "Notary:role-disabled");
+    _setRoleAdmin(role, DEFAULT_ADMIN_ROLE);
+    _roleActive[role] = false;
   }
 
   /**
@@ -110,7 +121,7 @@ contract CitizenNotary is AccessControl {
     override
     onlyRole(getRoleAdmin(role))
   {
-    require(_roleInitialized[role], "CitizenNotary:inactive-role");
+    require(_roleActive[role], "Notary:inactive-role");
     _grantRole(role, citizen);
   }
 
@@ -125,8 +136,8 @@ contract CitizenNotary is AccessControl {
     override
     onlyRole(getRoleAdmin(role))
   {
-    require(role != DEFAULT_ADMIN_ROLE, "CitizenNotary:invalid-request");
-    require(_roleInitialized[role], "CitizenNotary:inactive-role");
+    require(role != DEFAULT_ADMIN_ROLE, "Notary:invalid-request");
+    require(_roleActive[role], "Notary:inactive-role");
     _revokeRole(role, citizen);
   }
 

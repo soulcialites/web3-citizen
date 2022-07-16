@@ -11,7 +11,7 @@ import { SVGColor } from "./libraries/SVGColor.sol";
 import { IMetadataSource } from "./interfaces/IMetadataSource.sol";
 import { ISoulbound } from "./interfaces/ISoulbound.sol";
 import { CitizenAlpha } from "./CitizenAlpha.sol";
-import { ResolverENS } from "./resolvers/ResolverENS.sol";
+import { DataENS } from "./Data/DataENS.sol";
 
 contract MetadataResolver is Ownable {
   using Strings for address;
@@ -46,7 +46,7 @@ contract MetadataResolver is Ownable {
   }
 
   function setSource(uint256 idx, address source) external onlyOwner {
-    require(idx < _sources.length, "MetadataResolver:invalid-source-index");
+    require(idx < _sources.length, "MetadataGenerate:invalid-source-index");
     _sources[idx] = source;
   }
 
@@ -102,7 +102,7 @@ contract MetadataResolver is Ownable {
 
   function _getExternalMetadata(address user) internal view returns (ExternalMetadata memory) {
     /// @dev ENS resolver must always be in the first slot. TODO: make better
-    ResolverENS _resolverEns = ResolverENS(_sources[0]);
+    DataENS _resolverEns = DataENS(_sources[0]);
     string memory did_ = _resolverEns.getTextField(user, "did");
     string memory avatar_ = _resolverEns.getTextField(user, "avatar");
     (bytes32 node, string memory alias_, address resolver_) = _resolverEns.getMetadata(user);

@@ -23,7 +23,7 @@ describe('CitizenAlpha', () => {
 
   beforeEach(async () => {
     CitizenMetadata = await CitizenMetadataFactory.deploy(constants.AddressZero);
-    CitizenAlpha = await CitizenAlphaFactory.deploy(CitizenMetadata.address, "Web5 Citizen", "CI5");
+    CitizenAlpha = await CitizenAlphaFactory.deploy(CitizenMetadata.address, 'Web5 Citizen', 'CI5');
   });
 
   /* ================================================================================ */
@@ -33,7 +33,7 @@ describe('CitizenAlpha', () => {
     describe('getId(address citizen)', () => {
       it('should SUCCEED to get the ID for Citizen', async () => {
         await CitizenAlpha.issue(wallet1.address, wallet0.address);
-        expect(await CitizenAlpha.getId(wallet1.address,)).to.eq(0);
+        expect(await CitizenAlpha.getId(wallet1.address)).to.eq(0);
       });
 
       it('should REVERT because of NON-EXISTING citizen', async () => {
@@ -57,9 +57,7 @@ describe('CitizenAlpha', () => {
     describe('getLink(address downstreamlink)', () => {
       it('should SUCCEED to get link for a starting FOUNDER', async () => {
         await CitizenAlpha.issue(wallet1.address, wallet0.address);
-        expect(await CitizenAlpha.getLink(wallet1.address)).to.eq(
-            wallet0.address,
-        );
+        expect(await CitizenAlpha.getLink(wallet1.address)).to.eq(wallet0.address);
       });
 
       it('should SUCCEED to get link for Citizen', async () => {
@@ -124,9 +122,9 @@ describe('CitizenAlpha', () => {
       });
 
       it('should REVERT due to UNAUTHORIZED access', async () => {
-        await expect(CitizenAlpha.connect(wallet1).issue(wallet1.address, wallet0.address)).to.be.revertedWith(
-          'CitizenAlpha:unauthorized-access',
-        );
+        await expect(
+          CitizenAlpha.connect(wallet1).issue(wallet1.address, wallet0.address),
+        ).to.be.revertedWith('CitizenAlpha:unauthorized-access');
       });
     });
 
@@ -160,9 +158,9 @@ describe('CitizenAlpha', () => {
       });
 
       it('should REVERT due to UNAUTHORIZED access', async () => {
-        await expect(CitizenAlpha.connect(wallet1).revoke(wallet1.address, wallet0.address)).to.be.revertedWith(
-          'CitizenAlpha:unauthorized-access'
-        );
+        await expect(
+          CitizenAlpha.connect(wallet1).revoke(wallet1.address, wallet0.address),
+        ).to.be.revertedWith('CitizenAlpha:unauthorized-access');
       });
     });
   });

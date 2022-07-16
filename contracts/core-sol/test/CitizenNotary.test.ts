@@ -1,4 +1,4 @@
-import { ethers} from 'hardhat';
+import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { constants, Contract, ContractFactory, utils } from 'ethers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
@@ -10,11 +10,11 @@ describe('CitizenNotary', () => {
   let CitizenAlpha: Contract;
   let CitizenAlphaFactory: ContractFactory;
   let CitizenNotary: Contract;
-  let CitizenNotaryFactory: ContractFactory
+  let CitizenNotaryFactory: ContractFactory;
 
-  const FOUNDER  = utils.keccak256(utils.toUtf8Bytes("FOUNDER"))
-  const NOTARY  = utils.keccak256(utils.toUtf8Bytes("NOTARY"))
-  const INVALID_ROLE  = utils.keccak256(utils.toUtf8Bytes("INVALID_ROLE"))
+  const FOUNDER = utils.keccak256(utils.toUtf8Bytes('FOUNDER'));
+  const NOTARY = utils.keccak256(utils.toUtf8Bytes('NOTARY'));
+  const INVALID_ROLE = utils.keccak256(utils.toUtf8Bytes('INVALID_ROLE'));
 
   before(async () => {
     [wallet0, wallet1] = await getSigners();
@@ -23,9 +23,9 @@ describe('CitizenNotary', () => {
   });
 
   beforeEach(async () => {
-    CitizenAlpha = await CitizenAlphaFactory.deploy(constants.AddressZero, "Web5 Citizen", "CI5");
+    CitizenAlpha = await CitizenAlphaFactory.deploy(constants.AddressZero, 'Web5 Citizen', 'CI5');
     CitizenNotary = await CitizenNotaryFactory.deploy(CitizenAlpha.address, [wallet0.address]);
-    CitizenAlpha.setNotary(CitizenNotary.address)
+    CitizenAlpha.setNotary(CitizenNotary.address);
   });
 
   /* ================================================================================ */
@@ -50,22 +50,24 @@ describe('CitizenNotary', () => {
       it('should SUCCEED to validate FOUNDER role for a non-Founder', async () => {
         await CitizenNotary.issue(wallet1.address);
         expect(await CitizenNotary.hasRole(FOUNDER, wallet1.address)).to.eq(false);
-      }); 
+      });
 
       it('should SUCCEED to validate DEFAULT role for a starting Founder', async () => {
-        expect(await CitizenNotary.hasRole(await CitizenNotary.DEFAULT_ADMIN_ROLE(), wallet0.address)).to.eq(true);
+        expect(
+          await CitizenNotary.hasRole(await CitizenNotary.DEFAULT_ADMIN_ROLE(), wallet0.address),
+        ).to.eq(true);
       });
 
       it('should SUCCEED to validate FOUNDER role for a starting Founder', async () => {
         expect(await CitizenNotary.hasRole(FOUNDER, wallet0.address)).to.eq(true);
       });
-      
+
       it('should SUCCEED to validate FOUNDER role for a new Founder', async () => {
         await CitizenNotary.issue(wallet1.address);
         await CitizenNotary.grantRole(FOUNDER, wallet1.address);
         expect(await CitizenNotary.hasRole(FOUNDER, wallet1.address)).to.eq(true);
       });
-            
+
       it('should SUCCEED to invalidate FOUNDER role via GLOBAL access control', async () => {
         await CitizenNotary.issue(wallet0.address);
         await CitizenNotary.grantRole(FOUNDER, wallet1.address);

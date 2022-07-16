@@ -19,38 +19,38 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     log: true,
   });
 
-  const ResolverENS = await deploy("ResolverENS", {
-    contract: "ResolverENS",
+  const DataENS = await deploy("DataENS", {
+    contract: "DataENS",
     from: deployer,
     args: [],
     skipIfAlreadyDeployed: false,
     log: true,
   });
 
-  const CitizenMetadata = await deploy("CitizenMetadata", {
-    contract: "CitizenMetadata",
+  const Metadata = await deploy("Metadata", {
+    contract: "Metadata",
     from: deployer,
-    args: [svgColor.address ],
+    args: [svgColor.address],
     skipIfAlreadyDeployed: false,
     log: true,
   });
-  
+
   const CitizenAlpha = await deploy("CitizenAlpha", {
     contract: "CitizenAlpha",
     from: deployer,
-    args: [CitizenMetadata.address, "Web3Citizen", "CIV"],
+    args: [Metadata.address, "Web3Citizen", "CIV"],
     skipIfAlreadyDeployed: false,
     log: true,
   });
-  
-  const CitizenNotary = await deploy("CitizenNotary", {
-    contract: "CitizenNotary",
+
+  const Notary = await deploy("Notary", {
+    contract: "Notary",
     from: deployer,
     args: [CitizenAlpha.address, [kames, deployer]],
     skipIfAlreadyDeployed: false,
     log: true,
   });
-  
+
   await deploy("TrustToken", {
     contract: "TrustToken",
     from: deployer,
@@ -59,15 +59,14 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     log: true,
   });
 
-  
   const citizenAlpha = await ethers.getContractAt("CitizenAlpha", CitizenAlpha.address);
-  const citizenMetadata = await ethers.getContractAt("CitizenMetadata", CitizenMetadata.address);
-  const citizenNotary = await ethers.getContractAt("CitizenNotary", CitizenNotary.address);
+  const citizenMetadata = await ethers.getContractAt("Metadata", Metadata.address);
+  const citizenNotary = await ethers.getContractAt("Notary", Notary.address);
 
-  await citizenAlpha.setNotary(citizenNotary.address)
-  await citizenMetadata.appendSource(ResolverENS.address)
+  await citizenAlpha.setNotary(citizenNotary.address);
+  await citizenMetadata.appendSource(DataENS.address);
   await citizenMetadata.setToken(CitizenAlpha.address);
 
-  await citizenNotary.issue(kames,);
+  await citizenNotary.issue(kames);
   await citizenNotary.issue(mcoso);
 }

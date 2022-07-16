@@ -2,13 +2,13 @@
 pragma solidity 0.8.15;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { Guild } from "./GuildFactory.sol";
+import { Guild } from "./Guild/Guild.sol";
 import { CitizenAlpha } from "./CitizenAlpha.sol";
-import { CitizenMetadata } from "./CitizenMetadata.sol";
-import { CitizenNotary } from "./CitizenNotary.sol";
+import { Metadata } from "./Metadata.sol";
+import { Notary } from "./Notary/Notary.sol";
 import { MetadataResolver } from "./MetadataResolver.sol";
 
-contract CitizenResolver is Ownable {
+contract Web3TrustResolver is Ownable {
   address private immutable _metadata;
   address private immutable _notary;
   address private immutable _token;
@@ -50,7 +50,7 @@ contract CitizenResolver is Ownable {
     return _citizen;
   }
 
-  function getCitizenMetadata(address user) external view returns (CitizenMetadata memory member) {
+  function getMetadata(address user) external view returns (CitizenMetadata memory member) {
     MetadataResolver.Metadata memory _meta = MetadataResolver(_metadata).getMetadata(user);
     CitizenMetadata memory _citizen = CitizenMetadata({
       ensAlias: _meta.ensAlias,

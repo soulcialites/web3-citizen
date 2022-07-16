@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.6;
+pragma solidity 0.8.15;
 
 import { Base64 } from "base64-sol/base64.sol";
 import { ISoulbound } from "./interfaces/ISoulbound.sol";
 import { CitizenAlpha } from "./CitizenAlpha.sol";
 import { MetadataResolver } from "./MetadataResolver.sol";
 
-contract CitizenMetadata is MetadataResolver {
+contract Metadata is MetadataResolver {
   constructor(address _svgColor) MetadataResolver(_svgColor) {}
 
   /* ===================================================================================== */

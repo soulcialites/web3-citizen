@@ -5,8 +5,8 @@ import { Base64 } from "base64-sol/base64.sol";
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import { CitizenMetadata } from "./CitizenMetadata.sol";
-import { CitizenNotary } from "./CitizenNotary.sol";
+import { Metadata } from "./Metadata.sol";
+import { Notary } from "./Notary/Notary.sol";
 
 /**
  * @title CitizenAlpha
@@ -18,10 +18,10 @@ contract CitizenAlpha is ERC721, Ownable {
   /// @notice Total citizenships issued
   uint256 private _idCounter;
 
-  /// @notice CitizenNotary with authority to issue Citizenship
+  /// @notice Notary with authority to issue Citizenship
   address private _notary;
 
-  /// @notice CitizenMetadata instance used to generate token metadata
+  /// @notice Metadata instance used to generate token metadata
   address private _metadata;
 
   /// @notice Reverse lookup of a tokenId using the owner address
@@ -48,7 +48,7 @@ contract CitizenAlpha is ERC721, Ownable {
 
   /**
    * @notice CitizenAlpha Construction
-   * @param metadata_ address - CitizenMetadata instance
+   * @param metadata_ address - Metadata instance
    * @param name string - Name of ERC721 token
    * @param symbol string - Symbol of ERC721 token
    */
@@ -90,7 +90,7 @@ contract CitizenAlpha is ERC721, Ownable {
    * @return status bool
    */
   function hasRole(bytes32 role, address citizen) public view returns (bool) {
-    return CitizenNotary(_notary).hasRole(role, citizen);
+    return Notary(_notary).hasRole(role, citizen);
   }
 
   /**
@@ -158,7 +158,7 @@ contract CitizenAlpha is ERC721, Ownable {
    * @return metadata string
    */
   function tokenURI(uint256 tokenId) public view override returns (string memory) {
-    return CitizenMetadata(_metadata).tokenURI(tokenId);
+    return Metadata(_metadata).tokenURI(tokenId);
   }
 
   function supportsInterface(bytes4 interfaceId)

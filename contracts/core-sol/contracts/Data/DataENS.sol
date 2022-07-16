@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.6;
+pragma solidity 0.8.15;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { NameEncoder } from "../libraries/NameEncoder.sol";
-import { IReverseRegistrar } from "../interfaces/IReverseRegistrar.sol";
-import { ITextResolver } from "../interfaces/ITextResolver.sol";
-import { IDefaultReverseResolver } from "../interfaces/IDefaultReverseResolver.sol";
 import { IMetadataSource } from "../interfaces/IMetadataSource.sol";
+import { IReverseRegistrar } from "../interfaces/ENS/IReverseRegistrar.sol";
+import { ITextResolver } from "../interfaces/ENS/ITextResolver.sol";
+import { IDefaultReverseResolver } from "../interfaces/ENS/IDefaultReverseResolver.sol";
 
-contract ResolverENS is IMetadataSource, Ownable {
+contract DataENS is IMetadataSource, Ownable {
   using NameEncoder for string;
 
   string[] private traitKeys;

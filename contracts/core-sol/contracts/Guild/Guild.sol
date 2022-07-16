@@ -2,7 +2,7 @@
 pragma solidity 0.8.15;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { CitizenNotary } from "./CitizenNotary.sol";
+import { Notary } from "../Notary/Notary.sol";
 
 contract Guild is Ownable {
   address private _token;
@@ -13,7 +13,7 @@ contract Guild is Ownable {
   }
 
   modifier _isFounder() {
-    require(CitizenNotary(_token).hasRole(FOUNDER, msg.sender), "Guild:unauthorized");
+    require(Notary(_token).hasRole(FOUNDER, msg.sender), "Guild:unauthorized");
     _;
   }
 
@@ -30,10 +30,4 @@ contract Guild is Ownable {
   function getMember(address user) external view returns (address member) {}
 
   function getMembers() external view returns (address[] memory members) {}
-}
-
-contract GuildFactory is Ownable {
-  function createGuild() external returns (address guild) {
-    return (address(new Guild(0x0000000000000000000000000000000000000000)));
-  }
 }
