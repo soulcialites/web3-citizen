@@ -1,21 +1,10 @@
 @tailwind base;
-body {
-  padding: 0
-}
-a {
-  @apply text-blue-700 dark:text-blue-200 border-b-2 border-transparent;
-}
-
-a:hover {
-  @apply border-b-2 border-blue-700;
-}
-
 @tailwind components;
-
 @tailwind utilities;
-
-.min-h-vh {
-  min-height: 100vh;
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .content p {
@@ -23,10 +12,8 @@ a:hover {
 }
 
 hr {
-@apply dark:border-neutral-600;
+  @apply dark:border-neutral-600;
 }
-
-
 
 .react-tiny-popover-container {
   z-index: 9999;

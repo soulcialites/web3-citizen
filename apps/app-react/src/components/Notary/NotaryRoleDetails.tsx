@@ -1,40 +1,40 @@
 import * as React from "react";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
 import {
-  NotaryRoleAdminRole,
-  NotaryRoleStatus,
+  NationRoleAdminRole,
+  NationRoleStatus,
 } from "@web3-citizen/core-wagmi";
 import classNames from "classnames";
 
-interface NotaryRoleDetailsProps {
+interface NationRoleDetailsProps {
   className?: string;
   role: string;
   label: string;
 }
 
-export const NotaryRoleDetails = ({
+export const NationRoleDetails = ({
   className,
   role,
   label,
-}: NotaryRoleDetailsProps) => {
-  const classes = classNames(className, "NotaryRoleDetails");
+}: NationRoleDetailsProps) => {
+  const classes = classNames(className, "NationRoleDetails");
   return (
     <div className={classes}>
       <h3 className="text-xl font-normal">{label}</h3>
       <div className="flex">
         <ul className="listlist-disc pl-8">
           <li>
-            <NotaryRoleStatus
+            <NationRoleStatus
               label="Status:"
               labelActive
-              contractAddress={Notary.address}
+              contractAddress={Nation.address}
               role={role}
             />
           </li>
           <li>
-            <NotaryRoleAdminRole
+            <NationRoleAdminRole
               labelActive
-              contractAddress={Notary.address}
+              contractAddress={Nation.address}
               role={role}
             />
           </li>
@@ -44,9 +44,9 @@ export const NotaryRoleDetails = ({
   );
 };
 
-NotaryRoleDetails.defaultProps = {
+NationRoleDetails.defaultProps = {
   role: "ADMIN",
   label: "Admin",
 };
 
-export default NotaryRoleDetails;
+export default NationRoleDetails;

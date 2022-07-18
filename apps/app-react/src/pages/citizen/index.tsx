@@ -1,7 +1,10 @@
-// @ts-nocheck
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
+import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
+import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
 import {
+  NationIsFounder,
+  NotaryIsNotary,
   useCitizenAlphaRead,
   useCitizenGetMetadata,
 } from "@web3-citizen/core-wagmi";
@@ -91,6 +94,21 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
                   link: <Address truncate address={citizenData?.traits?.link} />
                 </p>
                 <p className="text-xs">{citizenData?.traits?.did}</p>
+              </div>
+              <div className="">
+                <NationIsFounder
+                  className="text-sm"
+                  labelActive
+                  labelTrue="Yes"
+                  labelFalse="No"
+                  contractAddress={Nation.address}
+                  userAddress={citizenAddress || ""}
+                />
+                <NotaryIsNotary
+                  className="text-sm"
+                  contractAddress={Notary.address}
+                  userAddress={citizenAddress || ""}
+                />
               </div>
             </div>
           </div>

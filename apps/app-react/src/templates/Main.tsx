@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 import { ColorMode } from "@/components/App/ColorMode";
 import { AppConfig } from "@/utils/AppConfig";
@@ -11,7 +11,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="w-full bg-white p-0 px-1 text-gray-700 antialiased dark:text-white">
+  <div className="w-full bg-white text-gray-700 antialiased dark:text-white">
     {props.meta}
 
     <div className="min-h-vh mx-auto h-10 w-full dark:bg-neutral-900 dark:text-white">
@@ -24,7 +24,7 @@ const Main = (props: IMainProps) => (
             </span>
           </Link>
         </div>
-        <div className="col-span-12 flex items-center justify-center lg:col-span-5">
+        <div className="col-span-12 flex items-center justify-center lg:col-span-6">
           <ul className="ml-10 flex flex-wrap text-sm">
             <li className="mr-6">
               <Link href="/citizenship/">
@@ -50,8 +50,12 @@ const Main = (props: IMainProps) => (
             </li>
           </ul>
         </div>
-        <div className="col-span-12 flex default:justify-center lg:col-span-4 lg:justify-end">
-          <ConnectButton />
+        <div className="col-span-12 flex default:justify-center lg:col-span-3 lg:justify-end">
+          <ConnectButton
+            chainStatus={{ largeScreen: "icon", smallScreen: "name" }}
+            accountStatus={{ largeScreen: "full", smallScreen: "address" }}
+            showBalance={false}
+          />
         </div>
       </div>
 

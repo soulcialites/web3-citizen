@@ -20,7 +20,10 @@ export const InputWithSideLabel = ({
   placeholder,
   type,
 }: InputWithSideLabelProps) => {
-  const containerClassName = classNames(className, 'InputWithSideLabel flex items-center justify-center');
+  const containerClassName = classNames(
+    className,
+    'InputWithSideLabel flex items-center justify-center'
+  );
   return (
     <div className={containerClassName}>
       <input
@@ -29,7 +32,7 @@ export const InputWithSideLabel = ({
         placeholder={placeholder}
         {...register(name, { required })}
       />
-      <label className='bg-neutral-300 px-4 rounded-r-lg text-white dark:text-neutral-100 dark:bg-slate-800 self-stretch flex items-center justify-center'>
+      <label className="bg-neutral-300 px-4 rounded-r-lg text-white dark:text-neutral-100 dark:bg-slate-800 self-stretch flex items-center justify-center">
         <span className="text-sm font-semibold p-2">{label}</span>
       </label>
     </div>

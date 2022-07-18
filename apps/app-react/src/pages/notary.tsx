@@ -1,18 +1,13 @@
+import { Address } from "@turbo-eth/core-wagmi";
 import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localhost/NotaryServiceDelegatable.json";
 import {
   FormCitizenIssue,
   FormCitizenRevoke,
-  NotaryFormCitizenRevoke,
-  NotaryFormHasRole,
-  NotaryFormIsFounder,
-  NotaryFormRoleGrant,
-  NotaryFormRoleRevoke,
-  NotaryRoleAdminRole,
-  NotaryRoleStatus,
+  NotaryFormGrantPermissions,
+  NotaryFormRevokePermissions,
 } from "@web3-citizen/core-wagmi";
 
-import ModalCitizenshipIssue from "@/components/ModalCitizenshipIssue";
-import ModalCitizenshipRevoke from "@/components/ModalCitizenshipRevoke";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
@@ -34,12 +29,20 @@ const Index = () => {
           </div>
           <div className="col-span-6 flex items-center justify-end">
             <h3 className=" text-sm font-normal">
-              Issue Citizenship and control Roles
+              Issue Citizenship and Grant/Revoke Notary permissions.
             </h3>
+          </div>
+          <div className="col-span-12 w-full pt-8">
+            <h3 className="text-xl font-semibold">Active Notary Services</h3>
+            <hr className="my-3" />
+            <div className="flex w-full items-center justify-between">
+              <span className="font-semibold">DelegatableNotary:</span>
+              <Address truncate address={NotaryServiceDelegatable.address} />
+            </div>
           </div>
         </div>
       </section>
-      <section className="py-14 px-10 lg:px-20">
+      <section className="px-10 pb-20 lg:px-20">
         <div className="container mx-auto grid max-w-screen-md">
           <div className="grid grid-cols-12 gap-x-4">
             <div className="col-span-6">
@@ -63,48 +66,18 @@ const Index = () => {
               </div>
             </div>
           </div>
-          <div className="">
-            <div className="card mt-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold">Is Founder</h3>
-                <span className="">Check Founder status of Citizen.</span>
-              </div>
-              <hr className="my-3" />
-              <NotaryFormIsFounder
-                className="mt-5"
-                contractAddress={Notary.address}
-              />
-            </div>
-            <div className="card mt-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold">Has Role</h3>
-                <span className="">Check a Citizen role status.</span>
-              </div>
-              <hr className="my-3" />
-              <NotaryFormHasRole
-                className="mt-5"
-                contractAddress={Notary.address}
-              />
-            </div>
-          </div>
-          <div className="card mt-8">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold">Grant Role</h3>
-              <span className="">Grant an active Role to a Citizen</span>
-            </div>
+          <div className="card my-8">
+            <h3 className="text-xl font-semibold">Grant Notary Status</h3>
             <hr className="my-3" />
-            <NotaryFormRoleGrant
+            <NotaryFormGrantPermissions
               className=""
               contractAddress={Notary.address}
             />
           </div>
-          <div className="card mt-8">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold">Revoke Role</h3>
-              <span className="">Revoke Role from a Citizen</span>
-            </div>
+          <div className="card">
+            <h3 className="text-xl font-semibold">Revoke Notary Status</h3>
             <hr className="my-3" />
-            <NotaryFormRoleRevoke
+            <NotaryFormRevokePermissions
               className=""
               contractAddress={Notary.address}
             />

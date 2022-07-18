@@ -1,5 +1,9 @@
 name: Site
-on: [push, pull_request]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [closed]
 jobs:
   build_and_lint:
     runs-on: ubuntu-latest

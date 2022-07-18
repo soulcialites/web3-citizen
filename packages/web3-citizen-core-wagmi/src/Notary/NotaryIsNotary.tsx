@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useCitizenNotaryRead } from '../useCitizenNotaryRead';
+import { useNotaryRead } from '../hooks/useNotaryRead';
 import { NOTARY } from '../constants';
 
 interface NotaryIsNotaryProps {
@@ -20,11 +20,10 @@ export const NotaryIsNotary = ({
 }: NotaryIsNotaryProps) => {
   const containerClassName = classNames(className, 'NotaryHasRole');
 
-  const { data, isError } = useCitizenNotaryRead(
-    contractAddress || '',
-    'hasRole',
-    [NOTARY, userAddress]
-  );
+  const { data, isError } = useNotaryRead(contractAddress || '', 'hasRole', [
+    NOTARY,
+    userAddress,
+  ]);
 
   if (isError) return null;
 

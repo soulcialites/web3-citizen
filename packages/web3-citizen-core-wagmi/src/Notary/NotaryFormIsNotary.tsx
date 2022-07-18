@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
-import { useCitizenNotaryWrite } from '../useCitizenNotaryWrite';
+import { useNationWrite } from '../hooks/useNationWrite';
 import { NOTARY } from '../constants';
 import { useLogError } from '../hooks';
 
@@ -32,11 +32,10 @@ export const NotaryFormIsNotary = ({
     },
   });
   const watchAllFields = watch();
-  const { write, error, data } = useCitizenNotaryWrite(
-    contractAddress,
-    'hasRole',
-    [NOTARY, watchAllFields?.citizen]
-  );
+  const { write, error, data } = useNationWrite(contractAddress, 'hasRole', [
+    NOTARY,
+    watchAllFields?.citizen,
+  ]);
   useLogError(error);
   const onSubmit = (_data: any) => {
     write();
@@ -61,10 +60,7 @@ export const NotaryFormIsNotary = ({
             </span>
           </div>
         </div>
-        <button
-          className="btn btn-default my-3 w-full"
-          type="submit"
-        >
+        <button className="btn btn-default my-3 w-full" type="submit">
           {label}
         </button>
       </form>

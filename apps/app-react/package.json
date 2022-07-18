@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "0.2.1",
+    "@turbo-eth/core-wagmi": "0.0.0-beta.0",
     "@turbo-eth/ens-wagmi": "0.0.0-beta.0",
     "@turbo-eth/erc20-wagmi": "0.0.0-beta.0",
-    "@turbo-eth/core-wagmi": "0.0.0-beta.0",
     "@web3-citizen/core-sol": "0.0.0-beta.0",
     "@web3-citizen/core-wagmi": "0.0.0-beta.0",
     "classnames": "^2.3.1",
@@ -35,6 +35,7 @@
     "react-hook-form": "^7.27.1",
     "react-modal": "^3.15.1",
     "react-modal-hook": "^3.0.0",
+    "react-query": "^3.39.2",
     "react-select": "^5.3.2",
     "wagmi": "0.4.12"
   },

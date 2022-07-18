@@ -1,29 +1,21 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
+import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Notary } from "../Notary/Notary.sol";
 
-contract Guild is Ownable {
-  address private _token;
-  bytes32 private constant FOUNDER = keccak256("FOUNDER");
+contract Guild is Ownable, AccessControl {
+  /// @notice CitizenAlpha instance
+  address private _citizenAlpha;
 
-  constructor(address token_) {
-    _token = token_;
+  constructor(address _citizenToken_) {
+    _citizenAlpha = _citizenToken_;
   }
 
-  modifier _isFounder() {
-    require(Notary(_token).hasRole(FOUNDER, msg.sender), "Guild:unauthorized");
-    _;
-  }
+  function addMember(address user) external {}
 
-  function getToken() external returns (address token) {
-    return _token;
-  }
-
-  function addMember(address user) external _isFounder {}
-
-  function removeMember(address user) external _isFounder {}
+  function removeMember(address user) external {}
 
   function isMember(address user) external view returns (address member) {}
 

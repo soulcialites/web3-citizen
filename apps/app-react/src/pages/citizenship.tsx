@@ -1,8 +1,10 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
+import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
 import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localhost/NotaryServiceDelegatable.json";
 import {
-  NotaryIsFounder,
+  NationIsFounder,
   NotaryIsNotary,
   useCitizenAlphaRead,
   useCitizenGetMetadata,
@@ -12,6 +14,7 @@ import { useAccount } from "wagmi";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
+import NotaryServiceDelegatableClaimFromInviteList from "@/components/Claim/NotaryServiceDelegatableFormClaimInvocation";
 
 const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
   const citizenData = useCitizenGetMetadata(
@@ -97,12 +100,12 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
                 <p className="text-xs">{citizenData?.traits?.did}</p>
               </div>
               <div className="">
-                <NotaryIsFounder
+                <NationIsFounder
                   className="text-sm"
                   labelActive
-                  labelTrue="Yesss"
+                  labelTrue="Yes"
                   labelFalse="No"
-                  contractAddress={Notary.address}
+                  contractAddress={Nation.address}
                   userAddress={citizenAddress || ""}
                 />
                 <NotaryIsNotary
@@ -137,6 +140,11 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
             Web3 Citizen is an experiment to grow the{" "}
             <span className="font-bold">Web3 of Trust.</span>
           </p>
+          <div className="bg-slate-800 p-6 rounded-md my-4 text-center">
+            <NotaryServiceDelegatableClaimFromInviteList
+              contractAddress={NotaryServiceDelegatable.address}
+            />
+          </div>
           <h3 className="text-2xl font-semibold">Citizenship</h3>
           <p className="font-semibold leading-4">
             A Web3 Citizenship is a unique collectable: ownable only by{" "}

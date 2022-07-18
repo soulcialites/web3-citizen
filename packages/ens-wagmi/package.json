@@ -74,6 +74,7 @@
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
     "dompurify": "^2.3.8",
+    "eth-ens-namehash": "^2.0.8",
     "is-svg": "^4.3.2",
     "multiformats": "^9.7.0",
     "prop-types": "^15.8.1",
