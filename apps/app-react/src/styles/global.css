@@ -1,28 +1,19 @@
 @tailwind base;
-body {
-  padding: 0
-}
-a {
-  @apply text-blue-700 dark:text-blue-200 border-b-2 border-transparent;
-}
-
-a:hover {
-  @apply border-b-2 border-blue-700;
-}
-
 @tailwind components;
-
 @tailwind utilities;
-
-.min-h-vh {
-  min-height: 100vh;
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .content p {
   @apply my-2;
 }
 
-
+hr {
+  @apply dark:border-neutral-600;
+}
 
 .react-tiny-popover-container {
   z-index: 9999;
@@ -33,7 +24,7 @@ a:hover {
 }
 
 .card {
-  @apply bg-white dark:bg-gray-700 dark:text-white border-2 dark:border-gray-700 rounded-lg p-6 shadow-sm hover:shadow-md hover:bg-white transition-all duration-300 ease-in-out;
+  @apply bg-white dark:bg-neutral-700 dark:text-white border-2 dark:border-neutral-800 rounded-lg p-6 shadow-sm hover:shadow-md hover:bg-white transition-all duration-300 ease-in-out;
 }
 
 .input {

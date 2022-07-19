@@ -1,28 +1,18 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
+import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
+import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
 import {
-  useCitizenAlphaContractRead,
+  NationIsFounder,
+  NotaryIsNotary,
+  useCitizenAlphaRead,
   useCitizenGetMetadata,
 } from "@web3-citizen/core-wagmi";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { GitHub, Twitter } from "react-feather";
-import { useAccount } from "wagmi";
 
-import ModalCitizenshipIssue from "@/components/ModalCitizenshipIssue";
-import { ModalEditCitizenProfile } from "@/components/ModalEditCitizenProfile";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
-
-const Trait = ({ value, label }: any) => {
-  if (!value) return null;
-  return (
-    <div>
-      {label}: {value}
-    </div>
-  );
-};
 
 const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
   const citizenData = useCitizenGetMetadata(
@@ -105,6 +95,21 @@ const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
                 </p>
                 <p className="text-xs">{citizenData?.traits?.did}</p>
               </div>
+              <div className="">
+                <NationIsFounder
+                  className="text-sm"
+                  labelActive
+                  labelTrue="Yes"
+                  labelFalse="No"
+                  contractAddress={Nation.address}
+                  userAddress={citizenAddress || ""}
+                />
+                <NotaryIsNotary
+                  className="text-sm"
+                  contractAddress={Notary.address}
+                  userAddress={citizenAddress || ""}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -130,13 +135,13 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
 const Citizenship = () => {
   const { query } = useRouter();
 
-  const { data: isCitizen } = useCitizenAlphaContractRead(
+  const { data: isCitizen } = useCitizenAlphaRead(
     CitizenAlpha.address,
     "isCitizen",
     [query.address]
   );
 
-  const { data: citizenId } = useCitizenAlphaContractRead(
+  const { data: citizenId } = useCitizenAlphaRead(
     CitizenAlpha.address,
     "getId",
     [query.address]

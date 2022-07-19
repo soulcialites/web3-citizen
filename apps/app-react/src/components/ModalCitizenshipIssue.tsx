@@ -1,6 +1,6 @@
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
-import { FormCitizenIssue } from "@web3-citizen/core-wagmi";
 import React from "react";
+import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import { FormCitizenIssue } from "@web3-citizen/core-wagmi";
 import ReactModal from "react-modal";
 import { useModal } from "react-modal-hook";
 
@@ -32,7 +32,7 @@ export const ModalCitizenshipIssue = ({
         <div className="block w-full max-w-screen-xl" style={{ width: 480 }}>
           <h3 className="text-2xl font-normal">Issue Citizenship</h3>
           <hr className="my-2 bg-gray-700" />
-          <FormCitizenIssue contractAddress={CitizenAlpha.address} />
+          <FormCitizenIssue contractAddress={CitizenNotary.address} />
         </div>
       </div>
     </ReactModal>
