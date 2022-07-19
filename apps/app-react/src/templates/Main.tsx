@@ -67,9 +67,9 @@ const Main = (props: IMainProps) => (
         <div className="mb-3 flex items-center justify-center">
           <ul className="flex flex-wrap text-sm">
             <li className="mr-6">
-              <Link href="/town-hall/">
+              <Link href="/nation/">
                 <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
-                  🏛️ Town Hall
+                  🏛️ Nation
                 </a>
               </Link>
             </li>

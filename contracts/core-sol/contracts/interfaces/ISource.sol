@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-interface IMetadataSource {
+interface ISource {
   function count(address _address) external view returns (uint256);
 
   function getData(address _address)
@@ -9,5 +9,5 @@ interface IMetadataSource {
     view
     returns (string[] memory keys, string[] memory values);
 
-  function getTextField(address _address, string memory _key) external view returns (string memory);
+  function getValue(address _address, string memory _key) external view returns (string memory);
 }

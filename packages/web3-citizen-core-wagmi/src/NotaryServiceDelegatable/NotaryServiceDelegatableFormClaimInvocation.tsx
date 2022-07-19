@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import useNotaryServiceDelegatableWrite from '../hooks/useNotaryServiceDelegatableWrite';
+import { useAccount } from 'wagmi';
 
 interface NotaryServiceDelegatableFormClaimInvocationProps {
   className?: string;
@@ -20,6 +21,9 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     className,
     'NotaryServiceDelegatableFormClaimInvocation'
   );
+
+    const account = useAccount()
+
   const {
     watch,
     register,
@@ -27,11 +31,12 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     formState: {},
   } = useForm({
     defaultValues: {
+      delegation: '',
       invocation: '',
     },
   });
   const watchAllFields = watch();
-  const { write } = useNotaryServiceDelegatableWrite(
+  const { data, error, write } = useNotaryServiceDelegatableWrite(
     contractAddress,
     'invoke',
     [
@@ -47,19 +52,19 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
                 authority: [
                   {
                     delegation: {
-                      delegate: '0xF3f56af54Dc1C855D1e1717Ae9C571BF58ae17b1',
+                      delegate: account.data?.address,
                       authority:
                         '0x0000000000000000000000000000000000000000000000000000000000000000',
                       caveats: [],
                     },
                     signature:
-                      '0x930cda5abdc7b68f6bf7cb0c9f71dc899266bacdc486cacd0b292c26a08c5dce0307c12aaeadcb40ec91647a4b64920666afd002f23ce7602542dfa7ddb2d65d1c',
+                      watchAllFields.delegation
                   },
                 ],
                 transaction: {
-                  to: '0x9Fcca440F19c62CDF7f973eB6DDF218B15d4C71D',
+                  to: contractAddress,
                   gasLimit: '10000000000000000',
-                  data: '0x1e83409a000000000000000000000000f3f56af54dc1c855d1e1717ae9c571bf58ae17b1',
+                  data: `0x71e928af000000000000000000000000${account.data?.address?.substring(2)}`,
                 },
               },
             ],
@@ -70,6 +75,39 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     ]
   );
 
+  React.useEffect( () => { 
+    console.log({
+      invocations: {
+        replayProtection: {
+          nonce: '0x01',
+          queue: '0x00',
+        },
+        batch: [
+          {
+            authority: [
+              {
+                delegation: {
+                  delegate: account.data?.address,
+                  authority:
+                    '0x0000000000000000000000000000000000000000000000000000000000000000',
+                  caveats: [],
+                },
+                signature:
+                  watchAllFields.delegation
+              },
+            ],
+            transaction: {
+              to: contractAddress,
+              gasLimit: '10000000000000000',
+              data: `0x71e928af000000000000000000000000${account.data?.address?.substring(2)}`,
+            },
+          },
+        ],
+      },
+      signature: watchAllFields?.invocation,
+    },)
+  }, [data,error])
+
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);
@@ -78,6 +116,13 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
   return (
     <div className={classes_}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <label className='text-sm font-semibold my-2'>Delegation</label>
+        <input
+          className="input"
+          placeholder="0x0"
+          {...register('delegation', { required: true })}
+        />
+        <label className='text-sm font-semibold my-2'>Invocation</label>
         <input
           className="input"
           placeholder="0x0"
@@ -92,7 +137,7 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
 };
 
 NotaryServiceDelegatableFormClaimInvocation.defaultProps = {
-  label: 'Issue Claim',
+  label: 'Claim Citizenship',
 };
 
 export default NotaryServiceDelegatableFormClaimInvocation;

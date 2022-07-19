@@ -2,28 +2,31 @@
 pragma solidity 0.8.15;
 
 import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
-import { ISoulbound } from "../interfaces/ISoulbound.sol";
-import { CitizenAlpha } from "../CitizenAlpha.sol";
+import { ICitizenAlpha } from "../interfaces/ICitizenAlpha.sol";
 
+/**
+ * @title Notary
+ * @author Kames Geraghty
+ * @notice Notary is a minimal AccessControl layer for Citizen issuance.
+ */
 contract Notary is AccessControl {
-  /// @notice CitizenToken with mintable controls set to address(this);
-  address private _citizenToken;
+  /// @notice CitizenAlpha instance
+  address private _citizenAlpha;
 
-  /// @notice Notary Role to enforce access controls
+  /// @notice Notary Role
   bytes32 private constant NOTARY = keccak256("NOTARY");
 
   /**
-   * @notice Notary Construction
-   * @param _founders Array of Founding Citizens
+   * @notice Notary Constructor
+   * @dev Set CitizenAlpha instance and set start Notaries.
+   * @param _citizenAlpha_ CitizenAlpha instance
+   * @param _notaries Array of Notaries
    */
-  constructor(address _citizenToken_, address[] memory _founders) {
-    _citizenToken = _citizenToken_;
-
-    // Grant Founders with
-    _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-    for (uint256 i = 0; i < _founders.length; i++) {
-      _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
-      _setupRole(NOTARY, _founders[i]);
+  constructor(address _citizenAlpha_, address[] memory _notaries) {
+    _citizenAlpha = _citizenAlpha_;
+    for (uint256 i = 0; i < _notaries.length; i++) {
+      _setupRole(DEFAULT_ADMIN_ROLE, _notaries[i]);
+      _setupRole(NOTARY, _notaries[i]);
     }
     _setRoleAdmin(NOTARY, DEFAULT_ADMIN_ROLE);
   }
@@ -32,12 +35,12 @@ contract Notary is AccessControl {
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function citizenToken() external view returns (address) {
-    return _citizenToken;
+  function getCitizenAlpha() external view returns (address) {
+    return _citizenAlpha;
   }
 
   /**
-   * @notice Issue a new Citizenship
+   * @notice Issue Citizenship
    * @param to address
    */
   function issue(address to) external {
@@ -46,7 +49,7 @@ contract Notary is AccessControl {
   }
 
   /**
-   * @notice Batch Issue new Citizenships
+   * @notice Batch issue Citizenships
    * @param to address
    */
   function issueBatch(address[] calldata to) external {
@@ -57,7 +60,7 @@ contract Notary is AccessControl {
   }
 
   /**
-   * @notice Revoke an existing Citizenship
+   * @notice Revoke Citizenship
    * @param from address
    */
   function revoke(address from) external {
@@ -66,23 +69,14 @@ contract Notary is AccessControl {
   }
 
   /**
-   * @notice Batch Revoke new Citizenships
+   * @notice Batch Revoke Citizenships
    * @param from address
    */
   function revokeBatch(address[] calldata from) external {
-    _checkRole(NOTARY, _msgSender());
+    require(hasRole(NOTARY, _msgSender()), "Notary:unauthorized-access");
     for (uint256 i = 0; i < from.length; i++) {
       _revoke(from[i], _msgSender());
     }
-  }
-
-  /**
-   * @notice Check Founder status
-   * @param citizen address
-   * @return status bool
-   */
-  function isCitizen(address citizen) external view returns (bool status) {
-    return CitizenAlpha(_citizenToken).isCitizen(citizen);
   }
 
   /* ===================================================================================== */
@@ -90,10 +84,10 @@ contract Notary is AccessControl {
   /* ===================================================================================== */
 
   function _issue(address _to, address _link) internal {
-    CitizenAlpha(_citizenToken).issue(_to, _link);
+    ICitizenAlpha(_citizenAlpha).issue(_to, _link);
   }
 
   function _revoke(address _from, address _link) internal {
-    CitizenAlpha(_citizenToken).revoke(_from, _link);
+    ICitizenAlpha(_citizenAlpha).revoke(_from, _link);
   }
 }

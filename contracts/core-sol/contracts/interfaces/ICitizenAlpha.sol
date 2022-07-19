@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-interface ISoulbound {
+interface ICitizenAlpha {
   function ownerOf(uint256 _id) external view returns (address owner);
 
   function issue(address _soul, address _issuer) external;

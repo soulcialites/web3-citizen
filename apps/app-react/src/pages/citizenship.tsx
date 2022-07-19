@@ -6,15 +6,16 @@ import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localho
 import {
   NationIsFounder,
   NotaryIsNotary,
+  NotaryServiceDelegatableFormClaimInvocation,
   useCitizenAlphaRead,
   useCitizenGetMetadata,
 } from "@web3-citizen/core-wagmi";
 import { useAccount } from "wagmi";
 
+import NotaryServiceDelegatableClaimFromInviteList from "@/components/Claim/NotaryServiceDelegatableFormClaimInvocation";
 import { Main } from "@/templates/Main";
 import { Meta } from "@/templates/Meta";
 import { AppConfig } from "@/utils/AppConfig";
-import NotaryServiceDelegatableClaimFromInviteList from "@/components/Claim/NotaryServiceDelegatableFormClaimInvocation";
 
 const IsActiveCitizen = ({ citizenId, citizenAddress }: any) => {
   const citizenData = useCitizenGetMetadata(
@@ -140,8 +141,8 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
             Web3 Citizen is an experiment to grow the{" "}
             <span className="font-bold">Web3 of Trust.</span>
           </p>
-          <div className="bg-slate-800 p-6 rounded-md my-4 text-center">
-            <NotaryServiceDelegatableClaimFromInviteList
+          <div className="my-4 rounded-md bg-slate-800 p-6 text-center">
+            <NotaryServiceDelegatableFormClaimInvocation
               contractAddress={NotaryServiceDelegatable.address}
             />
           </div>
@@ -161,18 +162,7 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
             <li>Dynamic AccessControls: on-chain authentication via roles</li>
           </ul>
           <p className="text-sm">
-            To obtain Citizenship you need to befriend a Founder or Notary.
-          </p>
-          <h3 className="text-2xl font-semibold">Notary</h3>
-          <p className="font-semibold leading-4">
-            A Notary can issue and revoke Web3 Citizenships.
-          </p>
-          <p className="text-sm">
-            Notary administration is flexible: individuals and governance
-            contracts can both be authorized to manage Citizenships. In other
-            words, both a peer-to-peer invite system and Representative
-            Democracy can be plugged into the very simple Notary smart contract
-            API.
+            To obtain Citizenship you need to befriend a Notary.
           </p>
         </div>
       </div>

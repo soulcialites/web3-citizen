@@ -1,43 +1,55 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
-import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
+import { AccessControlEnumerable, AccessControl, IAccessControl } from "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Notary } from "../Notary/Notary.sol";
 
-contract Nation is AccessControl {
+/**
+ * @title Nation
+ * @author Kames Geraghty
+ * @notice Nation is a nuanced AccessControl layer for CitizenAlpha.
+ * @dev Extends Citizen on-chain permissions using updatables nested Roles.
+           
+ */
+contract Nation is AccessControlEnumerable {
   /// @notice CitizenAlpha instance
   address private _citizenAlpha;
 
-  /// @notice Founder Role to enforce access controls
+  /// @notice Founder Role
   bytes32 private constant FOUNDER = keccak256("FOUNDER");
 
+  /// @notice Governance Role
+  bytes32 private constant GOVERNANCE = keccak256("GOVERNANCE");
+
+  /// @notice Global Role AccessControl
   mapping(bytes32 => bool) private _roleActive;
 
   /**
-   * @notice Notary Construction
-   * @param _founders Array of Founding Citizens
+   * @notice Nation Constructor
+   * @param _founders addresses array of FOUNDERS
    */
   constructor(address _citizenAlpha_, address[] memory _founders) {
     _citizenAlpha = _citizenAlpha_;
     _roleActive[FOUNDER] = true;
     _roleActive[DEFAULT_ADMIN_ROLE] = true;
     for (uint256 i = 0; i < _founders.length; i++) {
-      _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
       _setupRole(FOUNDER, _founders[i]);
+      _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
     }
     _setRoleAdmin(FOUNDER, DEFAULT_ADMIN_ROLE);
   }
 
-  modifier _isFounder() {
-    require(hasRole(FOUNDER, _msgSender()), "Nation:unauthorized");
-    _;
-  }
-
+  /**
+   * @notice Admin modifier to enable duel role mananement.
+   * @param role bytes32
+   */
   modifier _onlyAdmin(bytes32 role) {
     address sender_ = _msgSender();
     require(
-      hasRole(getRoleAdmin(role), sender_) || hasRole(DEFAULT_ADMIN_ROLE, sender_),
+      hasRole(getRoleAdmin(role), sender_) ||
+        hasRole(GOVERNANCE, sender_) ||
+        hasRole(DEFAULT_ADMIN_ROLE, sender_),
       "Nation:unauthotized"
     );
     _;
@@ -47,23 +59,30 @@ contract Nation is AccessControl {
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function citizenAlpha() external view returns (address) {
+  /**
+   * @notice Get CitizenAlpha instance
+   * @return citizenAlpha address of CitizenAlpha instance
+   */
+  function getCitizenAlpha() external view returns (address) {
     return _citizenAlpha;
   }
 
-  function isRole(bytes32 role) external view returns (bool active) {
-    return _roleActive[role];
-  }
-
-  function hasRole(bytes32 role, address account) public view virtual override returns (bool) {
+  /**
+   * @notice Check if Account has Role
+   * @dev Overrides to include Global AccessControlEnumerable logic operator
+   * @return active bool
+   */
+  function hasRole(bytes32 role, address account)
+    public
+    view
+    virtual
+    override(AccessControl, IAccessControl)
+    returns (bool)
+  {
     if (!_roleActive[role]) {
       return false;
     }
     return super.hasRole(role, account);
-  }
-
-  function roleStatus(bytes32 role) external view returns (bool status) {
-    return _roleActive[role];
   }
 
   /**
@@ -76,6 +95,23 @@ contract Nation is AccessControl {
   }
 
   /**
+   * @notice Check Governance status
+   * @param user address
+   * @return status bool
+   */
+  function isGovernance(address user) external view returns (bool status) {
+    return hasRole(GOVERNANCE, user);
+  }
+
+  /**
+   * @notice Get status of Role global settings
+   * @return status bool
+   */
+  function roleStatus(bytes32 role) external view returns (bool status) {
+    return _roleActive[role];
+  }
+
+  /**
    * @notice Grant Role to Citizen
    * @param role bytes32
    * @param citizen address
@@ -83,10 +119,10 @@ contract Nation is AccessControl {
   function grantRole(bytes32 role, address citizen)
     public
     virtual
-    override
+    override(AccessControl, IAccessControl)
     onlyRole(getRoleAdmin(role))
   {
-    require(_roleActive[role], "Notary:inactive-role");
+    require(_roleActive[role], "Nation:inactive-role");
     _grantRole(role, citizen);
   }
 
@@ -98,11 +134,11 @@ contract Nation is AccessControl {
   function revokeRole(bytes32 role, address citizen)
     public
     virtual
-    override
+    override(AccessControl, IAccessControl)
     onlyRole(getRoleAdmin(role))
   {
-    require(role != DEFAULT_ADMIN_ROLE, "Notary:invalid-request");
-    require(_roleActive[role], "Notary:inactive-role");
+    require(role != DEFAULT_ADMIN_ROLE, "Nation:invalid-request");
+    require(_roleActive[role], "Nation:inactive-role");
     _revokeRole(role, citizen);
   }
 
@@ -111,7 +147,7 @@ contract Nation is AccessControl {
    * @param role bytes32
    */
   function enableRole(bytes32 role) external onlyRole(FOUNDER) {
-    require(_roleActive[role] == false, "Notary:role-enabled");
+    require(_roleActive[role] == false, "Nation:role-enabled");
     _setRoleAdmin(role, FOUNDER);
     _roleActive[role] = true;
   }
@@ -121,8 +157,8 @@ contract Nation is AccessControl {
    * @param role bytes32
    * @param adminRole bytes32
    */
-  function enableRole(bytes32 role, bytes32 adminRole) external onlyRole(DEFAULT_ADMIN_ROLE) {
-    require(_roleActive[role] == false, "Notary:role-enabled");
+  function enableRole(bytes32 role, bytes32 adminRole) external onlyRole(GOVERNANCE) {
+    require(_roleActive[role] == false, "Nation:role-enabled");
     _setRoleAdmin(role, adminRole);
     _roleActive[role] = true;
   }
@@ -132,8 +168,17 @@ contract Nation is AccessControl {
    * @param role bytes32
    */
   function disableRole(bytes32 role) external _onlyAdmin(role) {
-    require(_roleActive[role] == true, "Notary:role-disabled");
+    require(_roleActive[role] == true, "Nation:role-disabled");
     _setRoleAdmin(role, DEFAULT_ADMIN_ROLE);
     _roleActive[role] = false;
+  }
+
+  /**
+   * @notice Set Role admin
+   * @param role bytes32
+   * @param adminRole bytes32
+   */
+  function setRoleAdmin(bytes32 role, bytes32 adminRole) external _onlyAdmin(role) {
+    _setRoleAdmin(role, adminRole);
   }
 }

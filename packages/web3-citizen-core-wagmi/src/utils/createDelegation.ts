@@ -1,6 +1,6 @@
 import { domain, types } from './types';
 
-export function createDelegation(to: string) {
+export function createDelegation(to: string, verifyingContract: string) {
   const delegation = {
     delegate: to,
     authority:
@@ -9,7 +9,7 @@ export function createDelegation(to: string) {
   };
 
   const delegationString = JSON.stringify({
-    domain: domain,
+    domain: {...domain, verifyingContract: verifyingContract},
     message: delegation,
     primaryType: 'Delegation',
     types: types,

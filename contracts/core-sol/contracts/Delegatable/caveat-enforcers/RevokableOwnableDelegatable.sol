@@ -36,7 +36,6 @@ abstract contract RevokableOwnableDelegatable is Ownable, CaveatEnforcer, Delega
   ) public {
     address signer = verifyDelegationSignature(signedDelegation);
     address revocationSigner = verifyIntentionToRevokeSignature(signedIntentionToRevoke);
-    console.log(signer, revocationSigner);
     require(signer == revocationSigner, "Only the signer can revoke a delegation");
 
     bytes32 delegationHash = GET_SIGNEDDELEGATION_PACKETHASH(signedDelegation);

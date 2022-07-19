@@ -1,6 +1,6 @@
 pragma solidity ^0.8.13;
 // SPDX-License-Identifier: MIT
-
+import "hardhat/console.sol";
 import "./TypesAndDecoders.sol";
 import "./caveat-enforcers/CaveatEnforcer.sol";
 
@@ -45,6 +45,13 @@ abstract contract Delegatable is EIP712Decoder {
       for (uint256 d = 0; d < invocation.authority.length; d++) {
         SignedDelegation memory signedDelegation = invocation.authority[d];
         address delegationSigner = verifyDelegationSignature(signedDelegation);
+
+        // The following statement was add by Kames. Without it won't enforce the first invocation?
+        // TODO: Needs more unit tests
+        require(
+          sender == delegationSigner || intendedSender == delegationSigner,
+          "invalid-signature"
+        );
 
         // Implied sending account is the signer of the first delegation
         if (d == 0) {
@@ -127,6 +134,7 @@ abstract contract Delegatable is EIP712Decoder {
   {
     bytes32 sigHash = getInvocationsTypedDataHash(signedInvocation.invocations);
     address recoveredSignatureSigner = recover(sigHash, signedInvocation.signature);
+    console.log(recoveredSignatureSigner, "recoveredSignatureSigner");
     return recoveredSignatureSigner;
   }
 
@@ -138,6 +146,7 @@ abstract contract Delegatable is EIP712Decoder {
     Delegation memory delegation = signedDelegation.delegation;
     bytes32 sigHash = getDelegationTypedDataHash(delegation);
     address recoveredSignatureSigner = recover(sigHash, signedDelegation.signature);
+    console.log(recoveredSignatureSigner, "recoveredSignatureSigner2");
     return recoveredSignatureSigner;
   }
 

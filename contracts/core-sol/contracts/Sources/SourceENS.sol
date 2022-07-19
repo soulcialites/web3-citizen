@@ -3,46 +3,64 @@ pragma solidity 0.8.15;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { NameEncoder } from "../libraries/NameEncoder.sol";
-import { IMetadataSource } from "../interfaces/IMetadataSource.sol";
+import { ISource } from "../interfaces/ISource.sol";
 import { IReverseRegistrar } from "../interfaces/ENS/IReverseRegistrar.sol";
 import { ITextResolver } from "../interfaces/ENS/ITextResolver.sol";
 import { IDefaultReverseResolver } from "../interfaces/ENS/IDefaultReverseResolver.sol";
 
-contract DataENS is IMetadataSource, Ownable {
+contract SourceENS is ISource, Ownable {
   using NameEncoder for string;
 
-  string[] private traitKeys;
+  string[] private _keys;
   address private constant RESOLVER = 0x4976fb03C32e5B8cfe2b6cCB31c09Ba78EBaBa41;
   address private constant REVERSE_REGISTRAR = 0x084b1c3C81545d370f3634392De611CaaBFf8148;
   address private constant DEFAULT_REVERSE_RESOLVER = 0xA2C122BE93b0074270ebeE7f6b7292C7deB45047;
 
   constructor() {
-    traitKeys.push("avatar");
-    traitKeys.push("url");
-    traitKeys.push("description");
-    traitKeys.push("com.github");
-    traitKeys.push("com.twitter");
-    traitKeys.push("org.telegram");
-    traitKeys.push("did");
+    _keys.push("avatar");
+    _keys.push("url");
+    _keys.push("description");
+    _keys.push("com.github");
+    _keys.push("com.twitter");
+    _keys.push("org.telegram");
+    _keys.push("did");
   }
 
   /* ===================================================================================== */
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function count(address _address) external view returns (uint256 count) {
-    (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
-    (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(traitKeys, node_, res_);
+  /**
+   * @notice Get Keys
+   * @return keys string[]
+   */
+  function getKeys() external view returns (string[] memory keys) {
+    return _keys;
+  }
+
+  /**
+   * @notice Get data fields count for user
+   * @return count uint256
+   */
+  function count(address user) external view returns (uint256 count) {
+    (, bytes32 node_, ITextResolver res_) = _resolveOwner(user);
+    (string[] memory keys_, ) = _fetchNodeTextFields(_keys, node_, res_);
     return keys_.length;
   }
 
-  function getData(address _address)
+  /**
+   * @notice Get all available data for user
+   * @param user address
+   * @return keys string[]
+   * @return values string[]
+   */
+  function getData(address user)
     external
     view
     returns (string[] memory keys, string[] memory values)
   {
-    (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
-    (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(traitKeys, node_, res_);
+    (, bytes32 node_, ITextResolver res_) = _resolveOwner(user);
+    (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(_keys, node_, res_);
     return (keys_, values_);
   }
 
@@ -59,13 +77,32 @@ contract DataENS is IMetadataSource, Ownable {
     return (node, name, address(resolver));
   }
 
-  function getTextField(address _address, string memory _key)
-    external
-    view
-    returns (string memory)
-  {
-    (, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
-    return res_.text(node_, _key);
+  /**
+   * @notice Get data value for user
+   * @param user address
+   * @param key string
+   * @return value string
+   */
+  function getValue(address user, string memory key) external view returns (string memory) {
+    (, bytes32 node_, ITextResolver res_) = _resolveOwner(user);
+    return res_.text(node_, key);
+  }
+
+  /**
+   * @notice Append Key
+   * @param key string
+   */
+  function appendKey(string calldata key) external onlyOwner {
+    _keys.push(key);
+  }
+
+  /**
+   * @notice Set Key
+   * @param idx uint256
+   * @param key string
+   */
+  function updateKey(uint256 idx, string calldata key) external onlyOwner {
+    _keys[idx] = key;
   }
 
   /* ===================================================================================== */

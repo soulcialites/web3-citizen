@@ -9,29 +9,18 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const { deploy } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    const kames = "0xfc4099eF10CC6255E8662eF85CF82067A7f2e3fd";
-    const tjark = "0x9f36a6bb398118bdcd5b1bc3343d8feb6d7d02b9";
-
     const svgColor = await deploy("SVGColor", {
       contract: "SVGColor",
       from: deployer,
       args: [],
-      skipIfAlreadyDeployed: false,
+      skipIfAlreadyDeployed: true,
       log: true,
     });
-    
+
     const SVGRender = await deploy("SVGRender", {
       contract: "SVGRender",
       from: deployer,
       args: [svgColor.address],
-      skipIfAlreadyDeployed: false,
-      log: true,
-    });
-
-    const DataENS = await deploy("DataENS", {
-      contract: "DataENS",
-      from: deployer,
-      args: [],
       skipIfAlreadyDeployed: false,
       log: true,
     });
@@ -55,7 +44,7 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const Notary = await deploy("Notary", {
       contract: "Notary",
       from: deployer,
-      args: [CitizenAlpha.address, [kames, tjark]],
+      args: [CitizenAlpha.address, [deployer]],
       skipIfAlreadyDeployed: false,
       log: true,
     });
@@ -63,7 +52,7 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     await deploy("Nation", {
       contract: "Nation",
       from: deployer,
-      args: [CitizenAlpha.address, [kames]],
+      args: [CitizenAlpha.address, [deployer]],
       skipIfAlreadyDeployed: false,
       log: true,
     });
@@ -72,6 +61,14 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
       contract: "NotaryServiceDelegatable",
       from: deployer,
       args: [Notary.address],
+      skipIfAlreadyDeployed: false,
+      log: true,
+    });
+
+    const SourceENS = await deploy("SourceENS", {
+      contract: "SourceENS",
+      from: deployer,
+      args: [],
       skipIfAlreadyDeployed: false,
       log: true,
     });
@@ -85,21 +82,22 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     });
 
     const citizenAlpha = await ethers.getContractAt("CitizenAlpha", CitizenAlpha.address);
-    const citizenMetadata = await ethers.getContractAt("Metadata", Metadata.address);
-    const citizenNotary = await ethers.getContractAt("Notary", Notary.address);
+    const metadata = await ethers.getContractAt("Metadata", Metadata.address);
+    const notary = await ethers.getContractAt("Notary", Notary.address);
     const notaryServiceDelegatable = await ethers.getContractAt(
       "NotaryServiceDelegatable",
       NotaryServiceDelegatable.address
     );
 
-    await citizenMetadata.appendSource(DataENS.address);
-    await citizenMetadata.setToken(CitizenAlpha.address);
-    await citizenAlpha.setNotary(citizenNotary.address);
+    await metadata.appendSource(SourceENS.address);
+    await metadata.setToken(CitizenAlpha.address);
+    await citizenAlpha.setNotary(notary.address);
 
-    await citizenNotary.grantRole(
+    await notary.grantRole(
       utils.keccak256(utils.toUtf8Bytes("NOTARY")),
       NotaryServiceDelegatable.address
     );
-    await notaryServiceDelegatable.transferOwnership(kames);
+    
+    await notaryServiceDelegatable.transferOwnership(deployer);
   }
 }

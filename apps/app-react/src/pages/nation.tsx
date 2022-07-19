@@ -8,6 +8,8 @@ import {
   NationFormIsFounder,
   NationFormRoleGrant,
   NationFormRoleRevoke,
+  NotaryFormGrantPermissions,
+  NotaryFormRevokePermissions,
   NotaryServiceDelegatableFormClaim,
   NotaryServiceDelegatableFormClaimDelegate,
   NotaryServiceDelegatableFormClaimInvocation,
@@ -118,17 +120,20 @@ const Index = () => {
                 contractAddress={Nation.address}
               />
             </div>
-            <div className="card mt-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold">
-                  Issue Delegation Claim
-                </h3>
-                <span className="">Create a Peer-to-Peer Invite</span>
-              </div>
+            <div className="card my-8">
+              <h3 className="text-xl font-semibold">Grant Notary Status</h3>
               <hr className="my-3" />
-              <NotaryServiceDelegatableFormClaimDelegate
-                className="mt-5"
-                contractAddress={NotaryServiceDelegatable.address}
+              <NotaryFormGrantPermissions
+                className=""
+                contractAddress={Notary.address}
+              />
+            </div>
+            <div className="card">
+              <h3 className="text-xl font-semibold">Revoke Notary Status</h3>
+              <hr className="my-3" />
+              <NotaryFormRevokePermissions
+                className=""
+                contractAddress={Notary.address}
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import { domain, types } from './types';
 export function createIntention(
   delegation: any,
   signedDelegation: any,
-  to: string,
+  verifyingContract: string,
   tx: string
 ) {
   const intention = {
@@ -20,7 +20,7 @@ export function createIntention(
           },
         ],
         transaction: {
-          to: to,
+          to: verifyingContract,
           gasLimit: '10000000000000000',
           data: tx,
         },
@@ -29,7 +29,7 @@ export function createIntention(
   };
 
   const intentionString = JSON.stringify({
-    domain: domain,
+    domain: {...domain, verifyingContract: verifyingContract},
     message: intention,
     primaryType: 'Invocations',
     types: types,

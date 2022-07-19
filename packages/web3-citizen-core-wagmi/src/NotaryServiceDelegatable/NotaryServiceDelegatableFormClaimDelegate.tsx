@@ -39,41 +39,34 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
   const contract = useNotaryServiceDelegatableContract(contractAddress);
 
   //   useLogError(error);
+  const [ signatures, setSignatures ] = React.useState<any>()
   const onSubmit = (_data: any) => {
     (async () => {
       const method = 'eth_signTypedData_v4';
-      const txPopulated = await contract.populateTransaction.claim(_data.to);
+      const txPopulated = await contract.populateTransaction.issue(_data.to);
       const me = await signer.data?.getAddress();
-      console.log(me, 'me');
-      const delegation = createDelegation(_data.to);
+      const delegation = createDelegation(_data.to, contractAddress);
       // @ts-ignore
       const signedDelegation1 = await signer.data?.provider?.send(method, [
         me,
         delegation.string,
       ]);
-
-      const recoverered = recoverDelegationSigner(
-        { delegation: delegation.delegation, signature: signedDelegation1 },
-        {
-          chainId: 1,
-          verifyingContract: '0x9Fcca440F19c62CDF7f973eB6DDF218B15d4C71D',
-          name: 'NotaryServiceDelegatable',
-        }
-      );
-      console.log(recoverered, 'recoverered');
       const intention = createIntention(
         delegation.delegation,
         signedDelegation1,
         contractAddress,
         txPopulated.data
       );
-      console.log(intention);
       // @ts-ignore
       const signedDelegation2 = await signer.data?.provider.send(method, [
         me,
         intention.string,
       ]);
-      console.log(signedDelegation2, 'signedDelegation2');
+      setSignatures({
+        delegation: signedDelegation1,
+        invocation: signedDelegation2,
+      })
+
     })();
     if (onUpdate) onUpdate(_data);
   };
@@ -90,12 +83,19 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
           {label}
         </button>
       </form>
+      {
+        signatures && 
+        <div className='text-sm'>
+          <span className='block break-all'>Delegation: <br/> {signatures.delegation}</span>
+          <span className='block break-all'>Invocation: <br/> {signatures.invocation}</span>
+        </div>
+      }
     </div>
   );
 };
 
 NotaryServiceDelegatableFormClaimDelegate.defaultProps = {
-  label: 'Issue Claim',
+  label: 'Sign Delegation & Invocations',
 };
 
 export default NotaryServiceDelegatableFormClaimDelegate;

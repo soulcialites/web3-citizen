@@ -4,8 +4,7 @@ import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localho
 import {
   FormCitizenIssue,
   FormCitizenRevoke,
-  NotaryFormGrantPermissions,
-  NotaryFormRevokePermissions,
+  NotaryServiceDelegatableFormClaimDelegate,
 } from "@web3-citizen/core-wagmi";
 
 import { Main } from "@/templates/Main";
@@ -29,23 +28,15 @@ const Index = () => {
           </div>
           <div className="col-span-6 flex items-center justify-end">
             <h3 className=" text-sm font-normal">
-              Issue Citizenship and Grant/Revoke Notary permissions.
+              Issue Citizenship and Grant/Revoke Notary permissions
             </h3>
-          </div>
-          <div className="col-span-12 w-full pt-8">
-            <h3 className="text-xl font-semibold">Active Notary Services</h3>
-            <hr className="my-3" />
-            <div className="flex w-full items-center justify-between">
-              <span className="font-semibold">DelegatableNotary:</span>
-              <Address truncate address={NotaryServiceDelegatable.address} />
-            </div>
           </div>
         </div>
       </section>
-      <section className="px-10 pb-20 lg:px-20">
+      <section className="px-10 py-12 lg:px-20">
         <div className="container mx-auto grid max-w-screen-md">
-          <div className="grid grid-cols-12 gap-x-4">
-            <div className="col-span-6">
+          <div className="grid grid-cols-12 gap-x-4 gap-y-6">
+            <div className="col-span-12 lg:col-span-6">
               <div className="card">
                 <h3 className="text-xl font-semibold">Issue Citizenship</h3>
                 <hr className="my-3" />
@@ -55,7 +46,7 @@ const Index = () => {
                 />
               </div>
             </div>
-            <div className="col-span-6">
+            <div className="col-span-12 lg:col-span-6">
               <div className="card">
                 <h3 className="text-xl font-semibold">Revoke Citizenship</h3>
                 <hr className="my-3" />
@@ -65,22 +56,35 @@ const Index = () => {
                 />
               </div>
             </div>
-          </div>
-          <div className="card my-8">
-            <h3 className="text-xl font-semibold">Grant Notary Status</h3>
-            <hr className="my-3" />
-            <NotaryFormGrantPermissions
-              className=""
-              contractAddress={Notary.address}
-            />
-          </div>
-          <div className="card">
-            <h3 className="text-xl font-semibold">Revoke Notary Status</h3>
-            <hr className="my-3" />
-            <NotaryFormRevokePermissions
-              className=""
-              contractAddress={Notary.address}
-            />
+            <div className="card col-span-12">
+              <div className="mb-8 flex w-full flex-col items-center justify-between md:flex-row">
+                <span className="font-semibold">DelegatableNotary:</span>
+                <Address
+                  className="text-xs"
+                  address={NotaryServiceDelegatable.address}
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold">
+                  Create Citizenship Invite
+                </h3>
+                <span className="">
+                  <a
+                    className="hover:text-slate-700"
+                    target={"_blank"}
+                    href="https://github.com/danfinlay/delegatable-eth"
+                    rel="noreferrer"
+                  >
+                    Delegatable.eth | Learn More
+                  </a>
+                </span>
+              </div>
+              <hr className="my-3" />
+              <NotaryServiceDelegatableFormClaimDelegate
+                className="mt-5"
+                contractAddress={NotaryServiceDelegatable.address}
+              />
+            </div>
           </div>
         </div>
       </section>
