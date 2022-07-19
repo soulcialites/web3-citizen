@@ -368,7 +368,7 @@ contract Metadata is Ownable {
 
   function _appendTrait(string memory _traits, string memory _traitAppending)
     internal
-    view
+    pure
     returns (string memory)
   {
     return string.concat(_traits, bytes(_traits).length > 0 ? "," : "", _traitAppending);
@@ -376,7 +376,7 @@ contract Metadata is Ownable {
 
   function _generateTrait(string memory _key, string memory _value)
     internal
-    view
+    pure
     returns (string memory __traits)
   {
     return string.concat('{"trait_type":' '"', _key, '",', '"value":', '"', _value, '"}');
@@ -384,7 +384,7 @@ contract Metadata is Ownable {
 
   function _generateTraits(string[] memory _keys, string[] memory _values)
     internal
-    view
+    pure
     returns (string memory __traits)
   {
     string memory _traits = "";
