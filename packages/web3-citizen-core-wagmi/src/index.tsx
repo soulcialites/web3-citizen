@@ -1,9 +1,7 @@
 import './tailwind.css';
 export { default as constants } from './constants';
 export { reverseLookup, lookup } from './constants';
-export { CitizenCard } from './Citizen/CitizenCard';
 export { CitizenLink } from './Citizen/CitizenLink';
-export { CitizenCardList } from './Citizen/CitizenCardList';
 export { FormCitizenEnsUpdate } from './Citizen/FormCitizenEnsUpdate';
 export { FormCitizenIssue } from './Citizen/FormCitizenIssue';
 export { FormCitizenRevoke } from './Citizen/FormCitizenRevoke';
