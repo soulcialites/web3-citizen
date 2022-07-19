@@ -32,7 +32,6 @@ contract NotaryServiceDelegatable is RevokableOwnableDelegatable {
    * @param newCitizen address
    */
   function issue(address newCitizen) external {
-    console.log(owner(), _msgSender());
     require(owner() == _msgSender(), "Unauthorized");
     Notary(_notary).issue(newCitizen);
   }

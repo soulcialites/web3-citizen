@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
-import "hardhat/console.sol";
 import { Base64 } from "base64-sol/base64.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
@@ -88,7 +87,6 @@ contract Metadata is Ownable {
    * @return uri string - Uniform Resource Identifier (URI) for `tokenId` token.
    */
   function tokenURI(uint256 tokenId) external view returns (string memory) {
-    console.log("tokenURI", msg.sender);
     return _constructTokenURI(tokenId);
   }
 

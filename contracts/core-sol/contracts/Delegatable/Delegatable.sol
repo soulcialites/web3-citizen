@@ -1,6 +1,5 @@
 pragma solidity ^0.8.13;
 // SPDX-License-Identifier: MIT
-import "hardhat/console.sol";
 import "./TypesAndDecoders.sol";
 import "./caveat-enforcers/CaveatEnforcer.sol";
 
@@ -134,7 +133,6 @@ abstract contract Delegatable is EIP712Decoder {
   {
     bytes32 sigHash = getInvocationsTypedDataHash(signedInvocation.invocations);
     address recoveredSignatureSigner = recover(sigHash, signedInvocation.signature);
-    console.log(recoveredSignatureSigner, "recoveredSignatureSigner");
     return recoveredSignatureSigner;
   }
 
@@ -146,7 +144,6 @@ abstract contract Delegatable is EIP712Decoder {
     Delegation memory delegation = signedDelegation.delegation;
     bytes32 sigHash = getDelegationTypedDataHash(delegation);
     address recoveredSignatureSigner = recover(sigHash, signedDelegation.signature);
-    console.log(recoveredSignatureSigner, "recoveredSignatureSigner2");
     return recoveredSignatureSigner;
   }
 
