@@ -168,15 +168,6 @@ contract CitizenAlpha is ERC721, Ownable {
   }
 
   /**
-   * @notice Get Citizen Metadata
-   * @param citizen address
-   * @return metadata Metadata
-   */
-  function getMetadata(address citizen) external view returns (Metadata.Metadata memory metadata) {
-    return Metadata(_metadata).getMetadata(citizen);
-  }
-
-  /**
    * @notice Check Role status
    * @param citizen Address of Citizen
    * @return status bool
@@ -224,6 +215,14 @@ contract CitizenAlpha is ERC721, Ownable {
   }
 
   /**
+   * @notice Set URI Splitter status
+   * @param status bool
+   */
+  function setURISplitter(bool status) external onlyOwner {
+    _uriSplitter = status;
+  }
+
+  /**
    * @notice Set Metadata instance
    * @param metadata address
    */
@@ -258,7 +257,7 @@ contract CitizenAlpha is ERC721, Ownable {
     address,
     uint256
   ) public virtual override {
-    require(false, "CitizenAlpha: Soulbound");
+    revert("CitizenAlpha: Soulbound");
   }
 
   function supportsInterface(bytes4 interfaceId)

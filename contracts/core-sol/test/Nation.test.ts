@@ -34,11 +34,11 @@ describe('Nation', () => {
   describe('READ', () => {
     describe('isRole(bytes32 role)', () => {
       it('should SUCCEED to validate FOUNDER role is active for Founder', async () => {
-        expect(await Nation.isRole(FOUNDER)).to.eq(true);
+        expect(await Nation.roleStatus(FOUNDER)).to.eq(true);
       });
 
       it('should SUCCEED to validate INVALID_ROLE role is NOT active for Founder', async () => {
-        expect(await Nation.isRole(INVALID_ROLE)).to.eq(false);
+        expect(await Nation.roleStatus(INVALID_ROLE)).to.eq(false);
       });
     });
 

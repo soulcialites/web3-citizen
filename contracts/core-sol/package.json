@@ -22,7 +22,7 @@
     "hint": "solhint \"contracts/**/*.sol\"",
     "blockchain": "hardhat node",
     "chain": "DEPLOY=testnet hardhat node --network hardhat",
-    "chain:fork": "DEPLOY=testnet FORK_ENABLED=true hardhat node",
+    "chain:fork": "DEPLOY=mainnet FORK_ENABLED=true hardhat node",
     "fork:setup": "hardhat fork:setup",
     "remove-logs": "hardhat remove-logs",
     "test": "yarn cleanup && HIDE_DEPLOY_LOG=true OPTIMIZER_DISABLED=true hardhat test",

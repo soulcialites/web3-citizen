@@ -14,7 +14,6 @@ describe('Notary', () => {
 
   const FOUNDER = utils.keccak256(utils.toUtf8Bytes('FOUNDER'));
   const NOTARY = utils.keccak256(utils.toUtf8Bytes('NOTARY'));
-  const INVALID_ROLE = utils.keccak256(utils.toUtf8Bytes('INVALID_ROLE'));
 
   before(async () => {
     [wallet0, wallet1] = await getSigners();
@@ -55,7 +54,7 @@ describe('Notary', () => {
     describe('issue(address to)', () => {
       it('should SUCCEED to issue TOKEN from existing Citizen', async () => {
         await Notary.issue(wallet1.address);
-        expect(await Notary.isCitizen(wallet1.address)).to.be.equal(true);
+        expect(await CitizenAlpha.isCitizen(wallet1.address)).to.be.equal(true);
       });
 
       it('should REVERT due to UNAUTHORIZED access', async () => {
@@ -76,9 +75,9 @@ describe('Notary', () => {
     describe('revoke(uint256 tokenId)', () => {
       it('should SUCCEED to revoke TOKEN from existing Citizen', async () => {
         await Notary.issue(wallet1.address);
-        expect(await Notary.isCitizen(wallet1.address)).to.be.equal(true);
+        expect(await CitizenAlpha.isCitizen(wallet1.address)).to.be.equal(true);
         await Notary.revoke(wallet1.address);
-        expect(await Notary.isCitizen(wallet1.address)).to.be.equal(false);
+        expect(await CitizenAlpha.isCitizen(wallet1.address)).to.be.equal(false);
       });
 
       it('should REVERT due to UNAUTHORIZED access', async () => {

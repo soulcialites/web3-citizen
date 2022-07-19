@@ -30,6 +30,7 @@ const networks: HardhatUserConfig['networks'] = {
 if (MAINNET_PK_DEPLOYER) {
   networks.mainnet = {
     url: ETHEREUM_MAINNET_RPC_URL,
+    gasPrice: 57000000000,
     accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }
@@ -46,9 +47,14 @@ if (ARCHIVE_NODE_RPC_URL && FORK_ENABLED) {
   networks.hardhat = {
     chainId: 1,
     hardfork: 'istanbul',
+    gasPrice: 45000000000,
+    blockGasLimit: 20000000,
+    // @ts-ignore
+    accounts: [{privateKey: TESTNET_PK_DEPLOYER, balance: '1615793800000000000'}],
     forking: {
       url: ARCHIVE_NODE_RPC_URL,
-      blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
+      // blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
+      blockNumber:15173654 || 0,
     },
   };
 } else {

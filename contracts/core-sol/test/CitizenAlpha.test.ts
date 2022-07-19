@@ -21,6 +21,7 @@ describe('CitizenAlpha', () => {
   beforeEach(async () => {
     Metadata = await CitizenMetadataFactory.deploy(constants.AddressZero);
     CitizenAlpha = await CitizenAlphaFactory.deploy(Metadata.address, 'Web5 Citizen', 'CI5');
+    CitizenAlpha.setNotary(wallet0.address)
   });
 
   /* ================================================================================ */

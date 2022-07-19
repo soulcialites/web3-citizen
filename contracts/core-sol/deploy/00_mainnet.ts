@@ -84,10 +84,6 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const citizenAlpha = await ethers.getContractAt("CitizenAlpha", CitizenAlpha.address);
     const metadata = await ethers.getContractAt("Metadata", Metadata.address);
     const notary = await ethers.getContractAt("Notary", Notary.address);
-    const notaryServiceDelegatable = await ethers.getContractAt(
-      "NotaryServiceDelegatable",
-      NotaryServiceDelegatable.address
-    );
 
     await metadata.appendSource(SourceENS.address);
     await metadata.setToken(CitizenAlpha.address);
@@ -98,6 +94,5 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
       NotaryServiceDelegatable.address
     );
     
-    await notaryServiceDelegatable.transferOwnership(deployer);
   }
 }
