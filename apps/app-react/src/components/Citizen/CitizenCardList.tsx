@@ -1,6 +1,6 @@
-import * as React from "react";
 import { useCitizenAlphaRead } from "@web3-citizen/core-wagmi";
 import classNames from "classnames";
+import * as React from "react";
 
 import CitizenCard from "./CitizenCard";
 
@@ -22,7 +22,7 @@ export const CitizenCardList = ({
 
   const { data, isError, isLoading } = useCitizenAlphaRead(
     contractAddress,
-    "totalCitizens",
+    "totalIssued",
     []
   );
 

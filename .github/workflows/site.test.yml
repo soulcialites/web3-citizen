@@ -1,23 +1,12 @@
-name: CI
-
+name: Site
 on:
   push:
-    branches: ["main"]
+    branches: ["site"]
   pull_request:
-    types: [opened, synchronize]
+    types: [open]
 jobs:
-  build:
-    name: Build and Test
-    timeout-minutes: 15
-    runs-on: ${{ matrix.os }}
-    # To use Remote Caching, uncomment the next lines and follow the steps below.
-    # env:
-    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-    #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
+  build_and_lint:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -48,10 +37,12 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
-      - name: Build
-        run: yarn test
+      - name: Compile
+        run: pnpm compile
+        continue-on-error: false
 
-      - name: Build
-        run: yarn build
+      - name: Build 💻
+        run: pnpm build:prd
+        continue-on-error: false

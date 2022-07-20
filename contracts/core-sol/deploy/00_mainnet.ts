@@ -60,7 +60,7 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const NotaryServiceDelegatable = await deploy("NotaryServiceDelegatable", {
       contract: "NotaryServiceDelegatable",
       from: deployer,
-      args: [Notary.address],
+      args: [CitizenAlpha.address],
       skipIfAlreadyDeployed: false,
       log: true,
     });
@@ -93,6 +93,5 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
       utils.keccak256(utils.toUtf8Bytes("NOTARY")),
       NotaryServiceDelegatable.address
     );
-    
   }
 }

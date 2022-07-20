@@ -24,6 +24,7 @@ contract Notary is AccessControl {
    */
   constructor(address _citizenAlpha_, address[] memory _notaries) {
     _citizenAlpha = _citizenAlpha_;
+    _setupRole(NOTARY, address(this));
     for (uint256 i = 0; i < _notaries.length; i++) {
       _setupRole(DEFAULT_ADMIN_ROLE, _notaries[i]);
       _setupRole(NOTARY, _notaries[i]);
@@ -40,12 +41,21 @@ contract Notary is AccessControl {
   }
 
   /**
+   * @notice Check Notary status
+   * @param citizen address
+   * @return status bool
+   */
+  function isNotary(address citizen) external view returns (bool status) {
+    return hasRole(NOTARY, citizen);
+  }
+
+  /**
    * @notice Issue Citizenship
    * @param to address
    */
   function issue(address to) external {
     require(hasRole(NOTARY, _msgSender()), "Notary:unauthorized-access");
-    _issue(to, _msgSender());
+    _issue(to);
   }
 
   /**
@@ -55,7 +65,7 @@ contract Notary is AccessControl {
   function issueBatch(address[] calldata to) external {
     require(hasRole(NOTARY, _msgSender()), "Notary:unauthorized-access");
     for (uint256 i = 0; i < to.length; i++) {
-      _issue(to[i], _msgSender());
+      _issue(to[i]);
     }
   }
 
@@ -65,7 +75,7 @@ contract Notary is AccessControl {
    */
   function revoke(address from) external {
     require(hasRole(NOTARY, _msgSender()), "Notary:unauthorized-access");
-    _revoke(from, _msgSender());
+    _revoke(from);
   }
 
   /**
@@ -75,7 +85,7 @@ contract Notary is AccessControl {
   function revokeBatch(address[] calldata from) external {
     require(hasRole(NOTARY, _msgSender()), "Notary:unauthorized-access");
     for (uint256 i = 0; i < from.length; i++) {
-      _revoke(from[i], _msgSender());
+      _revoke(from[i]);
     }
   }
 
@@ -83,11 +93,11 @@ contract Notary is AccessControl {
   /* Internal Functions                                                                    */
   /* ===================================================================================== */
 
-  function _issue(address _to, address _link) internal {
-    ICitizenAlpha(_citizenAlpha).issue(_to, _link);
+  function _issue(address _to) internal {
+    ICitizenAlpha(_citizenAlpha).issue(_to);
   }
 
-  function _revoke(address _from, address _link) internal {
-    ICitizenAlpha(_citizenAlpha).revoke(_from, _link);
+  function _revoke(address _from) internal {
+    ICitizenAlpha(_citizenAlpha).revoke(_from);
   }
 }

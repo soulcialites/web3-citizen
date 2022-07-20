@@ -1,8 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import { Base64 } from "base64-sol/base64.sol";
-import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import { Metadata } from "./Metadata.sol";
@@ -12,31 +10,31 @@ import { Notary } from "./Notary/Notary.sol";
 /**
  * @title CitizenAlpha
  * @author Kames Geraghty
- * @notice CitizenAlpha is a Web3 of Trust experiment.
+ * @notice A Web3 of Trust experiment.
  */
 contract CitizenAlpha is ERC721, Ownable {
   /// @notice Total citizenships issued
   uint256 private _idCounter;
 
-  /// @notice Nation instance to manage Global AccessControl
-  address private _nation;
-
-  /// @notice Notary instance w/ authority to issue Citizenship
-  address private _notary;
-
-  /// @notice Metadata instance used to generate token metadata
+  /// @notice Metadata instance; External tokenURI call
   address private _metadata;
 
-  /// @notice TrustResolver instance
+  /// @notice Nation instance; Global AccessControl
+  address private _nation;
+
+  /// @notice Notary instance; Citizenship Management
+  address private _notary;
+
+  /// @notice TrustResolver instance; Unique tokenURI
   address private _resolver;
 
-  /// @notice Enable tokenURI split listener
-  bool private _uriSplitter;
+  /// @notice Enable tokenURI split logic operator
+  bool private _tokenURISplit;
 
   /// @notice Reverse lookup of a tokenId using the owner address
-  mapping(address => uint256) private _tokens;
+  mapping(address => uint256) private _tokenIds;
 
-  /// @notice Lookup address of Citizenship issuer
+  /// @notice Lookup address of Citizenship trust link
   mapping(address => address) private _links;
 
   /**
@@ -59,19 +57,25 @@ contract CitizenAlpha is ERC721, Ownable {
    * @notice Emit when Metadata instnace is updated.
    * @param metadata Address of new Metadata instance
    */
-  event NewMetadata(address indexed metadata);
+  event NewMetadata(address metadata);
 
   /**
    * @notice Emit when Nation instnace is updated.
    * @param nation Address of new Nation instance
    */
-  event NewNation(address indexed nation);
+  event NewNation(address nation);
 
   /**
    * @notice Emit when Notary instnace is updated.
    * @param notary Address of new Notary instance
    */
-  event NewNotary(address indexed notary);
+  event NewNotary(address notary);
+
+  /**
+   * @notice Emit when Resolver instnace is updated.
+   * @param resolver Address of new Resolver instance
+   */
+  event NewResolver(address resolver);
 
   /**
    * @notice CitizenAlpha Construction
@@ -116,27 +120,19 @@ contract CitizenAlpha is ERC721, Ownable {
   }
 
   /**
-   * @notice Generate token URI
-   * @param tokenId uint256
-   * @return metadata string
+   * @notice Get Resolver instance
+   * @return resolver Resolver
    */
-  function tokenURI(uint256 tokenId) public view override returns (string memory) {
-    Metadata metadata_ = Metadata(_metadata);
-    if (!_uriSplitter) {
-      return metadata_.tokenURI(tokenId);
-    } else {
-      return
-        _resolver == msg.sender ? metadata_.tokenURI(tokenId) : metadata_.tokenURIMinimal(tokenId);
-    }
+  function getResolver() external view returns (address resolver) {
+    return _resolver;
   }
 
   /**
-   * @notice Get Citizen Image
-   * @param citizen address
-   * @return avatar string
+   * @notice Read totalIssued (_idCounter)
+   * @return totalIssued uint256
    */
-  function getAvatar(address citizen) external view returns (string memory avatar) {
-    return Metadata(_metadata).getAvatar(citizen);
+  function totalIssued() external view returns (uint256) {
+    return _idCounter;
   }
 
   /**
@@ -146,33 +142,24 @@ contract CitizenAlpha is ERC721, Ownable {
    */
   function getId(address citizen) external view returns (uint256) {
     require(_isCitizen(citizen), "CitizenAlpha:not-active-citizen");
-    return _tokens[citizen];
+    return _tokenIds[citizen];
   }
 
   /**
-   * @notice Get Citizen Image
+   * @notice Lookup Citizenship link
    * @param citizen address
-   * @return image string
+   * @return link address
    */
-  function getImage(address citizen) external view returns (string memory image) {
-    return Metadata(_metadata).getImage(citizen);
-  }
-
-  /**
-   * @notice Lookup the issuer of Citizenship
-   * @param citizen address
-   * @return issuer address
-   */
-  function getLink(address citizen) external view returns (address issuer) {
+  function getLink(address citizen) external view returns (address link) {
     return _links[citizen];
   }
 
   /**
-   * @notice Check Role status
+   * @notice Check Role status of Citizen via Nation
    * @param citizen Address of Citizen
    * @return status bool
    */
-  function hasRole(bytes32 role, address citizen) public view returns (bool) {
+  function hasRole(bytes32 role, address citizen) external view returns (bool) {
     return Nation(_nation).hasRole(role, citizen);
   }
 
@@ -186,32 +173,54 @@ contract CitizenAlpha is ERC721, Ownable {
   }
 
   /**
-   * @notice Read totalCitizens (_idCounter)
-   * @return totalCitizens uint256
+   * @notice Generate token URI
+   * @param tokenId uint256
+   * @return metadata string
    */
-  function totalCitizens() external view returns (uint256) {
-    return _idCounter;
+  function tokenURI(uint256 tokenId) public view override returns (string memory) {
+    Metadata metadata_ = Metadata(_metadata);
+    if (!_tokenURISplit) {
+      return metadata_.tokenURI(tokenId);
+    } else {
+      return
+        _resolver == _msgSender()
+          ? metadata_.tokenURIResolver(tokenId)
+          : metadata_.tokenURI(tokenId);
+    }
   }
 
   /**
    * @notice Issue a new Citizenship
    * @param to address
    */
-  function issue(address to, address link) external {
-    require(_notary == _msgSender(), "CitizenAlpha:unauthorized-accesss");
+  function issue(address to) external {
+    address _sender = _msgSender();
+    require(Notary(_notary).isNotary(_sender), "CitizenAlpha:not-notary");
     require(!_isCitizen(to), "CitizenAlpha:is-citizen");
     require(!_isPreviouslyIssued(to), "CitizenAlpha:revoked-citizenship");
-    _issue(to, link);
+    _issue(to, _sender);
   }
 
   /**
    * @notice Revoke an existing Citizenship
    * @param from address
    */
-  function revoke(address from, address revoker) external {
-    require(_notary == _msgSender(), "CitizenAlpha:unauthorized-accesss");
+  function revoke(address from) external {
+    address _sender = _msgSender();
+    require(Notary(_notary).isNotary(_sender), "CitizenAlpha:not-notary");
     require(_isCitizen(from), "CitizenAlpha:not-citizen");
-    _revoke(from, revoker);
+    _revoke(from, _sender);
+  }
+
+  /**
+   * @notice Reset Citizenship status
+   * @param citizen address
+   */
+  function reset(address citizen) external {
+    require(Notary(_notary).isNotary(_msgSender()), "CitizenAlpha:not-notary");
+    require(!_isCitizen(citizen), "CitizenAlpha:is-citizen");
+    require(_isPreviouslyIssued(citizen), "CitizenAlpha:never-citizen");
+    _tokenIds[citizen] = 0;
   }
 
   /**
@@ -219,7 +228,7 @@ contract CitizenAlpha is ERC721, Ownable {
    * @param status bool
    */
   function setURISplitter(bool status) external onlyOwner {
-    _uriSplitter = status;
+    _tokenURISplit = status;
   }
 
   /**
@@ -247,6 +256,15 @@ contract CitizenAlpha is ERC721, Ownable {
   function setNotary(address notary) external onlyOwner {
     _notary = notary;
     emit NewNotary(notary);
+  }
+
+  /**
+   * @notice Set Resolver instance
+   * @param resolver address
+   */
+  function setResolver(address resolver) external onlyOwner {
+    _resolver = resolver;
+    emit NewResolver(resolver);
   }
 
   /**
@@ -281,22 +299,23 @@ contract CitizenAlpha is ERC721, Ownable {
   /**
    * @dev First Founder can be issued<>revoked<>issued.
    *      All other address can only be issued<>revoked.
+   *      Unless the account is reset.
    */
   function _isPreviouslyIssued(address citizen) internal view returns (bool) {
-    return _tokens[citizen] != 0 ? true : false;
-  }
-
-  function _revoke(address from, address link) internal {
-    uint256 tokenId = _tokens[from];
-    _burn(tokenId);
-    emit Revoked(tokenId, from, link);
+    return _tokenIds[citizen] != 0 ? true : false;
   }
 
   function _issue(address to, address link) internal {
     uint256 __idCounter = _idCounter++;
     _links[to] = link;
-    _tokens[to] = __idCounter;
+    _tokenIds[to] = __idCounter;
     _mint(to, __idCounter);
     emit Issued(__idCounter, to, link);
+  }
+
+  function _revoke(address from, address link) internal {
+    uint256 tokenId = _tokenIds[from];
+    _burn(tokenId);
+    emit Revoked(tokenId, from, link);
   }
 }

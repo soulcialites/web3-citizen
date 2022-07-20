@@ -53,7 +53,7 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
       log: true,
     });
 
-    const Nation = await deploy("Nation", {
+    await deploy("Nation", {
       contract: "Nation",
       from: deployer,
       args: [CitizenAlpha.address, [kames, deployer]],
@@ -64,7 +64,7 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const NotaryServiceDelegatable = await deploy("NotaryServiceDelegatable", {
       contract: "NotaryServiceDelegatable",
       from: deployer,
-      args: [Notary.address],
+      args: [CitizenAlpha.address],
       skipIfAlreadyDeployed: false,
       log: true,
     });

@@ -23,6 +23,7 @@
     "compile": "turbo run compile",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "test": "turbo run test",
     "chain": "turbo run chain",
     "lab": "turbo run lab",
     "lab:fork": "turbo run lab:fork",

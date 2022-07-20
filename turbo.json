@@ -28,6 +28,9 @@
       "lint": {
           "outputs": [""]
       },
+      "test": {
+          "outputs": [""]
+      },
       "watch": {
           "dependsOn": ["^watch"]
       },

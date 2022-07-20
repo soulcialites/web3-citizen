@@ -22,7 +22,7 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     'NotaryServiceDelegatableFormClaimInvocation'
   );
 
-    const account = useAccount()
+  const account = useAccount();
 
   const {
     watch,
@@ -36,7 +36,7 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     },
   });
   const watchAllFields = watch();
-  const { data, error, write } = useNotaryServiceDelegatableWrite(
+  const { write } = useNotaryServiceDelegatableWrite(
     contractAddress,
     'invoke',
     [
@@ -57,14 +57,15 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
                         '0x0000000000000000000000000000000000000000000000000000000000000000',
                       caveats: [],
                     },
-                    signature:
-                      watchAllFields.delegation
+                    signature: watchAllFields.delegation,
                   },
                 ],
                 transaction: {
                   to: contractAddress,
                   gasLimit: '10000000000000000',
-                  data: `0x71e928af000000000000000000000000${account.data?.address?.substring(2)}`,
+                  data: `0x71e928af000000000000000000000000${account.data?.address?.substring(
+                    2
+                  )}`,
                 },
               },
             ],
@@ -75,39 +76,6 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
     ]
   );
 
-  React.useEffect( () => { 
-    console.log({
-      invocations: {
-        replayProtection: {
-          nonce: '0x01',
-          queue: '0x00',
-        },
-        batch: [
-          {
-            authority: [
-              {
-                delegation: {
-                  delegate: account.data?.address,
-                  authority:
-                    '0x0000000000000000000000000000000000000000000000000000000000000000',
-                  caveats: [],
-                },
-                signature:
-                  watchAllFields.delegation
-              },
-            ],
-            transaction: {
-              to: contractAddress,
-              gasLimit: '10000000000000000',
-              data: `0x71e928af000000000000000000000000${account.data?.address?.substring(2)}`,
-            },
-          },
-        ],
-      },
-      signature: watchAllFields?.invocation,
-    },)
-  }, [data,error])
-
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);
@@ -116,13 +84,13 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
   return (
     <div className={classes_}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label className='text-sm font-semibold my-2'>Delegation</label>
+        <label className="text-sm font-semibold my-2">Delegation</label>
         <input
           className="input"
           placeholder="0x0"
           {...register('delegation', { required: true })}
         />
-        <label className='text-sm font-semibold my-2'>Invocation</label>
+        <label className="text-sm font-semibold my-2">Invocation</label>
         <input
           className="input"
           placeholder="0x0"
