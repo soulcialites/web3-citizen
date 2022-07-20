@@ -1,4 +1,4 @@
-name: Site
+name: Site Build
 on:
   push:
     branches: ["site"]
