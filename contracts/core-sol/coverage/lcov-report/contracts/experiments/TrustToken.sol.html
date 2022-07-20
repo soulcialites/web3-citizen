@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/experiments/TrustToken.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/experiments/</a> TrustToken.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/93</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/42</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/93</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//SPDX-License-Identifier: MIT
+pragma solidity 0.8.15;
+&nbsp;
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import { CitizenAlpha } from "../CitizenAlpha.sol";
+import { ObservationLib } from "../libraries/twab/ObservationLib.sol";
+import { TwabLib } from "../libraries/twab/TwabLib.sol";
+import { ExtendedSafeCastLib } from "../libraries/twab/ExtendedSafeCastLib.sol";
+&nbsp;
+/**
+ * @title TrustToken
+ * @author Kames Geraghty
+ * @notice TrustToken is a Web3 of Trust experiment: implementing time-weighted average balances.
+           Credit: PoolTogether Inc (Brendan Asselstine)
+ */
+contract TrustToken is ERC20Permit {
+  using SafeERC20 for IERC20;
+  using ExtendedSafeCastLib for uint256;
+  CitizenAlpha private citizenAlpha;
+  uint256 private distribution = 10000e18;
+  mapping(address =&gt; bool) private _claimed;
+&nbsp;
+  bytes32 private immutable _DELEGATE_TYPEHASH =
+    keccak256("Delegate(address user,address delegate,uint256 nonce,uint256 deadline)");
+&nbsp;
+  /// @notice Record of token holders TWABs for each account.
+  mapping(address =&gt; TwabLib.Account) internal userTwabs;
+&nbsp;
+  /// @notice Record of tickets total supply and ring buff parameters used for observation.
+  TwabLib.Account internal totalSupplyTwab;
+&nbsp;
+  /// @notice Mapping of delegates.  Each address can delegate their ticket power to another.
+  mapping(address =&gt; address) internal delegates;
+&nbsp;
+  /**
+   * @notice Emitted when TWAB balance has been delegated to another user.
+   * @param delegator Address of the delegator.
+   * @param delegate Address of the delegate.
+   */
+  event Delegated(address indexed delegator, address indexed delegate);
+&nbsp;
+  /**
+   * @notice Emitted when a new TWAB has been recorded.
+   * @param delegate The recipient of the ticket power (may be the same as the user).
+   * @param newTwab Updated TWAB of a ticket holder after a successful TWAB recording.
+   */
+  event NewUserTwab(address indexed delegate, ObservationLib.Observation newTwab);
+&nbsp;
+  /**
+   * @notice Emitted when a new total supply TWAB has been recorded.
+   * @param newTotalSupplyTwab Updated TWAB of tickets total supply after a successful total supply TWAB recording.
+   */
+  event NewTotalSupplyTwab(ObservationLib.Observation newTotalSupplyTwab);
+&nbsp;
+<span class="fstat-no" title="function not covered" >  constructor(</span>
+    CitizenAlpha citizenAlpha_,
+    string memory name,
+    string memory symbol
+  ) ERC20Permit("Web3Citizen TrustToken") ERC20(name, symbol) {
+<span class="cstat-no" title="statement not covered" >    citizenAlpha = citizenAlpha_</span>;
+  }
+&nbsp;
+  /* ===================================================================================== */
+  /* External Functions                                                                    */
+  /* ===================================================================================== */
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function claim() external {</span>
+<span class="cstat-no" title="statement not covered" >    require(citizenAlpha.isCitizen(msg.sender), "TrustToken:not-trusted")</span>;
+<span class="cstat-no" title="statement not covered" >    require(!_claimed[msg.sender], "TrustToken:trust-previously-issued")</span>;
+<span class="cstat-no" title="statement not covered" >    _claimed[msg.sender] = true</span>;
+<span class="cstat-no" title="statement not covered" >    _mint(msg.sender, distribution)</span>;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getAccountDetails(address _user) external view returns (TwabLib.AccountDetails memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return userTwabs[_user].details;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getTwab(address _user, uint16 _index)</span>
+    external
+    view
+    returns (ObservationLib.Observation memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return userTwabs[_user].twabs[_index];</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getBalanceAt(address _user, uint64 _target) external view returns (uint256) {</span>
+<span class="cstat-no" title="statement not covered" >    TwabLib.Account storage account = userTwabs[_user];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return</span>
+      TwabLib.getBalanceAt(
+        account.twabs,
+        account.details,
+        uint32(_target),
+        uint32(block.timestamp)
+      );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getAverageBalancesBetween(</span>
+    address _user,
+    uint64[] calldata _startTimes,
+    uint64[] calldata _endTimes
+  ) external view returns (uint256[] memory) {
+<span class="cstat-no" title="statement not covered" >    return _getAverageBalancesBetween(userTwabs[_user], _startTimes, _endTimes);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getAverageTotalSuppliesBetween(</span>
+    uint64[] calldata _startTimes,
+    uint64[] calldata _endTimes
+  ) external view returns (uint256[] memory) {
+<span class="cstat-no" title="statement not covered" >    return _getAverageBalancesBetween(totalSupplyTwab, _startTimes, _endTimes);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getAverageBalanceBetween(</span>
+    address _user,
+    uint64 _startTime,
+    uint64 _endTime
+  ) external view returns (uint256) {
+<span class="cstat-no" title="statement not covered" >    TwabLib.Account storage account = userTwabs[_user];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return</span>
+      TwabLib.getAverageBalanceBetween(
+        account.twabs,
+        account.details,
+        uint32(_startTime),
+        uint32(_endTime),
+        uint32(block.timestamp)
+      );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getBalancesAt(address _user, uint64[] calldata _targets)</span>
+    external
+    view
+    returns (uint256[] memory)
+  {
+<span class="cstat-no" title="statement not covered" >    uint256 length = _targets.length;</span>
+<span class="cstat-no" title="statement not covered" >    uint256[] memory _balances = new uint256[](length);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TwabLib.Account storage twabContext = userTwabs[_user];</span>
+<span class="cstat-no" title="statement not covered" >    TwabLib.AccountDetails memory details = twabContext.details;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      _balances[i] = TwabLib.getBalanceAt(</span>
+        twabContext.twabs,
+        details,
+        uint32(_targets[i]),
+        uint32(block.timestamp)
+      );
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return _balances;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getTotalSupplyAt(uint64 _target) external view returns (uint256) {</span>
+<span class="cstat-no" title="statement not covered" >    return</span>
+      TwabLib.getBalanceAt(
+        totalSupplyTwab.twabs,
+        totalSupplyTwab.details,
+        uint32(_target),
+        uint32(block.timestamp)
+      );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getTotalSuppliesAt(uint64[] calldata _targets) external view returns (uint256[] memory) {</span>
+<span class="cstat-no" title="statement not covered" >    uint256 length = _targets.length;</span>
+<span class="cstat-no" title="statement not covered" >    uint256[] memory totalSupplies = new uint256[](length);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TwabLib.AccountDetails memory details = totalSupplyTwab.details;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      totalSupplies[i] = TwabLib.getBalanceAt(</span>
+        totalSupplyTwab.twabs,
+        details,
+        uint32(_targets[i]),
+        uint32(block.timestamp)
+      );
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return totalSupplies;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function delegateOf(address _user) external view returns (address) {</span>
+<span class="cstat-no" title="statement not covered" >    return delegates[_user];</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function delegateWithSignature(</span>
+    address _user,
+    address _newDelegate,
+    uint256 _deadline,
+    uint8 _v,
+    bytes32 _r,
+    bytes32 _s
+  ) external virtual {
+<span class="cstat-no" title="statement not covered" >    require(block.timestamp &lt;= _deadline, "Ticket/delegate-expired-deadline")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    bytes32 structHash = keccak256(</span>
+      abi.encode(_DELEGATE_TYPEHASH, _user, _newDelegate, _useNonce(_user), _deadline)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    bytes32 hash = _hashTypedDataV4(structHash);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    address signer = ECDSA.recover(hash, _v, _r, _s);</span>
+<span class="cstat-no" title="statement not covered" >    require(signer == _user, "Ticket/delegate-invalid-signature")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _delegate(_user, _newDelegate)</span>;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function delegate(address _to) external virtual {</span>
+<span class="cstat-no" title="statement not covered" >    _delegate(msg.sender, _to)</span>;
+  }
+&nbsp;
+  /* ===================================================================================== */
+  /* External Functions                                                                    */
+  /* ===================================================================================== */
+&nbsp;
+  /// @notice Delegates a users chance to another
+  /// @param _user The user whose balance should be delegated
+  /// @param _to The delegate
+<span class="fstat-no" title="function not covered" >  function _delegate(address _user, address _to) internal {</span>
+<span class="cstat-no" title="statement not covered" >    uint256 balance = balanceOf(_user);</span>
+<span class="cstat-no" title="statement not covered" >    address currentDelegate = delegates[_user];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (currentDelegate == _to) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    delegates[_user] = _to</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _transferTwab(currentDelegate, _to, balance)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    emit Delegated(_user, _to);</span>
+  }
+&nbsp;
+  /**
+   * @notice Retrieves the average balances held by a user for a given time frame.
+   * @param _account The user whose balance is checked.
+   * @param _startTimes The start time of the time frame.
+   * @param _endTimes The end time of the time frame.
+   * @return The average balance that the user held during the time frame.
+   */
+<span class="fstat-no" title="function not covered" >  function _getAverageBalancesBetween(</span>
+    TwabLib.Account storage _account,
+    uint64[] calldata _startTimes,
+    uint64[] calldata _endTimes
+  ) internal view returns (uint256[] memory) {
+<span class="cstat-no" title="statement not covered" >    uint256 startTimesLength = _startTimes.length;</span>
+<span class="cstat-no" title="statement not covered" >    require(startTimesLength == _endTimes.length, "Ticket/start-end-times-length-match")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TwabLib.AccountDetails memory accountDetails = _account.details;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    uint256[] memory averageBalances = new uint256[](startTimesLength);</span>
+<span class="cstat-no" title="statement not covered" >    uint32 currentTimestamp = uint32(block.timestamp);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; startTimesLength; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      averageBalances[i] = TwabLib.getAverageBalanceBetween(</span>
+        _account.twabs,
+        accountDetails,
+        uint32(_startTimes[i]),
+        uint32(_endTimes[i]),
+        currentTimestamp
+      );
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return averageBalances;</span>
+  }
+&nbsp;
+  /// @notice Transfers the given TWAB balance from one user to another
+  /// @param _from The user to transfer the balance from.  May be zero in the event of a mint.
+  /// @param _to The user to transfer the balance to.  May be zero in the event of a burn.
+  /// @param _amount The balance that is being transferred.
+<span class="fstat-no" title="function not covered" >  function _transferTwab(</span>
+    address _from,
+    address _to,
+    uint256 _amount
+  ) internal {
+    // If we are transferring tokens from a delegated account to an undelegated account
+<span class="cstat-no" title="statement not covered" >    if (_from != address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >      _decreaseUserTwab(_from, _amount)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (_to == address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >        _decreaseTotalSupplyTwab(_amount)</span>;
+      }
+    }
+&nbsp;
+    // If we are transferring tokens from an undelegated account to a delegated account
+<span class="cstat-no" title="statement not covered" >    if (_to != address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >      _increaseUserTwab(_to, _amount)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (_from == address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >        _increaseTotalSupplyTwab(_amount)</span>;
+      }
+    }
+  }
+&nbsp;
+  /**
+   * @notice Increase `_to` TWAB balance.
+   * @param _to Address of the delegate.
+   * @param _amount Amount of tokens to be added to `_to` TWAB balance.
+   */
+<span class="fstat-no" title="function not covered" >  function _increaseUserTwab(address _to, uint256 _amount) internal {</span>
+<span class="cstat-no" title="statement not covered" >    if (_amount == 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TwabLib.Account storage _account = userTwabs[_to];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    (</span>
+      TwabLib.AccountDetails memory accountDetails,
+      ObservationLib.Observation memory twab,
+      bool isNew
+    ) = TwabLib.increaseBalance(_account, _amount.toUint208(), uint32(block.timestamp));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _account.details = accountDetails</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (isNew) {</span>
+<span class="cstat-no" title="statement not covered" >      emit NewUserTwab(_to, twab);</span>
+    }
+  }
+&nbsp;
+  /**
+   * @notice Decrease `_to` TWAB balance.
+   * @param _to Address of the delegate.
+   * @param _amount Amount of tokens to be added to `_to` TWAB balance.
+   */
+<span class="fstat-no" title="function not covered" >  function _decreaseUserTwab(address _to, uint256 _amount) internal {</span>
+<span class="cstat-no" title="statement not covered" >    if (_amount == 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    TwabLib.Account storage _account = userTwabs[_to];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    (</span>
+      TwabLib.AccountDetails memory accountDetails,
+      ObservationLib.Observation memory twab,
+      bool isNew
+    ) = TwabLib.decreaseBalance(
+        _account,
+        _amount.toUint208(),
+        "Ticket/twab-burn-lt-balance",
+        uint32(block.timestamp)
+      );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _account.details = accountDetails</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (isNew) {</span>
+<span class="cstat-no" title="statement not covered" >      emit NewUserTwab(_to, twab);</span>
+    }
+  }
+&nbsp;
+  /// @notice Decreases the total supply twab.  Should be called anytime a balance moves from delegated to undelegated
+  /// @param _amount The amount to decrease the total by
+<span class="fstat-no" title="function not covered" >  function _decreaseTotalSupplyTwab(uint256 _amount) internal {</span>
+<span class="cstat-no" title="statement not covered" >    if (_amount == 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    (</span>
+      TwabLib.AccountDetails memory accountDetails,
+      ObservationLib.Observation memory tsTwab,
+      bool tsIsNew
+    ) = TwabLib.decreaseBalance(
+        totalSupplyTwab,
+        _amount.toUint208(),
+        "Ticket/burn-amount-exceeds-total-supply-twab",
+        uint32(block.timestamp)
+      );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    totalSupplyTwab.details = accountDetails</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (tsIsNew) {</span>
+<span class="cstat-no" title="statement not covered" >      emit NewTotalSupplyTwab(tsTwab);</span>
+    }
+  }
+&nbsp;
+  /// @notice Increases the total supply twab.  Should be called anytime a balance moves from undelegated to delegated
+  /// @param _amount The amount to increase the total by
+<span class="fstat-no" title="function not covered" >  function _increaseTotalSupplyTwab(uint256 _amount) internal {</span>
+<span class="cstat-no" title="statement not covered" >    if (_amount == 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    (</span>
+      TwabLib.AccountDetails memory accountDetails,
+      ObservationLib.Observation memory _totalSupply,
+      bool tsIsNew
+    ) = TwabLib.increaseBalance(totalSupplyTwab, _amount.toUint208(), uint32(block.timestamp));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    totalSupplyTwab.details = accountDetails</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (tsIsNew) {</span>
+<span class="cstat-no" title="statement not covered" >      emit NewTotalSupplyTwab(_totalSupply);</span>
+    }
+  }
+&nbsp;
+  // @inheritdoc ERC20
+<span class="fstat-no" title="function not covered" >  function _beforeTokenTransfer(</span>
+    address _from,
+    address _to,
+    uint256 _amount
+  ) internal override {
+<span class="cstat-no" title="statement not covered" >    if (_from == _to) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    address _fromDelegate;</span>
+<span class="cstat-no" title="statement not covered" >    if (_from != address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >      _fromDelegate = delegates[_from]</span>;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    address _toDelegate;</span>
+<span class="cstat-no" title="statement not covered" >    if (_to != address(0)) {</span>
+<span class="cstat-no" title="statement not covered" >      _toDelegate = delegates[_to]</span>;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _transferTwab(_fromDelegate, _toDelegate, _amount)</span>;
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 19 2022 13:44:26 GMT-0600 (Mountain Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+[35m@web3-citizen/core-sol:compile[0m: cache hit, replaying output [2md12e67d47f33c015[0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m> @web3-citizen/core-sol@0.0.0-beta.1 compile /Users/kames/workspace/soulcialites/web3-citizen/contracts/core-sol
+[35m@web3-citizen/core-sol:compile: [0m> hardhat --show-stack-traces --max-memory 8192 compile
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mSolidity 0.8.15 is not fully supported yet. You can still use Hardhat, but some features, like stack traces, might not work correctly.
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mLearn more at https://hardhat.org/hardhat-runner/docs/reference/solidity-support
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+[35m@web3-citizen/core-sol:compile: [0m--> contracts/interfaces/ENS/IReverseRegistrar.sol
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: This declaration has the same name as another declaration.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:33:59:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m33 |   function count(address _address) external view returns (uint256 count) {
+[35m@web3-citizen/core-sol:compile: [0m   |                                                           ^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0mNote: The other declaration is here:
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:33:3:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m33 |   function count(address _address) external view returns (uint256 count) {
+[35m@web3-citizen/core-sol:compile: [0m   |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: This declaration shadows an existing declaration.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:58:6:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m58 |     (string memory name, bytes32 node, ITextResolver resolver) = _resolveOwner(_address);
+[35m@web3-citizen/core-sol:compile: [0m   |      ^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0mNote: The shadowed declaration is here:
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:54:7:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m54 |       string memory name,
+[35m@web3-citizen/core-sol:compile: [0m   |       ^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: This declaration shadows an existing declaration.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:58:26:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m58 |     (string memory name, bytes32 node, ITextResolver resolver) = _resolveOwner(_address);
+[35m@web3-citizen/core-sol:compile: [0m   |                          ^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0mNote: The shadowed declaration is here:
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:53:7:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m53 |       bytes32 node,
+[35m@web3-citizen/core-sol:compile: [0m   |       ^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: This declaration shadows an existing declaration.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:58:40:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m58 |     (string memory name, bytes32 node, ITextResolver resolver) = _resolveOwner(_address);
+[35m@web3-citizen/core-sol:compile: [0m   |                                        ^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0mNote: The shadowed declaration is here:
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:55:7:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m55 |       address resolver
+[35m@web3-citizen/core-sol:compile: [0m   |       ^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: This declaration shadows an existing declaration.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Metadata.sol:29:3:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m29 |   struct Metadata {
+[35m@web3-citizen/core-sol:compile: [0m   |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0mNote: The shadowed declaration is here:
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Metadata.sol:17:1:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m17 | contract Metadata is Ownable {
+[35m@web3-citizen/core-sol:compile: [0m   | ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:34:6:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m34 |     (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
+[35m@web3-citizen/core-sol:compile: [0m   |      ^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:35:29:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m35 |     (string[] memory keys_, string[] memory values_) = _fetchNodeTextFields(traitKeys, node_, res_);
+[35m@web3-citizen/core-sol:compile: [0m   |                             ^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Data/SourceENS.sol:44:6:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m44 |     (string memory alias_, bytes32 node_, ITextResolver res_) = _resolveOwner(_address);
+[35m@web3-citizen/core-sol:compile: [0m   |      ^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/Delegatable.sol:17:82:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m17 |   function invoke(SignedInvocation[] calldata signedInvocations) public returns (bool success) {
+[35m@web3-citizen/core-sol:compile: [0m   |                                                                                  ^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/AbstractRevocationEnforcer.sol:12:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m12 |     bytes calldata terms,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/AbstractRevocationEnforcer.sol:13:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m13 |     Transaction calldata transaction,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/AllowedMethods.sol:10:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m10 |     bytes32 delegationHash
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/ERC20Allowance.sol:16:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m16 |     bytes4 targetSig = bytes4(transaction.data[0:4]);
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/ERC20Allowance.sol:17:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m17 |     bytes4 allowedSig = bytes4(0xa9059cbb);
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused local variable.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/ERC20Allowance.sol:20:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m20 |     IERC20 token = IERC20(transaction.to);
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m --> contracts/Delegatable/caveat-enforcers/ExpirationEnforcer.sol:9:5:
+[35m@web3-citizen/core-sol:compile: [0m  |
+[35m@web3-citizen/core-sol:compile: [0m9 |     Transaction calldata _transaction,
+[35m@web3-citizen/core-sol:compile: [0m  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/ExpirationEnforcer.sol:10:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m10 |     bytes32 _delegationHash
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/LimitedCalls.sol:11:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m11 |     Transaction calldata _transaction,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/RevocationEnforcer.sol:11:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m11 |     bytes calldata terms,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/RevocationEnforcer.sol:12:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m12 |     Transaction calldata transaction,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/RevokableOwnableDelegatable.sol:15:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m15 |     bytes calldata terms,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/twab/LiquidatorLib.sol:22:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m22 |     uint32 _swapMultiplier,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/twab/LiquidatorLib.sol:23:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m23 |     uint32 _liquidityFraction
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/twab/LiquidatorLib.sol:35:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m35 |     uint32 _swapMultiplier,
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/twab/LiquidatorLib.sol:36:5:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m36 |     uint32 _liquidityFraction
+[35m@web3-citizen/core-sol:compile: [0m   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Function state mutability can be restricted to pure
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/SVGColor.sol:42:3:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m42 |   function autoLinearGradient(
+[35m@web3-citizen/core-sol:compile: [0m   |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Function state mutability can be restricted to pure
+[35m@web3-citizen/core-sol:compile: [0m   --> contracts/Metadata.sol:367:3:
+[35m@web3-citizen/core-sol:compile: [0m    |
+[35m@web3-citizen/core-sol:compile: [0m367 |   function _appendTrait(string memory _traits, string memory _traitAppending)
+[35m@web3-citizen/core-sol:compile: [0m    |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Function state mutability can be restricted to pure
+[35m@web3-citizen/core-sol:compile: [0m   --> contracts/Metadata.sol:375:3:
+[35m@web3-citizen/core-sol:compile: [0m    |
+[35m@web3-citizen/core-sol:compile: [0m375 |   function _generateTrait(string memory _key, string memory _value)
+[35m@web3-citizen/core-sol:compile: [0m    |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Function state mutability can be restricted to view
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/Delegatable/caveat-enforcers/AbstractRevocationEnforcer.sol:11:3:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m11 |   function enforceCaveat(
+[35m@web3-citizen/core-sol:compile: [0m   |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mWarning: Function state mutability can be restricted to pure
+[35m@web3-citizen/core-sol:compile: [0m  --> contracts/libraries/twab/LiquidatorLib.sol:55:3:
+[35m@web3-citizen/core-sol:compile: [0m   |
+[35m@web3-citizen/core-sol:compile: [0m55 |   function _finishSwap(
+[35m@web3-citizen/core-sol:compile: [0m   |   ^ (Relevant source part starts here and spans across multiple lines).
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0m
+[35m@web3-citizen/core-sol:compile: [0mGenerating typings for: 64 artifacts in dir: types for target: ethers-v5
+[35m@web3-citizen/core-sol:compile: [0mSuccessfully generated 89 typings!
+[35m@web3-citizen/core-sol:compile: [0mCompiled 64 Solidity files successfully

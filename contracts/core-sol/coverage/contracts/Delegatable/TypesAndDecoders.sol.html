@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Delegatable/TypesAndDecoders.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/Delegatable/</a> TypesAndDecoders.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/37</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+import "./ECRecovery.sol";
+&nbsp;
+// BEGIN EIP712 AUTOGENERATED SETUP
+struct EIP712Domain {
+  string name;
+  string version;
+  uint256 chainId;
+  address verifyingContract;
+}
+&nbsp;
+bytes32 constant EIP712DOMAIN_TYPEHASH = keccak256(
+  "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
+);
+&nbsp;
+struct Invocation {
+  Transaction transaction;
+  SignedDelegation[] authority;
+}
+&nbsp;
+bytes32 constant INVOCATION_TYPEHASH = keccak256(
+  "Invocation(Transaction transaction,SignedDelegation[] authority)Caveat(address enforcer,bytes terms)Delegation(address delegate,bytes32 authority,Caveat[] caveats)SignedDelegation(Delegation delegation,bytes signature)Transaction(address to,uint256 gasLimit,bytes data)"
+);
+&nbsp;
+struct Invocations {
+  Invocation[] batch;
+  ReplayProtection replayProtection;
+}
+&nbsp;
+bytes32 constant INVOCATIONS_TYPEHASH = keccak256(
+  "Invocations(Invocation[] batch,ReplayProtection replayProtection)Caveat(address enforcer,bytes terms)Delegation(address delegate,bytes32 authority,Caveat[] caveats)Invocation(Transaction transaction,SignedDelegation[] authority)ReplayProtection(uint nonce,uint queue)SignedDelegation(Delegation delegation,bytes signature)Transaction(address to,uint256 gasLimit,bytes data)"
+);
+&nbsp;
+struct SignedInvocation {
+  Invocations invocations;
+  bytes signature;
+}
+&nbsp;
+bytes32 constant SIGNEDINVOCATION_TYPEHASH = keccak256(
+  "SignedInvocation(Invocations invocations,bytes signature)Caveat(address enforcer,bytes terms)Delegation(address delegate,bytes32 authority,Caveat[] caveats)Invocation(Transaction transaction,SignedDelegation[] authority)Invocations(Invocation[] batch,ReplayProtection replayProtection)ReplayProtection(uint nonce,uint queue)SignedDelegation(Delegation delegation,bytes signature)Transaction(address to,uint256 gasLimit,bytes data)"
+);
+&nbsp;
+struct Transaction {
+  address to;
+  uint256 gasLimit;
+  bytes data;
+}
+&nbsp;
+bytes32 constant TRANSACTION_TYPEHASH = keccak256(
+  "Transaction(address to,uint256 gasLimit,bytes data)"
+);
+&nbsp;
+struct ReplayProtection {
+  uint256 nonce;
+  uint256 queue;
+}
+&nbsp;
+bytes32 constant REPLAYPROTECTION_TYPEHASH = keccak256("ReplayProtection(uint nonce,uint queue)");
+&nbsp;
+struct Delegation {
+  address delegate;
+  bytes32 authority;
+  Caveat[] caveats;
+}
+&nbsp;
+bytes32 constant DELEGATION_TYPEHASH = keccak256(
+  "Delegation(address delegate,bytes32 authority,Caveat[] caveats)Caveat(address enforcer,bytes terms)"
+);
+&nbsp;
+struct Caveat {
+  address enforcer;
+  bytes terms;
+}
+&nbsp;
+bytes32 constant CAVEAT_TYPEHASH = keccak256("Caveat(address enforcer,bytes terms)");
+&nbsp;
+struct SignedDelegation {
+  Delegation delegation;
+  bytes signature;
+}
+&nbsp;
+bytes32 constant SIGNEDDELEGATION_TYPEHASH = keccak256(
+  "SignedDelegation(Delegation delegation,bytes signature)Caveat(address enforcer,bytes terms)Delegation(address delegate,bytes32 authority,Caveat[] caveats)"
+);
+&nbsp;
+struct IntentionToRevoke {
+  bytes32 delegationHash;
+}
+&nbsp;
+bytes32 constant INTENTIONTOREVOKE_TYPEHASH = keccak256(
+  "IntentionToRevoke(bytes32 delegationHash)"
+);
+&nbsp;
+struct SignedIntentionToRevoke {
+  bytes signature;
+  IntentionToRevoke intentionToRevoke;
+}
+&nbsp;
+bytes32 constant SIGNEDINTENTIONTOREVOKE_TYPEHASH = keccak256(
+  "SignedIntentionToRevoke(bytes signature,IntentionToRevoke intentionToRevoke)IntentionToRevoke(bytes32 delegationHash)"
+);
+&nbsp;
+// END EIP712 AUTOGENERATED SETUP
+&nbsp;
+contract EIP712Decoder is ECRecovery {
+  // BEGIN EIP712 AUTOGENERATED BODY. See scripts/typesToCode.js
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_EIP712DOMAIN_PACKETHASH(EIP712Domain memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      EIP712DOMAIN_TYPEHASH,
+      _input.name,
+      _input.version,
+      _input.chainId,
+      _input.verifyingContract
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_INVOCATION_PACKETHASH(Invocation memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      INVOCATION_TYPEHASH,
+      GET_TRANSACTION_PACKETHASH(_input.transaction),
+      GET_SIGNEDDELEGATION_ARRAY_PACKETHASH(_input.authority)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_SIGNEDDELEGATION_ARRAY_PACKETHASH(SignedDelegation[] memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded;</span>
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; _input.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      encoded = bytes.concat(encoded, GET_SIGNEDDELEGATION_PACKETHASH(_input[i]))</span>;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    bytes32 hash = keccak256(encoded);</span>
+<span class="cstat-no" title="statement not covered" >    return hash;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_INVOCATIONS_PACKETHASH(Invocations memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      INVOCATIONS_TYPEHASH,
+      GET_INVOCATION_ARRAY_PACKETHASH(_input.batch),
+      GET_REPLAYPROTECTION_PACKETHASH(_input.replayProtection)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_INVOCATION_ARRAY_PACKETHASH(Invocation[] memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded;</span>
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; _input.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      encoded = bytes.concat(encoded, GET_INVOCATION_PACKETHASH(_input[i]))</span>;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    bytes32 hash = keccak256(encoded);</span>
+<span class="cstat-no" title="statement not covered" >    return hash;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_SIGNEDINVOCATION_PACKETHASH(SignedInvocation memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      SIGNEDINVOCATION_TYPEHASH,
+      GET_INVOCATIONS_PACKETHASH(_input.invocations),
+      keccak256(_input.signature)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_TRANSACTION_PACKETHASH(Transaction memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      TRANSACTION_TYPEHASH,
+      _input.to,
+      _input.gasLimit,
+      keccak256(_input.data)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_REPLAYPROTECTION_PACKETHASH(ReplayProtection memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(REPLAYPROTECTION_TYPEHASH, _input.nonce, _input.queue);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_DELEGATION_PACKETHASH(Delegation memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      DELEGATION_TYPEHASH,
+      _input.delegate,
+      _input.authority,
+      GET_CAVEAT_ARRAY_PACKETHASH(_input.caveats)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_CAVEAT_ARRAY_PACKETHASH(Caveat[] memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded;</span>
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; _input.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      encoded = bytes.concat(encoded, GET_CAVEAT_PACKETHASH(_input[i]))</span>;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    bytes32 hash = keccak256(encoded);</span>
+<span class="cstat-no" title="statement not covered" >    return hash;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_CAVEAT_PACKETHASH(Caveat memory _input) public pure returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(CAVEAT_TYPEHASH, _input.enforcer, keccak256(_input.terms));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_SIGNEDDELEGATION_PACKETHASH(SignedDelegation memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      SIGNEDDELEGATION_TYPEHASH,
+      GET_DELEGATION_PACKETHASH(_input.delegation),
+      keccak256(_input.signature)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_INTENTIONTOREVOKE_PACKETHASH(IntentionToRevoke memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(INTENTIONTOREVOKE_TYPEHASH, _input.delegationHash);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function GET_SIGNEDINTENTIONTOREVOKE_PACKETHASH(SignedIntentionToRevoke memory _input)</span>
+    public
+    pure
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      SIGNEDINTENTIONTOREVOKE_TYPEHASH,
+      keccak256(_input.signature),
+      GET_INTENTIONTOREVOKE_PACKETHASH(_input.intentionToRevoke)
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+  // END EIP712 AUTOGENERATED BODY
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 19 2022 13:44:26 GMT-0600 (Mountain Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

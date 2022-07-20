@@ -1,0 +1,6 @@
+[32m@turbo-eth/core-wagmi:test[0m: cache hit, replaying output [2m2feb701364f2a3cf[0m
+[32m@turbo-eth/core-wagmi:test: [0m
+[32m@turbo-eth/core-wagmi:test: [0m> @turbo-eth/core-wagmi@0.0.0-beta.0 test /Users/kames/workspace/soulcialites/web3-citizen/packages/core-wagmi
+[32m@turbo-eth/core-wagmi:test: [0m> tsdx test --passWithNoTests
+[32m@turbo-eth/core-wagmi:test: [0m
+[32m@turbo-eth/core-wagmi:test: [0mNo tests found, exiting with code 0

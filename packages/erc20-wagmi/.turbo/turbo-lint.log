@@ -1,0 +1,5 @@
+@turbo-eth/erc20-wagmi:lint: cache hit, replaying output [2md8bb3c726cb806d6[0m
+[35m@turbo-eth/erc20-wagmi:lint: [0m
+[35m@turbo-eth/erc20-wagmi:lint: [0m> @turbo-eth/erc20-wagmi@0.0.0-beta.0 lint /Users/kames/workspace/kames/code/turbo-eth/packages/erc20-wagmi
+[35m@turbo-eth/erc20-wagmi:lint: [0m> tsdx lint
+[35m@turbo-eth/erc20-wagmi:lint: [0m

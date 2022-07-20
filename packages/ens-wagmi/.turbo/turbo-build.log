@@ -1,0 +1,20 @@
+[34m@turbo-eth/ens-wagmi:build[0m: cache hit, replaying output [2m91c41d966991219c[0m
+[34m@turbo-eth/ens-wagmi:build: [0m
+[34m@turbo-eth/ens-wagmi:build: [0m> @turbo-eth/ens-wagmi@0.0.0-beta.0 build /Users/kames/workspace/soulcialites/web3-citizen/packages/ens-wagmi
+[34m@turbo-eth/ens-wagmi:build: [0m> tsdx build
+[34m@turbo-eth/ens-wagmi:build: [0m
+[34m@turbo-eth/ens-wagmi:build: [0m@rollup/plugin-replace: 'preventAssignment' currently defaults to false. It is recommended to set this option to `true`, as the next major version will default this option to `true`.
+[34m@turbo-eth/ens-wagmi:build: [0m@rollup/plugin-replace: 'preventAssignment' currently defaults to false. It is recommended to set this option to `true`, as the next major version will default this option to `true`.
+[34m@turbo-eth/ens-wagmi:build: [0m⠙ Creating entry file  99%                 781ms, estimated 643ms
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G✓ Creating entry file 783 ms
+[34m@turbo-eth/ens-wagmi:build: [0m⠙ Building modules  36%                 0.6s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠹ Building modules  46%                 0.8s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠸ Building modules  74%                 1.3s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠼ Building modules  99%                 2.2s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠴ Building modules  99%                 2.3s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠦ Building modules  99%                 2.5s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠧ Building modules  99%                 2.7s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠇ Building modules  99%                 2.9s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠏ Building modules  99%                 3.0s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G⠋ Building modules  99%                 3.1s, estimated 1.8s
+[34m@turbo-eth/ens-wagmi:build: [0m[2K[1A[2K[G✓ Building modules 3.1 secs

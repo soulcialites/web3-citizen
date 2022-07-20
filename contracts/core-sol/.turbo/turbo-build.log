@@ -1,0 +1,5 @@
+[35m@web3-citizen/core-sol:build[0m: cache hit, replaying output [2m191efb532c9d7ce3[0m
+[35m@web3-citizen/core-sol:build: [0m
+[35m@web3-citizen/core-sol:build: [0m> @web3-citizen/core-sol@0.0.0-beta.1 build /Users/kames/workspace/soulcialites/web3-citizen/contracts/core-sol
+[35m@web3-citizen/core-sol:build: [0m> hardhat --show-stack-traces --max-memory 8192 compile
+[35m@web3-citizen/core-sol:build: [0m

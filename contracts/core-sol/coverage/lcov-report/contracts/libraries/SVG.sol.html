@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/libraries/SVG.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/libraries/</a> SVG.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/29</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
+import "@openzeppelin/contracts/utils/Strings.sol";
+import "./SVGUtils.sol";
+&nbsp;
+/**
+ * @title svg
+ * @author Kames Geraghty
+ * @notice SVG construction library using web-like API.
+ * @dev Original code from w1nt3r-eth/hot-chain-svg (https://github.com/w1nt3r-eth/hot-chain-svg)
+ */
+library svg {
+  using Strings for uint256;
+  using Strings for uint8;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function g(string memory _props, string memory _children) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("g", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function path(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("path", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function text(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("text", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function line(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("line", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function circle(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("circle", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function circle(string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("circle", _props);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function rect(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("rect", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function rect(string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("rect", _props);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function stop(string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("stop", _props);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function filter(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("filter", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function defs(string memory _children) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("defs", "", _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function cdata(string memory _content) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return string.concat("&lt;![CDATA[", _content, "]]&gt;");</span>
+  }
+&nbsp;
+  /* GRADIENTS */
+<span class="fstat-no" title="function not covered" >  function radialGradient(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("radialGradient", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function linearGradient(string memory _props, string memory _children)</span>
+    internal
+    pure
+    returns (string memory)
+  {
+<span class="cstat-no" title="statement not covered" >    return el("linearGradient", _props, _children);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function gradientStop(</span>
+    uint256 offset,
+    string memory stopColor,
+    string memory _props
+  ) internal pure returns (string memory) {
+<span class="cstat-no" title="statement not covered" >    return</span>
+      el(
+        "stop",
+        string.concat(
+          prop("stop-color", stopColor),
+          " ",
+          prop("offset", string.concat(svgUtils.uint2str(offset), "%")),
+          " ",
+          _props
+        )
+      );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function animateTransform(string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("animateTransform", _props);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function image(string memory _href, string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return el("image", string.concat(prop("href", _href), " ", _props));</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function start() internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return</span>
+      string.concat(
+        '&lt;svg width="400" height="400" style="background:#541563" ',
+        'viewBox="0 0 400 400" ',
+        'xmlns="http://www.w3.org/2000/svg" ',
+        "&gt;"
+      );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function end() internal pure returns (bytes memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return ("&lt;/svg&gt;");</span>
+  }
+&nbsp;
+  /* COMMON */
+  // A generic element, can be used to construct any SVG (or HTML) element
+<span class="fstat-no" title="function not covered" >  function el(</span>
+    string memory _tag,
+    string memory _props,
+    string memory _children
+  ) internal pure returns (string memory) {
+<span class="cstat-no" title="statement not covered" >    return string.concat("&lt;", _tag, " ", _props, "&gt;", _children, "&lt;/", _tag, "&gt;");</span>
+  }
+&nbsp;
+  // A generic element, can be used to construct any SVG (or HTML) element without children
+<span class="fstat-no" title="function not covered" >  function el(string memory _tag, string memory _props) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return string.concat("&lt;", _tag, " ", _props, "/&gt;");</span>
+  }
+&nbsp;
+  // an SVG attribute
+<span class="fstat-no" title="function not covered" >  function prop(string memory _key, string memory _val) internal pure returns (string memory) {</span>
+<span class="cstat-no" title="statement not covered" >    return string.concat(_key, "=", '"', _val, '" ');</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function stringifyIntSet(</span>
+    bytes memory _data,
+    uint256 _offset,
+    uint256 _len
+  ) public pure returns (bytes memory) {
+<span class="cstat-no" title="statement not covered" >    bytes memory res;</span>
+<span class="cstat-no" title="statement not covered" >    require(_data.length &gt;= _offset + _len, "Out of range")</span>;
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = _offset; i &lt; _offset + _len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      res = abi.encodePacked(res, byte2uint8(_data, i).toString(), " ")</span>;
+    }
+<span class="cstat-no" title="statement not covered" >    return res;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function byte2uint8(bytes memory _data, uint256 _offset) public pure returns (uint8) {</span>
+<span class="cstat-no" title="statement not covered" >    require(_data.length &gt; _offset, "Out of range")</span>;
+<span class="cstat-no" title="statement not covered" >    return uint8(_data[_offset]);</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 19 2022 13:44:26 GMT-0600 (Mountain Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

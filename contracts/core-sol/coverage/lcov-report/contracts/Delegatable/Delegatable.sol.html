@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Delegatable/Delegatable.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/Delegatable/</a> Delegatable.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/60</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/62</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+import "./TypesAndDecoders.sol";
+import "./caveat-enforcers/CaveatEnforcer.sol";
+&nbsp;
+abstract contract Delegatable is EIP712Decoder {
+  event DelegationTriggered(address principal, address indexed agent);
+&nbsp;
+  bytes32 public immutable domainHash;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  constructor(string memory contractName, string memory version) {</span>
+<span class="cstat-no" title="statement not covered" >    domainHash = getEIP712DomainHash(contractName, version, block.chainid, address(this))</span>;
+  }
+&nbsp;
+  // Allows external signers to submit batches of signed invocations for processing.
+<span class="fstat-no" title="function not covered" >  function invoke(SignedInvocation[] calldata signedInvocations) public returns (bool success) {</span>
+<span class="cstat-no" title="statement not covered" >    for (uint256 i = 0; i &lt; signedInvocations.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      SignedInvocation calldata signedInvocation = signedInvocations[i];</span>
+<span class="cstat-no" title="statement not covered" >      address invocationSigner = verifyInvocationSignature(signedInvocation);</span>
+<span class="cstat-no" title="statement not covered" >      enforceReplayProtection(invocationSigner, signedInvocations[i].invocations.replayProtection)</span>;
+<span class="cstat-no" title="statement not covered" >      _invoke(signedInvocation.invocations.batch, invocationSigner)</span>;
+    }
+  }
+&nbsp;
+  // Allows external contracts to submit batches of invocations for processing.
+<span class="fstat-no" title="function not covered" >  function contractInvoke(Invocation[] calldata batch) public returns (bool) {</span>
+<span class="cstat-no" title="statement not covered" >    return _invoke(batch, msg.sender);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function _invoke(Invocation[] calldata batch, address sender) private returns (bool success) {</span>
+<span class="cstat-no" title="statement not covered" >    for (uint256 x = 0; x &lt; batch.length; x++) {</span>
+<span class="cstat-no" title="statement not covered" >      Invocation memory invocation = batch[x];</span>
+<span class="cstat-no" title="statement not covered" >      address intendedSender;</span>
+<span class="cstat-no" title="statement not covered" >      address canGrant;</span>
+&nbsp;
+      // If there are no delegations, this invocation comes from the signer
+<span class="cstat-no" title="statement not covered" >      if (invocation.authority.length == 0) {</span>
+<span class="cstat-no" title="statement not covered" >        intendedSender = sender</span>;
+<span class="cstat-no" title="statement not covered" >        canGrant = intendedSender</span>;
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      bytes32 authHash = 0x0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      for (uint256 d = 0; d &lt; invocation.authority.length; d++) {</span>
+<span class="cstat-no" title="statement not covered" >        SignedDelegation memory signedDelegation = invocation.authority[d];</span>
+<span class="cstat-no" title="statement not covered" >        address delegationSigner = verifyDelegationSignature(signedDelegation);</span>
+&nbsp;
+        // The following statement was add by Kames. Without it won't enforce the first invocation?
+        // TODO: Needs more unit tests
+<span class="cstat-no" title="statement not covered" >        require(</span>
+          sender == delegationSigner || intendedSender == delegationSigner,
+          "invalid-signature"
+        );
+&nbsp;
+        // Implied sending account is the signer of the first delegation
+<span class="cstat-no" title="statement not covered" >        if (d == 0) {</span>
+<span class="cstat-no" title="statement not covered" >          intendedSender = delegationSigner</span>;
+<span class="cstat-no" title="statement not covered" >          canGrant = intendedSender</span>;
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        require(delegationSigner == canGrant, "Delegation signer does not match required signer")</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Delegation memory delegation = signedDelegation.delegation;</span>
+<span class="cstat-no" title="statement not covered" >        require(</span>
+          delegation.authority == authHash,
+          "Delegation authority does not match previous delegation"
+        );
+&nbsp;
+        // TODO: maybe delegations should have replay protection, at least a nonce (non order dependent),
+        // otherwise once it's revoked, you can't give the exact same permission again.
+<span class="cstat-no" title="statement not covered" >        bytes32 delegationHash = GET_SIGNEDDELEGATION_PACKETHASH(signedDelegation);</span>
+&nbsp;
+        // Each delegation can include any number of caveats.
+        // A caveat is any condition that may reject a proposed transaction.
+        // The caveats specify an external contract that is passed the proposed tx,
+        // As well as some extra terms that are used to parameterize the enforcer.
+<span class="cstat-no" title="statement not covered" >        for (uint16 y = 0; y &lt; delegation.caveats.length; y++) {</span>
+<span class="cstat-no" title="statement not covered" >          CaveatEnforcer enforcer = CaveatEnforcer(delegation.caveats[y].enforcer);</span>
+<span class="cstat-no" title="statement not covered" >          bool caveatSuccess = enforcer.enforceCaveat(</span>
+            delegation.caveats[y].terms,
+            invocation.transaction,
+            delegationHash
+          );
+<span class="cstat-no" title="statement not covered" >          require(caveatSuccess, "Caveat rejected")</span>;
+        }
+&nbsp;
+        // Store the hash of this delegation in `authHash`
+        // That way the next delegation can be verified against it.
+<span class="cstat-no" title="statement not covered" >        authHash = delegationHash</span>;
+<span class="cstat-no" title="statement not covered" >        canGrant = delegation.delegate</span>;
+      }
+&nbsp;
+      // Here we perform the requested invocation.
+<span class="cstat-no" title="statement not covered" >      Transaction memory transaction = invocation.transaction;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      require(transaction.to == address(this), "Invocation target does not match")</span>;
+<span class="cstat-no" title="statement not covered" >      emit DelegationTriggered(intendedSender, sender);</span>
+<span class="cstat-no" title="statement not covered" >      success = execute(transaction.to, transaction.data, transaction.gasLimit, intendedSender)</span>;
+<span class="cstat-no" title="statement not covered" >      require(success, "Delegator execution failed")</span>;
+    }
+  }
+&nbsp;
+  mapping(address =&gt; mapping(uint256 =&gt; uint256)) public multiNonce;
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function enforceReplayProtection(address intendedSender, ReplayProtection memory protection)</span>
+    private
+  {
+<span class="cstat-no" title="statement not covered" >    uint256 queue = protection.queue;</span>
+<span class="cstat-no" title="statement not covered" >    uint256 nonce = protection.nonce;</span>
+<span class="cstat-no" title="statement not covered" >    require(</span>
+      nonce == (multiNonce[intendedSender][queue] + 1),
+      "One-at-a-time order enforced. Nonce2 is too small"
+    );
+<span class="cstat-no" title="statement not covered" >    multiNonce[intendedSender][queue] = nonce</span>;
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function execute(</span>
+    address to,
+    bytes memory data,
+    uint256 gasLimit,
+    address sender
+  ) internal returns (bool success) {
+<span class="cstat-no" title="statement not covered" >    bytes memory full = abi.encodePacked(data, sender);</span>
+    assembly {
+      success := call(gasLimit, to, 0, add(full, 0x20), mload(full), 0, 0)
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function verifyInvocationSignature(SignedInvocation memory signedInvocation)</span>
+    public
+    view
+    returns (address)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes32 sigHash = getInvocationsTypedDataHash(signedInvocation.invocations);</span>
+<span class="cstat-no" title="statement not covered" >    address recoveredSignatureSigner = recover(sigHash, signedInvocation.signature);</span>
+<span class="cstat-no" title="statement not covered" >    return recoveredSignatureSigner;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function verifyDelegationSignature(SignedDelegation memory signedDelegation)</span>
+    public
+    view
+    returns (address)
+  {
+<span class="cstat-no" title="statement not covered" >    Delegation memory delegation = signedDelegation.delegation;</span>
+<span class="cstat-no" title="statement not covered" >    bytes32 sigHash = getDelegationTypedDataHash(delegation);</span>
+<span class="cstat-no" title="statement not covered" >    address recoveredSignatureSigner = recover(sigHash, signedDelegation.signature);</span>
+<span class="cstat-no" title="statement not covered" >    return recoveredSignatureSigner;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getDelegationTypedDataHash(Delegation memory delegation) public view returns (bytes32) {</span>
+<span class="cstat-no" title="statement not covered" >    bytes32 digest = keccak256(</span>
+      abi.encodePacked("\x19\x01", domainHash, GET_DELEGATION_PACKETHASH(delegation))
+    );
+<span class="cstat-no" title="statement not covered" >    return digest;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getInvocationsTypedDataHash(Invocations memory invocations)</span>
+    public
+    view
+    returns (bytes32)
+  {
+<span class="cstat-no" title="statement not covered" >    bytes32 digest = keccak256(</span>
+      abi.encodePacked("\x19\x01", domainHash, GET_INVOCATIONS_PACKETHASH(invocations))
+    );
+<span class="cstat-no" title="statement not covered" >    return digest;</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function getEIP712DomainHash(</span>
+    string memory contractName,
+    string memory version,
+    uint256 chainId,
+    address verifyingContract
+  ) public pure returns (bytes32) {
+<span class="cstat-no" title="statement not covered" >    bytes memory encoded = abi.encode(</span>
+      EIP712DOMAIN_TYPEHASH,
+      keccak256(bytes(contractName)),
+      keccak256(bytes(version)),
+      chainId,
+      verifyingContract
+    );
+<span class="cstat-no" title="statement not covered" >    return keccak256(encoded);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  function _msgSender() internal view virtual returns (address sender) {</span>
+<span class="cstat-no" title="statement not covered" >    if (msg.sender == address(this)) {</span>
+<span class="cstat-no" title="statement not covered" >      bytes memory array = msg.data;</span>
+<span class="cstat-no" title="statement not covered" >      uint256 index = msg.data.length;</span>
+      assembly {
+        // Load the 32 bytes word from memory with the address on the lower 20 bytes, and mask those.
+        sender := and(mload(add(array, index)), 0xffffffffffffffffffffffffffffffffffffffff)
+      }
+    } else {
+<span class="cstat-no" title="statement not covered" >      sender = msg.sender</span>;
+    }
+<span class="cstat-no" title="statement not covered" >    return sender;</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 19 2022 13:44:26 GMT-0600 (Mountain Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

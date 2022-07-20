@@ -1,0 +1,241 @@
+[33m@web3-citizen/core-sol:chain[0m: cache hit, replaying output [2m9b2abbd7ce962ea3[0m
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0m> @web3-citizen/core-sol@0.0.0-beta.0 chain /Users/kames/workspace/soulcialites/web3-citizen/contracts/core-sol
+[33m@web3-citizen/core-sol:chain: [0m> hardhat node --network hardhat
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mNothing to compile
+[33m@web3-citizen/core-sol:chain: [0mNo need to generate any newer typings.
+[33m@web3-citizen/core-sol:chain: [0mdeploying "SVGColor" (tx: 0xd5d5a6072611ea7339a1fc1a4d96eda6d2e2d8c9b64836cf115ffc6686147c28)...: deployed at 0x5FbDB2315678afecb367f032d93F642f64180aa3 with 1200059 gas
+[33m@web3-citizen/core-sol:chain: [0mdeploying "ResolverENS" (tx: 0x88a23d7ecab2f7003fb4111374b5a96078a8c344b4e75686184828d6e0bb568c)...: deployed at 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 with 1063905 gas
+[33m@web3-citizen/core-sol:chain: [0mdeploying "CitizenMetadata" (tx: 0xd083e3229490bf1fc107980e74b6fd091c60174adbc1ac8d47e4e30c51c673be)...: deployed at 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 with 1554718 gas
+[33m@web3-citizen/core-sol:chain: [0mdeploying "CitizenAlpha" (tx: 0x6087e0fb867083590c35de56abd5ca28e2e39cf113b2cdf39a1954d59c434da1)...: deployed at 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9 with 1651540 gas
+[33m@web3-citizen/core-sol:chain: [0mdeploying "CitizenNotary" (tx: 0xe9b8cbca4aaa94cfadef6bbdc9cf8260def2668d4124481cace8bf4be8c85de0)...: deployed at 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9 with 1098649 gas
+[33m@web3-citizen/core-sol:chain: [0mdeploying "TrustToken" (tx: 0xabc12652d97b74191217db09e5d3514d9732bec30ff54087d302b5b9f152079b)...: deployed at 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707 with 758830 gas
+[33m@web3-citizen/core-sol:chain: [0mStarted HTTP and WebSocket JSON-RPC server at http://127.0.0.1:8545/
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccounts
+[33m@web3-citizen/core-sol:chain: [0m========
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mWARNING: These accounts, and their private keys, are publicly known.
+[33m@web3-citizen/core-sol:chain: [0mAny funds sent to them on Mainnet or any other live network WILL BE LOST.
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #0: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #1: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #2: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #3: 0x90F79bf6EB2c4f870365E785982E1f101E93b906 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #4: 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x47e179ec197488593b187f80a00eb0da91f1b9d0b13f8733639f19c30a34926a
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #5: 0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #6: 0x976EA74026E726554dB657fA54763abd0C3a0aa9 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #7: 0x14dC79964da2C08b23698B3D3cc7Ca32193d9955 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #8: 0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #9: 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #10: 0xBcd4042DE499D14e55001CcbB24a551F3b954096 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xf214f2b2cd398c806f84e317254e0f0b801d0643303237d97a22a48e01628897
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #11: 0x71bE63f3384f5fb98995898A86B02Fb2426c5788 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x701b615bbdfb9de65240bc28bd21bbc0d996645a3dd57e7b12bc2bdf6f192c82
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #12: 0xFABB0ac9d68B0B445fB7357272Ff202C5651694a (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xa267530f49f8280200edf313ee7af6b827f2a8bce2897751d06a843f644967b1
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #13: 0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x47c99abed3324a2707c28affff1267e45918ec8c3f20b8aa892e8b065d2942dd
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #14: 0xdF3e18d64BC6A983f673Ab319CCaE4f1a57C7097 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xc526ee95bf44d8fc405a158bb884d9d1238d99f0612e9f33d006bb0789009aaa
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #15: 0xcd3B766CCDd6AE721141F452C550Ca635964ce71 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x8166f546bab6da521a8369cab06c5d2b9e46670292d85c875ee9ec20e84ffb61
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #16: 0x2546BcD3c84621e976D8185a91A922aE77ECEc30 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xea6c44ac03bff858b476bba40716402b03e41b8e97e276d1baec7c37d42484a0
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #17: 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0x689af8efa8c651a91ad287602527f3af2fe9f6501a7ac4b061667b5a93e037fd
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #18: 0xdD2FD4581271e230360230F9337D5c0430Bf44C0 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mAccount #19: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 (10000 ETH)
+[33m@web3-citizen/core-sol:chain: [0mPrivate Key: 0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0mWARNING: These accounts, and their private keys, are publicly known.
+[33m@web3-citizen/core-sol:chain: [0mAny funds sent to them on Mainnet or any other live network WILL BE LOST.
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: SVGColor
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0x5fbdb2315678afecb367f032d93f642f64180aa3
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xd5d5a6072611ea7339a1fc1a4d96eda6d2e2d8c9b64836cf115ffc6686147c28
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            1200059 of 1200059
+[33m@web3-citizen/core-sol:chain: [0m  Block #1:            0x402c8c3e8cca427c4cef3ef3893d5a07bffad403ed6121f8727cb5415e3c7d5a
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: ResolverENS
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0xe7f1725e7734ce288f8367e1bb143e90bb3f0512
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0x88a23d7ecab2f7003fb4111374b5a96078a8c344b4e75686184828d6e0bb568c
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            1063905 of 1063905
+[33m@web3-citizen/core-sol:chain: [0m  Block #2:            0x0fa2d02b626414ecdb87902df37c0ea168b805d2a189554dad3a0a76ae9b1e23
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: CitizenMetadata
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xd083e3229490bf1fc107980e74b6fd091c60174adbc1ac8d47e4e30c51c673be
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            1554718 of 1554718
+[33m@web3-citizen/core-sol:chain: [0m  Block #3:            0x835e9fcd98aa8b3d91e0c8d7bd1e8daeb73cf3f98e68680914b29118f2b63aa4
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: CitizenAlpha
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0x6087e0fb867083590c35de56abd5ca28e2e39cf113b2cdf39a1954d59c434da1
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            1651540 of 1651540
+[33m@web3-citizen/core-sol:chain: [0m  Block #4:            0x85af846c6d522b8cac46df62d58b4dece38be4c6724318ee41ce5d78ece1a00f
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: CitizenNotary
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0xdc64a140aa3e981100a9beca4e685f962f0cf6c9
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xe9b8cbca4aaa94cfadef6bbdc9cf8260def2668d4124481cace8bf4be8c85de0
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            1098649 of 1098649
+[33m@web3-citizen/core-sol:chain: [0m  Block #5:            0x3e0f5bcc2760b7025eafca9ad0f3171fcf9e775597d0d49a3fa26184428208fb
+[33m@web3-citizen/core-sol:chain: [0m  Contract deployment: TrustToken
+[33m@web3-citizen/core-sol:chain: [0m  Contract address:    0x5fc8d32690cc91d4c39d9d3abcbd16989f875707
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xabc12652d97b74191217db09e5d3514d9732bec30ff54087d302b5b9f152079b
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            758830 of 758830
+[33m@web3-citizen/core-sol:chain: [0m  Block #6:            0xe8a3c2a6f58d86571ee9bd96e1ee2f08cdf0fdd13d0837845c3aca7ddfba8d54
+[33m@web3-citizen/core-sol:chain: [0m  Contract call:       CitizenAlpha#setNotary
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0x9e9de8ce608ad29b6fd81494549e2d050b2f6c762e775900427837c05a38bc35
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            29020 of 29022616
+[33m@web3-citizen/core-sol:chain: [0m  Block #7:            0x58b22b9c39d639c15a18471b2463539a9f5870d06fee76d2acf8c21f65243f28
+[33m@web3-citizen/core-sol:chain: [0m  Contract call:       CitizenMetadata#appendSource
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xf3126ca66607c85f8484e4da6bd2f54adacf6c0af9372a1fb2bd47bba7068ecd
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            68218 of 29022680
+[33m@web3-citizen/core-sol:chain: [0m  Block #8:            0x3fe5f3abaa9467cb4027aa2e6c03f05353ec71985c4e30082cdf27107dca4a95
+[33m@web3-citizen/core-sol:chain: [0m  Contract call:       CitizenMetadata#setToken
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0x7ffa0b03ea964ee9d4e548fe48520d5ae937a6cbbc413e6f3b73dc4000f513e4
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            46038 of 29022680
+[33m@web3-citizen/core-sol:chain: [0m  Block #9:            0xfd9dedc2039993d3a47234f6b8ed67e4ca0eda62933c6a873c01a8189cf4dde2
+[33m@web3-citizen/core-sol:chain: [0m  Contract call:       CitizenNotary#issue
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0x159a538e0094cf75fa0a17e0b474c4e0eb583692d7115045720b7e0d778ab8dc
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xdc64a140aa3e981100a9beca4e685f962f0cf6c9
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            129888 of 29022680
+[33m@web3-citizen/core-sol:chain: [0m  Block #10:           0x11b16e8e7e3ee52add9d047fadaf23991cf8ae12b1fff17ef90ac3deab94594a
+[33m@web3-citizen/core-sol:chain: [0m  Contract call:       CitizenNotary#issue
+[33m@web3-citizen/core-sol:chain: [0m  Transaction:         0xb32c4e47f86d57792350e6130e0b763eacd6d04a3c6df27bcc50e69c721638f7
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xdc64a140aa3e981100a9beca4e685f962f0cf6c9
+[33m@web3-citizen/core-sol:chain: [0m  Value:               0 ETH
+[33m@web3-citizen/core-sol:chain: [0m  Gas used:            132688 of 29022680
+[33m@web3-citizen/core-sol:chain: [0m  Block #11:           0x2817f7e9dc5d091ec717b7bfc157dd1da485de6153cb3ec7205206baac3dd1f7
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (3)
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (4)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0m  Received invalid block tag 15131011. Latest block number is 11
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0m  Received invalid block tag 15131011. Latest block number is 11
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0mnet_version
+[33m@web3-citizen/core-sol:chain: [0meth_accounts
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xb1f8e55c7f64d203c1400b9d8555d050f94adf39
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_getBlockByNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0x00000000000c2e074ec69a0dfb2997ba6c7d2e1e
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xb1f8e55c7f64d203c1400b9d8555d050f94adf39
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xb1f8e55c7f64d203c1400b9d8555d050f94adf39
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0mnet_version
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xb1f8e55c7f64d203c1400b9d8555d050f94adf39
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_getBlockByNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0mnet_version
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0xb1f8e55c7f64d203c1400b9d8555d050f94adf39
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_getBlockByNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_call
+[33m@web3-citizen/core-sol:chain: [0m  WARNING: Calling an account which is not a contract
+[33m@web3-citizen/core-sol:chain: [0m  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[33m@web3-citizen/core-sol:chain: [0m  To:                  0x00000000000c2e074ec69a0dfb2997ba6c7d2e1e
+[33m@web3-citizen/core-sol:chain: [0m
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (2)
+[33m@web3-citizen/core-sol:chain: [0meth_blockNumber (3)
+[33m@web3-citizen/core-sol:chain: [0meth_getBalance
