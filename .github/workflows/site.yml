@@ -1,9 +1,9 @@
 name: Site
 on:
   push:
-    branches: ["site"]
+    branches: ["main"]
   pull_request:
-    types: [closed]
+    types: [opened, synchronize]
 jobs:
   build_and_lint:
     runs-on: ubuntu-latest
