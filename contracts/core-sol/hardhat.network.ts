@@ -34,7 +34,7 @@ const networks: HardhatUserConfig['networks'] = {
 if (ETHEREUM_MAINNET_RPC_URL) {
   networks.mainnet = {
     url: ETHEREUM_MAINNET_RPC_URL,
-    // accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
+    accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }
 

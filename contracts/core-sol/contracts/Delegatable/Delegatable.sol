@@ -17,6 +17,7 @@ abstract contract Delegatable is EIP712Decoder {
     for (uint256 i = 0; i < signedInvocations.length; i++) {
       SignedInvocation calldata signedInvocation = signedInvocations[i];
       address invocationSigner = verifyInvocationSignature(signedInvocation);
+      enforceReplayProtection(invocationSigner, signedInvocations[i].invocations.replayProtection);
       _invoke(signedInvocation.invocations.batch, invocationSigner);
     }
   }
