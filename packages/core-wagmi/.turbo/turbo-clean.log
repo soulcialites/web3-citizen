@@ -1,5 +1,0 @@
-@turbo-eth/core-wagmi:clean: cache hit, replaying output [2md6a65e9c0ac2616c[0m
-[34m@turbo-eth/core-wagmi:clean: [0m
-[34m@turbo-eth/core-wagmi:clean: [0m> @turbo-eth/core-wagmi@0.0.0-beta.0 clean /Users/kames/workspace/kames/code/turbo-eth/packages/core-wagmi
-[34m@turbo-eth/core-wagmi:clean: [0m> rm -rf node_modules/
-[34m@turbo-eth/core-wagmi:clean: [0m

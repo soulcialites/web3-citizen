@@ -1,5 +1,0 @@
-@turbo-eth/core-wagmi:lint: cache hit, replaying output [2m3261b12a40f6d3af[0m
-[36m@turbo-eth/core-wagmi:lint: [0m
-[36m@turbo-eth/core-wagmi:lint: [0m> @turbo-eth/core-wagmi@0.0.0-beta.0 lint /Users/kames/workspace/kames/code/turbo-eth/packages/core-wagmi
-[36m@turbo-eth/core-wagmi:lint: [0m> tsdx lint
-[36m@turbo-eth/core-wagmi:lint: [0m
