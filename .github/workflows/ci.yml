@@ -50,8 +50,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Test
-        run: yarn test
-
       - name: Build
         run: yarn build
