@@ -20,11 +20,11 @@ const foundryEnabled = process.env.FOUNDRY_ENABLED;
  * Not all of the bugs have been fixed yet for usage in a monorepo.
  * Only enabled when the environment variable FOUNDRY_ENABLED is set to true.
  */
-if (foundryEnabled) {
-  require('@foundry-rs/hardhat');
-  require('@foundry-rs/hardhat-anvil');
-  require('@foundry-rs/hardhat-forge');
-}
+// if (foundryEnabled) {
+//   require('@foundry-rs/hardhat');
+//   require('@foundry-rs/hardhat-anvil');
+//   require('@foundry-rs/hardhat-forge');
+// }
 
 task('fork:setup', 'Initialize Fork Environment').setAction(async (_args, { ethers }) => {
   try {

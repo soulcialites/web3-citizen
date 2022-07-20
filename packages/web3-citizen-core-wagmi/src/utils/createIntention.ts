@@ -1,6 +1,8 @@
+import { BigNumber } from 'ethers';
 import { domain, types } from './types';
 
 export function createIntention(
+  usr: any,
   delegation: any,
   signedDelegation: any,
   verifyingContract: string,
@@ -9,7 +11,7 @@ export function createIntention(
   const intention = {
     replayProtection: {
       nonce: '0x01',
-      queue: '0x00',
+      queue: BigNumber.from(usr).toString(),
     },
     batch: [
       {

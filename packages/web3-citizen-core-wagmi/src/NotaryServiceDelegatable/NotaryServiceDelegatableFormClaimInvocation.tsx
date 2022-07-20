@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import useNotaryServiceDelegatableWrite from '../hooks/useNotaryServiceDelegatableWrite';
 import { useAccount } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 interface NotaryServiceDelegatableFormClaimInvocationProps {
   className?: string;
@@ -45,7 +46,7 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
           invocations: {
             replayProtection: {
               nonce: '0x01',
-              queue: '0x00',
+              queue: BigNumber.from(account.data?.address).toString(),
             },
             batch: [
               {

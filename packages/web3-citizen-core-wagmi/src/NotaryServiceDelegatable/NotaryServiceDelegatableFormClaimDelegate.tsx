@@ -52,6 +52,7 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
         delegation.string,
       ]);
       const intention = createIntention(
+        _data.to,
         delegation.delegation,
         signedDelegation1,
         contractAddress,

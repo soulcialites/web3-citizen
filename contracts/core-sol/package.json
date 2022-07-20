@@ -16,7 +16,7 @@
     "deploy": "DEPLOY=testnet hardhat deploy --write true --network localhost",
     "deploy:fork": "DEPLOY=testnet hardhat deploy --write true --network hardhat",
     "deploy:mainnet": "DEPLOY=mainnet hardhat deploy --write true --network mainnet",
-    "verify": "hardhat etherscan-verify --license GPL-3.0 --solc-input --network",
+    "verify": "hardhat etherscan-verify --license MIT --solc-input --network",
     "etherscan-verify-polygon": "hardhat --config hardhat.config.polygon.js run ./scripts/verify.js --network",
     "format": "prettier --config .prettierrc --write \"**/*.{ts,js}\" \"contracts/**/*.sol\"",
     "hint": "solhint \"contracts/**/*.sol\"",
