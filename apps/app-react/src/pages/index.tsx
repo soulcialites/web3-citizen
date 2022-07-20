@@ -1,4 +1,4 @@
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
 import Link from "next/link";
 
 import { CitizenCardList } from "@/components/Citizen/CitizenCardList";

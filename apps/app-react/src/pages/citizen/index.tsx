@@ -1,7 +1,7 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
-import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import Nation from "@web3-citizen/core-sol/deployments/mainnet/Nation.json";
+import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
 import {
   NationIsFounder,
   NotaryIsNotary,

@@ -34,7 +34,6 @@ const networks: HardhatUserConfig['networks'] = {
 if (MAINNET_PK_DEPLOYER) {
   networks.mainnet = {
     url: ETHEREUM_MAINNET_RPC_URL,
-    gasPrice: 57000000000,
     accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }

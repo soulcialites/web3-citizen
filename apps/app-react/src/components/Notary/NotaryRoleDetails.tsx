@@ -1,10 +1,10 @@
-import * as React from "react";
-import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
+import Nation from "@web3-citizen/core-sol/deployments/mainnet/Nation.json";
 import {
   NationRoleAdminRole,
   NationRoleStatus,
 } from "@web3-citizen/core-wagmi";
 import classNames from "classnames";
+import * as React from "react";
 
 interface NationRoleDetailsProps {
   className?: string;

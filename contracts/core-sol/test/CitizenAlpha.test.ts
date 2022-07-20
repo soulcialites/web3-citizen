@@ -1,7 +1,7 @@
 import { artifacts, ethers } from 'hardhat';
 import { expect } from 'chai';
 import { deployMockContract, MockContract } from 'ethereum-waffle';
-import { constants, Contract, ContractFactory } from 'ethers';
+import { constants, Contract, ContractFactory, utils } from 'ethers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 const { getSigners } = ethers;
 
@@ -11,13 +11,16 @@ describe('CitizenAlpha', () => {
   let CitizenAlpha: Contract;
   let CitizenAlphaFactory: ContractFactory;
   let MetadataMock: MockContract;
+  let NationMock: MockContract;
   let NotaryMock: MockContract;
-
+  const FOUNDER = utils.keccak256(utils.toUtf8Bytes('FOUNDER'));
   before(async () => {
     [wallet0, wallet1] = await getSigners();
     CitizenAlphaFactory = await ethers.getContractFactory('CitizenAlpha');
     let MetadataMockArtifact = await artifacts.readArtifact('Metadata');
     MetadataMock = await deployMockContract(wallet1, MetadataMockArtifact.abi);
+    let NationMockArtifact = await artifacts.readArtifact('Nation');
+    NationMock = await deployMockContract(wallet1, NationMockArtifact.abi);
     let NotaryMockMockArtifact = await artifacts.readArtifact('Notary');
     NotaryMock = await deployMockContract(wallet1, NotaryMockMockArtifact.abi);
     await MetadataMock.mock.tokenURI.returns('tokenURI');
@@ -26,7 +29,9 @@ describe('CitizenAlpha', () => {
 
   beforeEach(async () => {
     CitizenAlpha = await CitizenAlphaFactory.deploy(MetadataMock.address, 'Web5 Citizen', 'CI5');
+    await CitizenAlpha.setNation(NationMock.address);
     await CitizenAlpha.setNotary(NotaryMock.address);
+    await NationMock.mock.hasRole.withArgs(FOUNDER, wallet0.address).returns(true);
     await NotaryMock.mock.isNotary.withArgs(wallet0.address).returns(true);
     await NotaryMock.mock.isNotary.withArgs(wallet1.address).returns(false);
   });
@@ -39,7 +44,7 @@ describe('CitizenAlpha', () => {
       expect(await CitizenAlpha.getMetadata()).to.eq(MetadataMock.address);
     });
     it('getNation()', async () => {
-      expect(await CitizenAlpha.getNation()).to.eq(constants.AddressZero);
+      expect(await CitizenAlpha.getNation()).to.eq(NationMock.address);
     });
     it('getNotary()', async () => {
       expect(await CitizenAlpha.getNotary()).to.eq(NotaryMock.address);
@@ -49,6 +54,12 @@ describe('CitizenAlpha', () => {
       expect(await CitizenAlpha.totalIssued()).to.eq(0);
       await CitizenAlpha.issue(wallet1.address);
       expect(await CitizenAlpha.totalIssued()).to.eq(1);
+    });
+
+    describe('hasRole(address citizen)', () => {
+      it('should SUCCEED to get the FOUNDER role for Citizen', async () => {
+        expect(await CitizenAlpha.hasRole(FOUNDER, wallet0.address)).to.eq(true);
+      });
     });
 
     describe('getId(address citizen)', () => {
