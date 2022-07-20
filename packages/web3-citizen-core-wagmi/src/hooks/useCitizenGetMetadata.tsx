@@ -37,7 +37,6 @@ export function useCitizenGetMetadata(
       (async () => {
         const json = Buffer.from(data.substring(29), 'base64').toString();
         const result = JSON.parse(json);
-        console.log('result', result);
         if (result.image) {
           result.img = await parseAvatarString(
             walletAddress,

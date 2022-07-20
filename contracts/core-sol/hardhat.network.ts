@@ -25,6 +25,10 @@ const networks: HardhatUserConfig['networks'] = {
     url: 'http://127.0.0.1:8545',
     allowUnlimitedContractSize: true,
   },
+  ganache: {
+    chainId: 1337,
+    url: 'http://127.0.0.1:8545',
+  },
 };
 
 if (MAINNET_PK_DEPLOYER) {
@@ -46,9 +50,14 @@ if (ARCHIVE_NODE_RPC_URL && FORK_ENABLED) {
   networks.hardhat = {
     chainId: 1,
     hardfork: 'istanbul',
+    gasPrice: 15000000000,
+    blockGasLimit: 20000000,
+    // @ts-ignore
+    accounts: [{ privateKey: MAINNET_PK_DEPLOYER, balance: '1615793800000000000' }],
     forking: {
       url: ARCHIVE_NODE_RPC_URL,
-      blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
+      // blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
+      blockNumber: 15173654 || 0,
     },
   };
 } else {

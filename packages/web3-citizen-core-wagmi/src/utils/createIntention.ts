@@ -29,7 +29,7 @@ export function createIntention(
   };
 
   const intentionString = JSON.stringify({
-    domain: {...domain, verifyingContract: verifyingContract},
+    domain: { ...domain, verifyingContract: verifyingContract },
     message: intention,
     primaryType: 'Invocations',
     types: types,

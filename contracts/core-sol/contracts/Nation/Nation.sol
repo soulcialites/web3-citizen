@@ -3,12 +3,13 @@ pragma solidity 0.8.15;
 
 import { AccessControlEnumerable, AccessControl, IAccessControl } from "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { CitizenAlpha } from "../CitizenAlpha.sol";
 import { Notary } from "../Notary/Notary.sol";
 
 /**
  * @title Nation
  * @author Kames Geraghty
- * @notice Nation is a nuanced AccessControl layer for CitizenAlpha.
+ * @notice Nation is an AccessControl layer for CitizenAlpha.
  * @dev Extends Citizen on-chain permissions using updatables nested Roles.
            
  */
@@ -32,6 +33,7 @@ contract Nation is AccessControlEnumerable {
   constructor(address _citizenAlpha_, address[] memory _founders) {
     _citizenAlpha = _citizenAlpha_;
     _roleActive[FOUNDER] = true;
+    _roleActive[GOVERNANCE] = true;
     _roleActive[DEFAULT_ADMIN_ROLE] = true;
     for (uint256 i = 0; i < _founders.length; i++) {
       _setupRole(FOUNDER, _founders[i]);
@@ -41,7 +43,7 @@ contract Nation is AccessControlEnumerable {
   }
 
   /**
-   * @notice Admin modifier to enable duel role mananement.
+   * @notice Admin modifier
    * @param role bytes32
    */
   modifier _onlyAdmin(bytes32 role) {
@@ -50,7 +52,19 @@ contract Nation is AccessControlEnumerable {
       hasRole(getRoleAdmin(role), sender_) ||
         hasRole(GOVERNANCE, sender_) ||
         hasRole(DEFAULT_ADMIN_ROLE, sender_),
-      "Nation:unauthotized"
+      "Nation:unauthorized"
+    );
+    _;
+  }
+
+  /**
+   * @notice Governance modifier
+   */
+  modifier _onlyGovernance() {
+    address sender_ = _msgSender();
+    require(
+      (hasRole(GOVERNANCE, sender_) || hasRole(DEFAULT_ADMIN_ROLE, sender_)),
+      "Nation:unauthorized"
     );
     _;
   }
@@ -69,7 +83,7 @@ contract Nation is AccessControlEnumerable {
 
   /**
    * @notice Check if Account has Role
-   * @dev Overrides to include Global AccessControlEnumerable logic operator
+   * @dev Include check for Role activication is Citizenship
    * @return active bool
    */
   function hasRole(bytes32 role, address account)
@@ -79,7 +93,7 @@ contract Nation is AccessControlEnumerable {
     override(AccessControl, IAccessControl)
     returns (bool)
   {
-    if (!_roleActive[role]) {
+    if (!_roleActive[role] || !CitizenAlpha(_citizenAlpha).isCitizen(account)) {
       return false;
     }
     return super.hasRole(role, account);
@@ -96,11 +110,11 @@ contract Nation is AccessControlEnumerable {
 
   /**
    * @notice Check Governance status
-   * @param user address
+   * @param module address
    * @return status bool
    */
-  function isGovernance(address user) external view returns (bool status) {
-    return hasRole(GOVERNANCE, user);
+  function isGovernance(address module) external view returns (bool status) {
+    return hasRole(GOVERNANCE, module);
   }
 
   /**
@@ -120,7 +134,7 @@ contract Nation is AccessControlEnumerable {
     public
     virtual
     override(AccessControl, IAccessControl)
-    onlyRole(getRoleAdmin(role))
+    _onlyAdmin(role)
   {
     require(_roleActive[role], "Nation:inactive-role");
     _grantRole(role, citizen);
@@ -135,7 +149,7 @@ contract Nation is AccessControlEnumerable {
     public
     virtual
     override(AccessControl, IAccessControl)
-    onlyRole(getRoleAdmin(role))
+    _onlyAdmin(role)
   {
     require(role != DEFAULT_ADMIN_ROLE, "Nation:invalid-request");
     require(_roleActive[role], "Nation:inactive-role");
@@ -157,7 +171,7 @@ contract Nation is AccessControlEnumerable {
    * @param role bytes32
    * @param adminRole bytes32
    */
-  function enableRole(bytes32 role, bytes32 adminRole) external onlyRole(GOVERNANCE) {
+  function enableRoleWithAdmin(bytes32 role, bytes32 adminRole) external _onlyGovernance {
     require(_roleActive[role] == false, "Nation:role-enabled");
     _setRoleAdmin(role, adminRole);
     _roleActive[role] = true;
@@ -167,7 +181,7 @@ contract Nation is AccessControlEnumerable {
    * @notice Disable Role status
    * @param role bytes32
    */
-  function disableRole(bytes32 role) external _onlyAdmin(role) {
+  function disableRole(bytes32 role) external _onlyGovernance {
     require(_roleActive[role] == true, "Nation:role-disabled");
     _setRoleAdmin(role, DEFAULT_ADMIN_ROLE);
     _roleActive[role] = false;
@@ -178,7 +192,7 @@ contract Nation is AccessControlEnumerable {
    * @param role bytes32
    * @param adminRole bytes32
    */
-  function setRoleAdmin(bytes32 role, bytes32 adminRole) external _onlyAdmin(role) {
+  function setRoleAdmin(bytes32 role, bytes32 adminRole) external _onlyGovernance {
     _setRoleAdmin(role, adminRole);
   }
 }

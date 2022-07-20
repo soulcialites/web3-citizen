@@ -1,6 +1,6 @@
 import { Address } from "@turbo-eth/core-wagmi";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
-import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localhost/NotaryServiceDelegatable.json";
+import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
+import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/mainnet/NotaryServiceDelegatable.json";
 import {
   FormCitizenIssue,
   FormCitizenRevoke,

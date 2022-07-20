@@ -1,7 +1,6 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import "hardhat/console.sol";
 import { Notary } from "../Notary/Notary.sol";
 import { RevokableOwnableDelegatable } from "../Delegatable/caveat-enforcers/RevokableOwnableDelegatable.sol";
 
@@ -11,11 +10,11 @@ import { RevokableOwnableDelegatable } from "../Delegatable/caveat-enforcers/Rev
  * @notice Delegatable off-chain Citizenship issuance permissions.
  */
 contract NotaryServiceDelegatable is RevokableOwnableDelegatable {
-  /// @notice Notary instance
-  address private immutable _notary;
+  /// @notice CitizenAlpha instance
+  address private immutable _citizenAlpha;
 
-  constructor(address _notary_) RevokableOwnableDelegatable("NotaryServiceDelegatable") {
-    _notary = _notary_;
+  constructor(address _citizenAlpha_) RevokableOwnableDelegatable("NotaryServiceDelegatable") {
+    _citizenAlpha = _citizenAlpha_;
   }
 
   /**
@@ -23,7 +22,7 @@ contract NotaryServiceDelegatable is RevokableOwnableDelegatable {
    * @return notary address
    */
   function getNotary() external view returns (address notary) {
-    return _notary;
+    return _citizenAlpha;
   }
 
   /**
@@ -32,8 +31,7 @@ contract NotaryServiceDelegatable is RevokableOwnableDelegatable {
    * @param newCitizen address
    */
   function issue(address newCitizen) external {
-    console.log(owner(), _msgSender());
-    require(owner() == _msgSender(), "Unauthorized");
-    Notary(_notary).issue(newCitizen);
+    require(owner() == _msgSender(), "NotaryServiceDelegatable:not-authorized");
+    Notary(_citizenAlpha).issue(newCitizen);
   }
 }

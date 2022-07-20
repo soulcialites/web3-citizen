@@ -9,7 +9,7 @@ export function createDelegation(to: string, verifyingContract: string) {
   };
 
   const delegationString = JSON.stringify({
-    domain: {...domain, verifyingContract: verifyingContract},
+    domain: { ...domain, verifyingContract: verifyingContract },
     message: delegation,
     primaryType: 'Delegation',
     types: types,

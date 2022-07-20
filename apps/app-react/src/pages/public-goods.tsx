@@ -1,5 +1,5 @@
 import { ERC20TotalSupply } from "@turbo-eth/erc20-wagmi";
-import TrustToken from "@web3-citizen/core-sol/deployments/localhost/TrustToken.json";
+import TrustToken from "@web3-citizen/core-sol/deployments/mainnet/TrustToken.json";
 import { TrustTokenClaim } from "@web3-citizen/core-wagmi";
 
 import { Main } from "@/templates/Main";

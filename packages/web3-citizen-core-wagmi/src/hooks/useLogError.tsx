@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 export function useLogError(error: string): any {
   useEffect(() => {
-    console.log(error);
+    // console.log(error);
   }, [error]);
 }
 

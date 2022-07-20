@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
-import "hardhat/console.sol";
 import { Base64 } from "base64-sol/base64.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
@@ -14,6 +13,11 @@ import { SourceENS } from "./Sources/SourceENS.sol";
 import { CitizenAlpha } from "./CitizenAlpha.sol";
 import { SVGRender } from "./SVGRender.sol";
 
+/**
+ * @title Metadata
+ * @author Kames Geraghty
+ * @notice CitizenAlpha metadata resolver.
+ */
 contract Metadata is Ownable {
   using Strings for uint256;
 
@@ -88,17 +92,16 @@ contract Metadata is Ownable {
    * @return uri string - Uniform Resource Identifier (URI) for `tokenId` token.
    */
   function tokenURI(uint256 tokenId) external view returns (string memory) {
-    console.log("tokenURI", msg.sender);
     return _constructTokenURI(tokenId);
   }
 
   /**
-   * @notice Construct minimal tokenURI
+   * @notice Construct resolver tokenURI
    * @param tokenId address
    * @return uri string - Uniform Resource Identifier (URI) for `tokenId` token.
    */
-  function tokenURIMinimal(uint256 tokenId) external view returns (string memory) {
-    return _constructTokenURIMinimal(tokenId);
+  function tokenURIResolver(uint256 tokenId) external view returns (string memory) {
+    return _constructTokenURIResolver(tokenId);
   }
 
   /**
@@ -207,7 +210,7 @@ contract Metadata is Ownable {
       );
   }
 
-  function _constructTokenURIMinimal(uint256 _tokenId) internal view returns (string memory) {
+  function _constructTokenURIResolver(uint256 _tokenId) internal view returns (string memory) {
     ICitizenAlpha token_ = ICitizenAlpha(_token);
     address owner_ = token_.ownerOf(_tokenId);
     ExternalMetadata memory externalMetadata_ = _getExternalMetadata(owner_, _tokenId);

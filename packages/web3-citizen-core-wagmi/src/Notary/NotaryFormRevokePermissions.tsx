@@ -46,9 +46,9 @@ export const NotaryFormRevokePermissions = ({
     <div className={classes_}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-              className="input"
-              placeholder="weboftrust.eth"
-              {...register('citizen', { required: true })}
+          className="input"
+          placeholder="weboftrust.eth"
+          {...register('citizen', { required: true })}
         />
         <button className="btn btn-default my-3 w-full" type="submit">
           {label}

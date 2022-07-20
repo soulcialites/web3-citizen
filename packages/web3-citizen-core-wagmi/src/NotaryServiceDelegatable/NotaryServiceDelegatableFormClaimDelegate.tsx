@@ -39,7 +39,7 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
   const contract = useNotaryServiceDelegatableContract(contractAddress);
 
   //   useLogError(error);
-  const [ signatures, setSignatures ] = React.useState<any>()
+  const [signatures, setSignatures] = React.useState<any>();
   const onSubmit = (_data: any) => {
     (async () => {
       const method = 'eth_signTypedData_v4';
@@ -65,8 +65,7 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
       setSignatures({
         delegation: signedDelegation1,
         invocation: signedDelegation2,
-      })
-
+      });
     })();
     if (onUpdate) onUpdate(_data);
   };
@@ -83,13 +82,16 @@ export const NotaryServiceDelegatableFormClaimDelegate = ({
           {label}
         </button>
       </form>
-      {
-        signatures && 
-        <div className='text-sm'>
-          <span className='block break-all'>Delegation: <br/> {signatures.delegation}</span>
-          <span className='block break-all'>Invocation: <br/> {signatures.invocation}</span>
+      {signatures && (
+        <div className="text-sm">
+          <span className="block break-all">
+            Delegation: <br /> {signatures.delegation}
+          </span>
+          <span className="block break-all">
+            Invocation: <br /> {signatures.invocation}
+          </span>
         </div>
-      }
+      )}
     </div>
   );
 };

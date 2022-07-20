@@ -2,15 +2,14 @@
 pragma solidity 0.8.15;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { Guild } from "../Guild/Guild.sol";
 import { CitizenAlpha } from "../CitizenAlpha.sol";
 import { Metadata } from "../Metadata.sol";
 import { Notary } from "../Notary/Notary.sol";
 
-contract Web3TrustResolver is Ownable {
+contract TrustResolver is Ownable {
+  address private immutable _citizenAlpha;
   address private immutable _metadata;
   address private immutable _notary;
-  address private immutable _token;
 
   struct CitizenObject {
     string name;
@@ -26,13 +25,13 @@ contract Web3TrustResolver is Ownable {
   }
 
   constructor(
+    address _citizenAlpha_,
     address _metadata_,
-    address _notary_,
-    address _token_
+    address _notary_
   ) {
     _metadata = _metadata_;
     _notary = _notary_;
-    _token = _token_;
+    _citizenAlpha = _citizenAlpha_;
   }
 
   /* ===================================================================================== */
@@ -71,19 +70,23 @@ contract Web3TrustResolver is Ownable {
     return _getMembers(guild);
   }
 
+  function tokenURI(uint256 tokenId) external view returns (string memory tokenURI) {
+    return CitizenAlpha(_citizenAlpha).tokenURI(tokenId);
+  }
+
   /* ===================================================================================== */
   /* Internal Functions                                                                    */
   /* ===================================================================================== */
 
   function _isMember(address user, address guild) internal view returns (address member) {
-    return Guild(guild).isMember(user);
+    // return Guild(guild).isMember(user);
   }
 
   function _getMember(address user, address guild) internal view returns (address member) {
-    return Guild(guild).getMember(user);
+    // return Guild(guild).getMember(user);
   }
 
   function _getMembers(address guild) internal view returns (address[] memory members) {
-    return Guild(guild).getMembers();
+    // return Guild(guild).getMembers();
   }
 }

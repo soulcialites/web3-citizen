@@ -1,8 +1,7 @@
-import * as React from "react";
 import { IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
 import { Address } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
 import {
   NotaryIsFounder,
   NotaryIsNotary,
@@ -11,6 +10,7 @@ import {
 } from "@web3-citizen/core-wagmi";
 import classNames from "classnames";
 import Link from "next/link";
+import * as React from "react";
 
 interface CitizenCardProps {
   className?: string;
@@ -49,21 +49,6 @@ export const CitizenCard = ({
           metadata?.description
         )}
       </h3>
-      {/* <div className="flex items-center">
-        <NotaryIsFounder
-          className="text-xs font-semibold"
-          labelActive
-          labelTrue="Yes"
-          labelFalse="No"
-          contractAddress={Notary.address}
-          userAddress={walletAddress || ""}
-        />
-        <NotaryIsNotary
-          className="ml-3 text-xs font-semibold"
-          contractAddress={Notary.address}
-          userAddress={walletAddress || ""}
-        />
-      </div> */}
       <hr className="my-3" />
       <div className="flex items-center justify-between">
         <span className="block text-sm font-bold">{metadata?.name}</span>

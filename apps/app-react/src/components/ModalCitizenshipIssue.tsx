@@ -1,6 +1,6 @@
-import React from "react";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
+import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
 import { FormCitizenIssue } from "@web3-citizen/core-wagmi";
+import React from "react";
 import ReactModal from "react-modal";
 import { useModal } from "react-modal-hook";
 

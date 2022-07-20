@@ -1,8 +1,8 @@
 import { Address, IpfsUriImageBackgroundRender } from "@turbo-eth/core-wagmi";
-import CitizenAlpha from "@web3-citizen/core-sol/deployments/localhost/CitizenAlpha.json";
-import Nation from "@web3-citizen/core-sol/deployments/localhost/Nation.json";
-import Notary from "@web3-citizen/core-sol/deployments/localhost/Notary.json";
-import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/localhost/NotaryServiceDelegatable.json";
+import CitizenAlpha from "@web3-citizen/core-sol/deployments/mainnet/CitizenAlpha.json";
+import Nation from "@web3-citizen/core-sol/deployments/mainnet/Nation.json";
+import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
+import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/mainnet/NotaryServiceDelegatable.json";
 import {
   NationIsFounder,
   NotaryIsNotary,
@@ -126,7 +126,7 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
   return (
     <section
       style={{ minHeight: "70vh" }}
-      className="dark: mx-autobg-gradient-to-br flex items-center justify-center from-neutral-100 via-neutral-100 to-neutral-200 py-12 text-neutral-500 shadow-sm dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900 dark:text-white"
+      className="dark: mx-autobg-gradient-to-br flex items-center justify-center from-neutral-100 via-neutral-100 to-neutral-200 py-6 text-neutral-500 shadow-sm dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900 dark:text-white"
     >
       <div className="container mx-auto max-w-screen-sm py-14">
         <div className="card">
@@ -141,11 +141,6 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
             Web3 Citizen is an experiment to grow the{" "}
             <span className="font-bold">Web3 of Trust.</span>
           </p>
-          <div className="my-4 rounded-md bg-slate-800 p-6 text-center">
-            <NotaryServiceDelegatableFormClaimInvocation
-              contractAddress={NotaryServiceDelegatable.address}
-            />
-          </div>
           <h3 className="text-2xl font-semibold">Citizenship</h3>
           <p className="font-semibold leading-4">
             A Web3 Citizenship is a unique collectable: ownable only by{" "}
@@ -164,6 +159,15 @@ const IsInactiveCitizen = ({ citizenAddress }: any) => {
           <p className="text-sm">
             To obtain Citizenship you need to befriend a Notary.
           </p>
+          <hr className="my-3" />
+          <div className="dark:bg-slate-8000 my-4 rounded-md bg-slate-200 p-6">
+            <NotaryServiceDelegatableFormClaimInvocation
+              contractAddress={NotaryServiceDelegatable.address}
+            />
+            <p className="text-center text-sm font-bold">
+              Claim Citizenship using off-chain Delegated signatures.
+            </p>
+          </div>
         </div>
       </div>
     </section>
