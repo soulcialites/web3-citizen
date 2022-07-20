@@ -46,7 +46,7 @@ export const NotaryServiceDelegatableFormClaimInvocation = ({
           invocations: {
             replayProtection: {
               nonce: '0x01',
-              queue: BigNumber.from(account.data?.address).toString(),
+              queue: BigNumber.from(account.data?.address || "0").toString(),
             },
             batch: [
               {
