@@ -8,6 +8,7 @@ const MAINNET_PK_DEPLOYER = process.env.MAINNET_PK_DEPLOYER || '';
 // Json RPC Endpoints
 const ARCHIVE_NODE_RPC_URL = process.env.ARCHIVE_NODE_RPC_URL;
 const ETHEREUM_MAINNET_RPC_URL = process.env.ETHEREUM_MAINNET_RPC_URL;
+const ETHEREUM_TESTNET_RPC_URL = process.env.ETHEREUM_TESTNET_RPC_URL;
 const ETHEREUM_GOERLI_RPC_URL = process.env.ETHEREUM_GOERLI_RPC_URL;
 
 // Forking
@@ -31,16 +32,16 @@ const networks: HardhatUserConfig['networks'] = {
   },
 };
 
-if (ETHEREUM_MAINNET_RPC_URL) {
+if (MAINNET_PK_DEPLOYER && ETHEREUM_MAINNET_RPC_URL) {
   networks.mainnet = {
     url: ETHEREUM_MAINNET_RPC_URL,
     accounts: [MAINNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }
 
-if (TESTNET_PK_DEPLOYER) {
+if (TESTNET_PK_DEPLOYER && ETHEREUM_TESTNET_RPC_URL) {
   networks.goerli = {
-    url: ETHEREUM_GOERLI_RPC_URL,
+    url: ETHEREUM_TESTNET_RPC_URL,
     accounts: [TESTNET_PK_DEPLOYER as unknown as HardhatNetworkAccountUserConfig],
   };
 }
@@ -56,8 +57,7 @@ if (ARCHIVE_NODE_RPC_URL && FORK_ENABLED) {
     accounts: [{ privateKey: MAINNET_PK_DEPLOYER, balance: '1615793800000000000' }],
     forking: {
       url: ARCHIVE_NODE_RPC_URL,
-      // blockNumber: Number(FORK_BLOCK_NUMBER) || 0,
-      blockNumber: 15173654 || 0,
+      blockNumber: Number(FORK_BLOCK_NUMBER) || 0
     },
   };
 } else {
