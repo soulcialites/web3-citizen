@@ -14,6 +14,12 @@ import { Notary } from "../Notary/Notary.sol";
            
  */
 contract Nation is AccessControlEnumerable {
+  // Token name
+  string private _name;
+
+  // Token symbol
+  string private _symbol;
+
   /// @notice CitizenAlpha instance
   address private _citizenAlpha;
 
@@ -72,6 +78,14 @@ contract Nation is AccessControlEnumerable {
   /* ===================================================================================== */
   /* External Functions                                                                    */
   /* ===================================================================================== */
+
+  function name() public view virtual override returns (string memory) {
+    return _name;
+  }
+
+  function symbol() public view virtual override returns (string memory) {
+    return _symbol;
+  }
 
   /**
    * @notice Get CitizenAlpha instance
