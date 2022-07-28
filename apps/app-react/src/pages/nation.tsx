@@ -1,6 +1,5 @@
 import Nation from "@web3-citizen/core-sol/deployments/mainnet/Nation.json";
 import Notary from "@web3-citizen/core-sol/deployments/mainnet/Notary.json";
-import NotaryServiceDelegatable from "@web3-citizen/core-sol/deployments/mainnet/NotaryServiceDelegatable.json";
 import {
   NationFormDisableRole,
   NationFormEnableRole,
@@ -10,9 +9,6 @@ import {
   NationFormRoleRevoke,
   NotaryFormGrantPermissions,
   NotaryFormRevokePermissions,
-  NotaryServiceDelegatableFormClaim,
-  NotaryServiceDelegatableFormClaimDelegate,
-  NotaryServiceDelegatableFormClaimInvocation,
 } from "@web3-citizen/core-wagmi";
 
 import NotaryRoleDetails from "@/components/Notary/NotaryRoleDetails";

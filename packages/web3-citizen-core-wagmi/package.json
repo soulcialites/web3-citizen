@@ -2,11 +2,10 @@
   "name": "@web3-citizen/core-wagmi",
   "author": "Kames Geraghty",
   "module": "dist/core-wagmi.esm.js",
-  "version": "0.0.0-beta.0",
+  "version": "0.0.0-beta.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "private": true,
   "files": [
     "dist",
     "src"
@@ -48,12 +47,10 @@
   "devDependencies": {
     "@babel/core": "7.18.5",
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@turbo-eth/ens-wagmi": "0.0.0-beta.0",
     "@types/node": "^18.0.0",
     "@types/prop-types": "^15.7.5",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
-    "@web3-citizen/core-sol": "0.0.0-beta.1",
     "autoprefixer": "^10.4.7",
     "husky": "^8.0.1",
     "postcss": "^8.4.14",
@@ -67,7 +64,9 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@turbo-eth/core-wagmi": "workspace:0.0.0-beta.0",
+    "@web3-citizen/core-sol": "0.0.0-beta.1",
+    "@turbo-eth/core-wagmi": "0.0.0-beta.1",
+    "@turbo-eth/ens-wagmi": "0.0.0-beta.1",
     "classnames": "^2.3.1",
     "eth-delegatable-utils": "^2.1.5",
     "ethers": "^5.6.8",
