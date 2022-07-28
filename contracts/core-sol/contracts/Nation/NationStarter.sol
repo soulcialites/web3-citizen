@@ -8,8 +8,13 @@ contract NationStarter {
 
   event NationStarted(address indexed M, address indexed _summoner);
 
-  function startNation(address _citizenAlpha_, address[] memory _founders) public {
-    Nation nation_ = new Nation(_citizenAlpha_, _founders);
+  function startNation(
+    string memory name,
+    string memory symbol,
+    address _citizenAlpha_,
+    address[] memory _founders
+  ) public {
+    Nation nation_ = new Nation(name, symbol, _citizenAlpha_, _founders);
 
     _nations.push(address(nation_));
 

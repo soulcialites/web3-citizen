@@ -21,12 +21,14 @@ contract Deployer {
   }
 
   function setupDemocracy(
-    string memory name_,
-    string memory symbol_,
+    string memory name,
+    string memory symbol,
+    string memory nationName,
+    string memory nationSymbol,
     address[] memory founders
   ) public {
-    CitizenAlpha citizenAlpha_ = deployCitizenship(_metadata, name_, symbol_);
-    address nation_ = deployNation(address(citizenAlpha_), founders);
+    CitizenAlpha citizenAlpha_ = deployCitizenship(_metadata, name, symbol);
+    address nation_ = deployNation(nationName, nationSymbol, address(citizenAlpha_), founders);
     address notary_ = deployNotary(address(citizenAlpha_), founders);
     citizenAlpha_.setNation(nation_);
     citizenAlpha_.setNotary(notary_);
@@ -43,8 +45,13 @@ contract Deployer {
     return citizenship_;
   }
 
-  function deployNation(address citizenAlpha, address[] memory founders) public returns (address) {
-    Nation nation_ = new Nation(citizenAlpha, founders);
+  function deployNation(
+    string memory name,
+    string memory symbol,
+    address citizenAlpha,
+    address[] memory founders
+  ) public returns (address) {
+    Nation nation_ = new Nation(name, symbol, citizenAlpha, founders);
     _nations.push(address(nation_));
     emit NationStarted(address(nation_), msg.sender);
     return address(nation_);
