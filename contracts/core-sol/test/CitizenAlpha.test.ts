@@ -29,7 +29,6 @@ describe('CitizenAlpha', () => {
 
   beforeEach(async () => {
     CitizenAlpha = await CitizenAlphaFactory.deploy(MetadataMock.address, 'Web5 Citizen', 'CI5');
-    await CitizenAlpha.setNation(NationMock.address);
     await CitizenAlpha.setNotary(NotaryMock.address);
     await NationMock.mock.hasRole.withArgs(FOUNDER, wallet0.address).returns(true);
     await NotaryMock.mock.isNotary.withArgs(wallet0.address).returns(true);
@@ -43,9 +42,6 @@ describe('CitizenAlpha', () => {
     it('getMetadata()', async () => {
       expect(await CitizenAlpha.getMetadata()).to.eq(MetadataMock.address);
     });
-    it('getNation()', async () => {
-      expect(await CitizenAlpha.getNation()).to.eq(NationMock.address);
-    });
     it('getNotary()', async () => {
       expect(await CitizenAlpha.getNotary()).to.eq(NotaryMock.address);
     });
@@ -58,7 +54,7 @@ describe('CitizenAlpha', () => {
 
     describe('hasRole(address citizen)', () => {
       it('should SUCCEED to get the FOUNDER role for Citizen', async () => {
-        expect(await CitizenAlpha.hasRole(FOUNDER, wallet0.address)).to.eq(true);
+        expect(await CitizenAlpha.hasRole(NationMock.address, FOUNDER, wallet0.address)).to.eq(true);
       });
     });
 

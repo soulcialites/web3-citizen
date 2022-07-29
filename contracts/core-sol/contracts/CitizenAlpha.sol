@@ -10,25 +10,21 @@ import { Notary } from "./Notary/Notary.sol";
 /**
  * @title CitizenAlpha
  * @author Kames Geraghty
- * @notice A Web3 of Trust experiment.
  */
 contract CitizenAlpha is ERC721, Ownable {
-  /// @notice Total citizenships issued
+  /// @notice Total tokens issued
   uint256 private _idCounter;
 
-  /// @notice Metadata instance; External tokenURI call
+  /// @notice Metadata instance
   address private _metadata;
 
-  /// @notice Nation instance; Global AccessControl
-  address private _nation;
-
-  /// @notice Notary instance; Citizenship Management
+  /// @notice Notary instance
   address private _notary;
 
-  /// @notice TrustResolver instance; Unique tokenURI
+  /// @notice TrustResolver instance
   address private _resolver;
 
-  /// @notice Enable tokenURI split logic operator
+  /// @notice tokenURISplit logic operator
   bool private _tokenURISplit;
 
   /// @notice Reverse lookup of a tokenId using the owner address
@@ -36,22 +32,6 @@ contract CitizenAlpha is ERC721, Ownable {
 
   /// @notice Lookup address of Citizenship trust link
   mapping(address => address) private _links;
-
-  /**
-   * @notice Emit when Citizenship is issued.
-   * @param id Citizen ID
-   * @param citizen Address of new Citizen
-   * @param link Address of  Citizen issuing new Citizenship
-   */
-  event Issued(uint256 id, address indexed citizen, address indexed link);
-
-  /**
-   * @notice Emit when Citizenship is revoked.
-   * @param id Citizen ID
-   * @param citizen Address of new Citizen
-   * @param link Address of Founder revoking Citizenship
-   */
-  event Revoked(uint256 id, address indexed citizen, address indexed link);
 
   /**
    * @notice Emit when Metadata instnace is updated.
@@ -78,6 +58,22 @@ contract CitizenAlpha is ERC721, Ownable {
   event NewResolver(address resolver);
 
   /**
+   * @notice Emit when Citizenship is issued.
+   * @param id Citizen ID
+   * @param citizen Address of new Citizen
+   * @param link Address of  Citizen issuing new Citizenship
+   */
+  event Issued(uint256 id, address indexed citizen, address indexed link);
+
+  /**
+   * @notice Emit when Citizenship is revoked.
+   * @param id Citizen ID
+   * @param citizen Address of new Citizen
+   * @param link Address of Founder revoking Citizenship
+   */
+  event Revoked(uint256 id, address indexed citizen, address indexed link);
+
+  /**
    * @notice CitizenAlpha Construction
    * @param metadata_ address - Metadata instance
    * @param name_ string - Name of ERC721 token
@@ -101,14 +97,6 @@ contract CitizenAlpha is ERC721, Ownable {
    */
   function getMetadata() external view returns (address metadata) {
     return _metadata;
-  }
-
-  /**
-   * @notice Get Nation instance
-   * @return nation Nation
-   */
-  function getNation() external view returns (address nation) {
-    return _nation;
   }
 
   /**
@@ -159,8 +147,12 @@ contract CitizenAlpha is ERC721, Ownable {
    * @param citizen Address of Citizen
    * @return status bool
    */
-  function hasRole(bytes32 role, address citizen) external view returns (bool) {
-    return Nation(_nation).hasRole(role, citizen);
+  function hasRole(
+    address nation,
+    bytes32 role,
+    address citizen
+  ) external view returns (bool) {
+    return Nation(nation).hasRole(role, citizen);
   }
 
   /**
@@ -238,15 +230,6 @@ contract CitizenAlpha is ERC721, Ownable {
   function setMetadata(address metadata) external onlyOwner {
     _metadata = metadata;
     emit NewMetadata(metadata);
-  }
-
-  /**
-   * @notice Set Nation instance
-   * @param nation address
-   */
-  function setNation(address nation) external onlyOwner {
-    _nation = nation;
-    emit NewNation(nation);
   }
 
   /**

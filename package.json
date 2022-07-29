@@ -29,7 +29,8 @@
     "lab:fork": "turbo run lab:fork",
     "clean": "turbo run clean",
     "cleanself": "rm -rf ./node_modules && rm -rf ./dist && rm -rf ./build && rm -f pnpm-lock.yaml",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/core": "7.18.5",
@@ -39,6 +40,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "husky": "^8.0.1",
     "prettier": "^2.6.2",
     "turbo": "latest"
   },

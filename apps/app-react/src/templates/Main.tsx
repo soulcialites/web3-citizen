@@ -1,8 +1,9 @@
-import type { ReactNode } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { ColorMode } from "@/components/App/ColorMode";
+import IdentityConnect from "@/components/Identity/IdentityConnect";
 import { AppConfig } from "@/utils/AppConfig";
 
 type IMainProps = {
@@ -56,6 +57,7 @@ const Main = (props: IMainProps) => (
             accountStatus={{ largeScreen: "full", smallScreen: "address" }}
             showBalance={false}
           />
+          <IdentityConnect />
         </div>
       </div>
 
