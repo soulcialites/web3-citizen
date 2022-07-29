@@ -92,20 +92,29 @@ contract Nation is AccessControlEnumerable {
   /* External Functions                                                                    */
   /* ===================================================================================== */
 
-  function name() public view virtual returns (string memory) {
+  function name() external view virtual returns (string memory) {
     return _name;
   }
 
-  function symbol() public view virtual returns (string memory) {
+  function symbol() external view virtual returns (string memory) {
     return _symbol;
   }
 
-  function did() public view virtual returns (string memory) {
+  function did() external view virtual returns (string memory) {
     return _did;
   }
 
-  function citizenAlpha() public view virtual returns (address) {
-    return _citizenAlpha;
+  function metadata()
+    external
+    view
+    virtual
+    returns (
+      string memory name,
+      string memory symbol,
+      string memory did
+    )
+  {
+    return (_name, _symbol, _did);
   }
 
   /**

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
-import "./CitizenAlpha.sol";
-import "./Nation/Nation.sol";
-import "./Notary/Notary.sol";
+import "@web3-citizen/core-sol/contracts/CitizenAlpha.sol";
+import "@web3-citizen/core-sol/contracts/Nation/Nation.sol";
+import "@web3-citizen/core-sol/contracts/Notary/Notary.sol";
 
 contract Deployer {
   address private _svgRender;
@@ -30,7 +30,6 @@ contract Deployer {
     CitizenAlpha citizenAlpha_ = deployCitizenship(_metadata, name, symbol);
     address nation_ = deployNation(nationName, nationSymbol, address(citizenAlpha_), founders);
     address notary_ = deployNotary(address(citizenAlpha_), founders);
-    citizenAlpha_.setNation(nation_);
     citizenAlpha_.setNotary(notary_);
   }
 

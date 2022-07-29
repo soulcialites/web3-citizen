@@ -2,14 +2,15 @@ import "../styles/global.css";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {
-  RainbowKitProvider,
   connectorsForWallets,
   getDefaultWallets,
+  RainbowKitProvider,
   wallet,
 } from "@rainbow-me/rainbowkit";
+import { Provider as CeramicProvider } from "@self.id/framework";
 import type { AppProps } from "next/app";
 import { ModalProvider } from "react-modal-hook";
-import { WagmiConfig, chain, configureChains, createClient } from "wagmi";
+import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { publicProvider } from "wagmi/providers/public";
@@ -33,7 +34,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     //     http: "http://127.0.0.1:8545",
     //   }),
     // }),
-    alchemyProvider({ alchemyId: "_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC" }),
+    alchemyProvider({ alchemyId: "5oRK-2Gt3A6sKHfISqsC15ozeRyyXjU5" }),
     publicProvider(),
   ]
 );
@@ -70,11 +71,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
-        <ModalProvider>
-          <IsMounted>
-            <Component {...pageProps} />
-          </IsMounted>
-        </ModalProvider>
+        <CeramicProvider
+          client={{
+            ceramic: "https://ceramic-private.3boxlabs.com",
+            connectNetwork: "mainnet",
+          }}
+        >
+          <ModalProvider>
+            <IsMounted>
+              <Component {...pageProps} />
+            </IsMounted>
+          </ModalProvider>
+        </CeramicProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

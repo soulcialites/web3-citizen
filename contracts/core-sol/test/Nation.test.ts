@@ -29,7 +29,7 @@ describe('Nation', () => {
 
   beforeEach(async () => {
     CitizenAlpha = await CitizenAlphaFactory.deploy(constants.AddressZero, 'Web5 Citizen', 'CI5');
-    Nation = await NationFactory.deploy(CitizenAlpha.address, [wallet0.address]);
+    Nation = await NationFactory.deploy("USA", "US", CitizenAlpha.address, [wallet0.address]);
     await CitizenAlpha.setNotary(NotaryMock.address);
     await NotaryMock.mock.isNotary.withArgs(wallet0.address).returns(true);
     await CitizenAlpha.issue(wallet0.address);

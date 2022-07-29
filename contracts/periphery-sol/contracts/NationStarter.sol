@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.15;
 
-import "./Nation.sol";
+import "@web3-citizen/core-sol/contracts/Nation/Nation.sol";
 
 contract NationStarter {
   address[] private _nations;
