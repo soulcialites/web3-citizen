@@ -9,9 +9,12 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     const { deploy } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    const svgColor = await deploy("SVGColor", {
-      contract: "SVGColor",
+    const svgColor = await deploy("EXAMPLE", {
+      contract: "EXAMPLE",
       from: deployer,
+      libraries: {
+        LIBRARY_NAME: "0x0",
+      },
       args: [],
       skipIfAlreadyDeployed: true,
       log: true,

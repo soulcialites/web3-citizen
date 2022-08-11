@@ -39,6 +39,7 @@ export const NationFormEnableRole = ({
   ]);
   useLogError(error);
   useLogTransactionWrite(data);
+  
   const onSubmit = (_data: any) => {
     write();
     if (onUpdate) onUpdate(_data);

@@ -10,34 +10,55 @@ import { Notary } from "../Notary/Notary.sol";
  * @title Nation
  * @author Kames Geraghty
  * @notice Nation is an AccessControl layer for CitizenAlpha.
- * @dev Extends Citizen on-chain permissions using updatables nested Roles.
+ * @dev Extends Citizen on-chain permissions using nested Roles.
            
  */
 contract Nation is AccessControlEnumerable {
+  // Nation name
+  string private _name;
+
+  // Nation symbol
+  string private _symbol;
+
+  // Nation DID (Decentralized Identifier)
+  string private _did;
+
   /// @notice CitizenAlpha instance
   address private _citizenAlpha;
 
   /// @notice Founder Role
-  bytes32 private constant FOUNDER = keccak256("FOUNDER");
+  bytes32 private constant FOUNDER =
+    0x464f554e44455200000000000000000000000000000000000000000000000000;
 
   /// @notice Governance Role
-  bytes32 private constant GOVERNANCE = keccak256("GOVERNANCE");
+  bytes32 private constant GOVERNANCE =
+    0x474f5645524e414e434500000000000000000000000000000000000000000000;
 
   /// @notice Global Role AccessControl
   mapping(bytes32 => bool) private _roleActive;
 
   /**
    * @notice Nation Constructor
-   * @param _founders addresses array of FOUNDERS
+   * @param name string - Name of Nation
+   * @param symbol string - Symbol of Nation
+   * @param citizenAlpha address - Address of CitizenAlpha
+   * @param founders array(address) - Array of Founders
    */
-  constructor(address _citizenAlpha_, address[] memory _founders) {
-    _citizenAlpha = _citizenAlpha_;
+  constructor(
+    string memory name,
+    string memory symbol,
+    address citizenAlpha,
+    address[] memory founders
+  ) {
+    _name = name;
+    _symbol = symbol;
+    _citizenAlpha = citizenAlpha;
     _roleActive[FOUNDER] = true;
     _roleActive[GOVERNANCE] = true;
     _roleActive[DEFAULT_ADMIN_ROLE] = true;
-    for (uint256 i = 0; i < _founders.length; i++) {
-      _setupRole(FOUNDER, _founders[i]);
-      _setupRole(DEFAULT_ADMIN_ROLE, _founders[i]);
+    for (uint256 i = 0; i < founders.length; i++) {
+      _setupRole(FOUNDER, founders[i]);
+      _setupRole(DEFAULT_ADMIN_ROLE, founders[i]);
     }
     _setRoleAdmin(FOUNDER, DEFAULT_ADMIN_ROLE);
   }
@@ -72,6 +93,31 @@ contract Nation is AccessControlEnumerable {
   /* ===================================================================================== */
   /* External Functions                                                                    */
   /* ===================================================================================== */
+
+  function name() external view virtual returns (string memory) {
+    return _name;
+  }
+
+  function symbol() external view virtual returns (string memory) {
+    return _symbol;
+  }
+
+  function did() external view virtual returns (string memory) {
+    return _did;
+  }
+
+  function metadata()
+    external
+    view
+    virtual
+    returns (
+      string memory name,
+      string memory symbol,
+      string memory did
+    )
+  {
+    return (_name, _symbol, _did);
+  }
 
   /**
    * @notice Get CitizenAlpha instance
@@ -194,5 +240,21 @@ contract Nation is AccessControlEnumerable {
    */
   function setRoleAdmin(bytes32 role, bytes32 adminRole) external _onlyGovernance {
     _setRoleAdmin(role, adminRole);
+  }
+
+  function setCitizenAlpha(address citizenAlpha) external _onlyGovernance {
+    _citizenAlpha = citizenAlpha;
+  }
+
+  function setDid(string calldata did) external _onlyGovernance {
+    _did = did;
+  }
+
+  function setName(string calldata name) external _onlyGovernance {
+    _name = name;
+  }
+
+  function setSymbol(string calldata symbol) external _onlyGovernance {
+    _symbol = symbol;
   }
 }
