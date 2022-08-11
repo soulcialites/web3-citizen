@@ -1,9 +1,8 @@
+import type { ReactNode } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 import { ColorMode } from "@/components/App/ColorMode";
-import IdentityConnect from "@/components/Identity/IdentityConnect";
 import { AppConfig } from "@/utils/AppConfig";
 
 type IMainProps = {
@@ -30,18 +29,17 @@ const Main = (props: IMainProps) => (
             <li className="mr-6">
               <Link href="/citizenship/">
                 <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
-                  🆔 Citizen
+                  🆔 3ID
                 </a>
               </Link>
             </li>
             <li className="mr-6">
-              <Link href="/notary/">
+              <Link href="/citizenship/">
                 <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
-                  🔏 Notary
+                  📜 Citizenship
                 </a>
               </Link>
             </li>
-
             <li className="mr-6">
               <Link href="/public-goods/">
                 <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
@@ -57,7 +55,6 @@ const Main = (props: IMainProps) => (
             accountStatus={{ largeScreen: "full", smallScreen: "address" }}
             showBalance={false}
           />
-          <IdentityConnect />
         </div>
       </div>
 
@@ -68,6 +65,13 @@ const Main = (props: IMainProps) => (
       <div className="border-t border-gray-300 bg-white py-8 text-center text-sm dark:border-neutral-500 dark:bg-neutral-900 dark:text-white">
         <div className="mb-3 flex items-center justify-center">
           <ul className="flex flex-wrap text-sm">
+            <li className="mr-6">
+              <Link href="/notary/">
+                <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">
+                  🔏 Notary
+                </a>
+              </Link>
+            </li>
             <li className="mr-6">
               <Link href="/nation/">
                 <a className="font-semibold text-gray-700 hover:text-gray-900 dark:text-white hover:dark:text-neutral-100">

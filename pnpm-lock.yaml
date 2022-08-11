@@ -21,7 +21,7 @@ importers:
     devDependencies:
       husky: 8.0.1
       prettier: 2.7.1
-      turbo: 1.3.4
+      turbo: 1.4.0
 
   apps/app-react:
     specifiers:
@@ -45,7 +45,8 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.27.0
       '@typescript-eslint/parser': ^5.27.0
       '@web3-citizen/core-sol': 0.0.0-beta.2
-      '@web3-citizen/core-wagmi': 0.0.0-beta.2
+      '@web3-citizen/core-wagmi': 0.0.0-beta.4
+      '@web3-citizen/self.id-extensions': 0.0.0-beta.0
       autoprefixer: ^10.4.7
       classnames: ^2.3.1
       cross-env: ^7.0.3
@@ -92,15 +93,16 @@ importers:
       wagmi: 0.4.12
     dependencies:
       '@rainbow-me/rainbowkit': 0.2.1_ksvpodatviltilqty4m7gcxati
-      '@self.id/framework': 0.3.2_l43gc23jo7fibgkpegekxdgmki
+      '@self.id/framework': 0.3.2_4cc5zw5azim2bix77d63le72su
       '@self.id/image-utils': 0.3.0
-      '@self.id/react': 0.3.2_l43gc23jo7fibgkpegekxdgmki
-      '@self.id/web': 0.4.2_@opentelemetry+api@1.1.0
+      '@self.id/react': 0.3.2_4cc5zw5azim2bix77d63le72su
+      '@self.id/web': 0.4.2
       '@turbo-eth/core-wagmi': link:../../packages/core-wagmi
       '@turbo-eth/ens-wagmi': link:../../packages/ens-wagmi
       '@turbo-eth/erc20-wagmi': link:../../packages/erc20-wagmi
       '@web3-citizen/core-sol': link:../../contracts/core-sol
-      '@web3-citizen/core-wagmi': 0.0.0-beta.2_eyudarolhdi4r7b4udxt4ig3vi
+      '@web3-citizen/core-wagmi': link:../../packages/web3-citizen-core-wagmi
+      '@web3-citizen/self.id-extensions': link:../../packages/self.id-extensions
       classnames: 2.3.1
       dids: 3.2.0
       ethers: 5.6.9
@@ -368,7 +370,7 @@ importers:
     dependencies:
       classnames: 2.3.1
       prop-types: 15.8.1
-      to-ipfs-url: 1.0.46_lknq4vidd3mvoh3shrs45gd6iu
+      to-ipfs-url: 1.0.46_hblrp2kl5fvw6hk24id2v7kskq
       wagmi: 0.4.12_2pvqx3wni2imkaucnfdtyrjuiq
     devDependencies:
       '@babel/core': 7.18.5
@@ -483,6 +485,59 @@ importers:
       ethers: 5.6.9
       prop-types: 15.8.1
       react-hook-form: 7.32.2_react@18.2.0
+      wagmi: 0.4.12_2pvqx3wni2imkaucnfdtyrjuiq
+    devDependencies:
+      '@babel/core': 7.18.5
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@types/node': 18.0.0
+      '@types/prop-types': 15.7.5
+      '@types/react': 18.0.14
+      '@types/react-dom': 18.0.5
+      husky: 8.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      size-limit: 7.0.8
+      tsdx: 0.14.1_@types+node@18.0.0
+      tslib: 2.4.0
+      typescript: 4.7.4
+
+  packages/self.id-extensions:
+    specifiers:
+      '@babel/core': 7.18.5
+      '@ceramicnetwork/common': ^2.3.0
+      '@ceramicnetwork/stream-tile': ^2.3.0
+      '@datamodels/identity-profile-basic': ^0.2.0
+      '@glazed/types': ^0.2.0
+      '@self.id/framework': ^0.3.2
+      '@size-limit/preset-small-lib': ^7.0.8
+      '@types/node': ^18.0.0
+      '@types/prop-types': ^15.7.5
+      '@types/react': ^18.0.14
+      '@types/react-dom': ^18.0.5
+      classnames: ^2.3.1
+      husky: ^8.0.1
+      jotai: ^1.7.6
+      prop-types: ^15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0
+      react-query: ^3.39.2
+      size-limit: ^7.0.8
+      to-ipfs-url: ^1.0.46
+      tsdx: ^0.14.1
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+      wagmi: 0.4.12
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0_@opentelemetry+api@1.1.0
+      '@ceramicnetwork/stream-tile': 2.3.0_@opentelemetry+api@1.1.0
+      '@datamodels/identity-profile-basic': 0.2.0
+      '@glazed/types': 0.2.0
+      '@self.id/framework': 0.3.2_l43gc23jo7fibgkpegekxdgmki
+      classnames: 2.3.1
+      jotai: 1.7.6_u5nsut5xkhmysa5vzkn2wlevpi
+      prop-types: 15.8.1
+      react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
+      to-ipfs-url: 1.0.46_lknq4vidd3mvoh3shrs45gd6iu
       wagmi: 0.4.12_2pvqx3wni2imkaucnfdtyrjuiq
     devDependencies:
       '@babel/core': 7.18.5
@@ -717,7 +772,7 @@ packages:
       '@babel/core': 7.18.5
       '@babel/helper-compilation-targets': 7.18.2_@babel+core@7.18.5
       '@babel/helper-module-imports': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/traverse': 7.18.5
       debug: 4.3.4
       lodash.debounce: 4.0.8
@@ -735,7 +790,7 @@ packages:
       '@babel/core': 7.18.5
       '@babel/helper-compilation-targets': 7.18.2_@babel+core@7.18.5
       '@babel/helper-module-imports': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/traverse': 7.18.5
       debug: 4.3.4
       lodash.debounce: 4.0.8
@@ -802,10 +857,6 @@ packages:
     dependencies:
       '@babel/types': 7.18.4
     dev: true
-
-  /@babel/helper-plugin-utils/7.17.12:
-    resolution: {integrity: sha512-JDkf04mqtN3y4iAbO1hv9U2ARpPyPL1zqyWs/2WG1pgSq9llHFjStX5jdxb84himgJm+8Ng+x0oiWF/nw/XQKA==}
-    engines: {node: '>=6.9.0'}
 
   /@babel/helper-plugin-utils/7.18.6:
     resolution: {integrity: sha512-gvZnm1YAAxh13eJdkb9EWHBnF3eAub3XTLCZEehHT2kWxiKVRL64+ae5Y6Ivne0mVHmMYKT+xWgZO+gQhuLUBg==}
@@ -906,7 +957,7 @@ packages:
       '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/7.17.12_@babel+core@7.18.5:
@@ -916,7 +967,7 @@ packages:
       '@babel/core': ^7.13.0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.16.0
       '@babel/plugin-proposal-optional-chaining': 7.17.12_@babel+core@7.18.5
     dev: true
@@ -928,7 +979,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-remap-async-to-generator': 7.16.8
       '@babel/plugin-syntax-async-generators': 7.8.4_@babel+core@7.18.5
     transitivePeerDependencies:
@@ -943,7 +994,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-class-features-plugin': 7.18.0_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -956,7 +1007,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-class-features-plugin': 7.18.0_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-class-static-block': 7.14.5_@babel+core@7.18.5
     transitivePeerDependencies:
       - supports-color
@@ -969,7 +1020,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-dynamic-import': 7.8.3_@babel+core@7.18.5
     dev: true
 
@@ -980,7 +1031,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-export-namespace-from': 7.8.3_@babel+core@7.18.5
     dev: true
 
@@ -991,7 +1042,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-json-strings': 7.8.3_@babel+core@7.18.5
     dev: true
 
@@ -1002,7 +1053,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-logical-assignment-operators': 7.10.4_@babel+core@7.18.5
     dev: true
 
@@ -1013,7 +1064,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3_@babel+core@7.18.5
     dev: true
 
@@ -1024,7 +1075,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-numeric-separator': 7.10.4_@babel+core@7.18.5
     dev: true
 
@@ -1037,7 +1088,7 @@ packages:
       '@babel/compat-data': 7.18.5
       '@babel/core': 7.18.5
       '@babel/helper-compilation-targets': 7.18.2_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.18.5
       '@babel/plugin-transform-parameters': 7.17.12_@babel+core@7.18.5
     dev: true
@@ -1049,7 +1100,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-optional-catch-binding': 7.8.3_@babel+core@7.18.5
     dev: true
 
@@ -1060,7 +1111,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.16.0
       '@babel/plugin-syntax-optional-chaining': 7.8.3_@babel+core@7.18.5
     dev: true
@@ -1073,7 +1124,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-class-features-plugin': 7.18.0_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1087,7 +1138,7 @@ packages:
       '@babel/core': 7.18.5
       '@babel/helper-annotate-as-pure': 7.16.7
       '@babel/helper-create-class-features-plugin': 7.18.0_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-private-property-in-object': 7.14.5_@babel+core@7.18.5
     transitivePeerDependencies:
       - supports-color
@@ -1101,7 +1152,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-regexp-features-plugin': 7.17.12_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.18.5:
@@ -1110,7 +1161,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-bigint/7.8.3_@babel+core@7.18.5:
@@ -1119,7 +1170,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-class-properties/7.12.13_@babel+core@7.18.5:
@@ -1128,7 +1179,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-class-static-block/7.14.5_@babel+core@7.18.5:
@@ -1138,7 +1189,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-dynamic-import/7.8.3_@babel+core@7.18.5:
@@ -1147,7 +1198,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-export-namespace-from/7.8.3_@babel+core@7.18.5:
@@ -1156,7 +1207,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-import-assertions/7.17.12_@babel+core@7.18.5:
@@ -1166,7 +1217,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-import-meta/7.10.4_@babel+core@7.18.5:
@@ -1175,7 +1226,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-json-strings/7.8.3_@babel+core@7.18.5:
@@ -1184,7 +1235,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-jsx/7.18.6_@babel+core@7.18.5:
@@ -1203,7 +1254,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-nullish-coalescing-operator/7.8.3_@babel+core@7.18.5:
@@ -1212,7 +1263,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-numeric-separator/7.10.4_@babel+core@7.18.5:
@@ -1221,7 +1272,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-object-rest-spread/7.8.3_@babel+core@7.18.5:
@@ -1230,7 +1281,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-optional-catch-binding/7.8.3_@babel+core@7.18.5:
@@ -1239,7 +1290,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-optional-chaining/7.8.3_@babel+core@7.18.5:
@@ -1248,7 +1299,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-private-property-in-object/7.14.5_@babel+core@7.18.5:
@@ -1258,7 +1309,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-top-level-await/7.14.5_@babel+core@7.18.5:
@@ -1268,7 +1319,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-syntax-typescript/7.18.6_@babel+core@7.18.5:
@@ -1288,7 +1339,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-async-to-generator/7.17.12_@babel+core@7.18.5:
@@ -1299,7 +1350,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-module-imports': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-remap-async-to-generator': 7.16.8
     transitivePeerDependencies:
       - supports-color
@@ -1312,7 +1363,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-block-scoping/7.18.4_@babel+core@7.18.5:
@@ -1322,7 +1373,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-classes/7.18.4_@babel+core@7.18.5:
@@ -1336,7 +1387,7 @@ packages:
       '@babel/helper-environment-visitor': 7.18.2
       '@babel/helper-function-name': 7.17.9
       '@babel/helper-optimise-call-expression': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-replace-supers': 7.18.2
       '@babel/helper-split-export-declaration': 7.16.7
       globals: 11.12.0
@@ -1351,7 +1402,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-destructuring/7.18.0_@babel+core@7.18.5:
@@ -1361,7 +1412,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-dotall-regex/7.16.7_@babel+core@7.18.5:
@@ -1372,7 +1423,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-regexp-features-plugin': 7.17.12_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-duplicate-keys/7.17.12_@babel+core@7.18.5:
@@ -1382,7 +1433,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-exponentiation-operator/7.16.7_@babel+core@7.18.5:
@@ -1393,7 +1444,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-builder-binary-assignment-operator-visitor': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-for-of/7.18.1_@babel+core@7.18.5:
@@ -1403,7 +1454,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-function-name/7.16.7_@babel+core@7.18.5:
@@ -1415,7 +1466,7 @@ packages:
       '@babel/core': 7.18.5
       '@babel/helper-compilation-targets': 7.18.2_@babel+core@7.18.5
       '@babel/helper-function-name': 7.17.9
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-literals/7.17.12_@babel+core@7.18.5:
@@ -1425,7 +1476,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-member-expression-literals/7.16.7_@babel+core@7.18.5:
@@ -1435,7 +1486,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-modules-amd/7.18.0_@babel+core@7.18.5:
@@ -1446,7 +1497,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-module-transforms': 7.18.0
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       babel-plugin-dynamic-import-node: 2.3.3
     transitivePeerDependencies:
       - supports-color
@@ -1460,7 +1511,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-module-transforms': 7.18.0
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-simple-access': 7.18.2
       babel-plugin-dynamic-import-node: 2.3.3
     transitivePeerDependencies:
@@ -1476,7 +1527,7 @@ packages:
       '@babel/core': 7.18.5
       '@babel/helper-hoist-variables': 7.16.7
       '@babel/helper-module-transforms': 7.18.0
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-validator-identifier': 7.16.7
       babel-plugin-dynamic-import-node: 2.3.3
     transitivePeerDependencies:
@@ -1491,7 +1542,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-module-transforms': 7.18.0
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1504,7 +1555,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-regexp-features-plugin': 7.17.12_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-new-target/7.18.5_@babel+core@7.18.5:
@@ -1514,7 +1565,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-object-super/7.16.7_@babel+core@7.18.5:
@@ -1524,7 +1575,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-replace-supers': 7.18.2
     transitivePeerDependencies:
       - supports-color
@@ -1537,7 +1588,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-property-literals/7.16.7_@babel+core@7.18.5:
@@ -1547,7 +1598,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-regenerator/7.18.0_@babel+core@7.18.5:
@@ -1557,7 +1608,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       regenerator-transform: 0.15.0
     dev: true
 
@@ -1568,7 +1619,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-runtime/7.18.5_@babel+core@7.18.5:
@@ -1579,7 +1630,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-module-imports': 7.16.7
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       babel-plugin-polyfill-corejs2: 0.3.1_@babel+core@7.18.5
       babel-plugin-polyfill-corejs3: 0.5.2_@babel+core@7.18.5
       babel-plugin-polyfill-regenerator: 0.3.1_@babel+core@7.18.5
@@ -1595,7 +1646,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-spread/7.17.12_@babel+core@7.18.5:
@@ -1605,7 +1656,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-skip-transparent-expression-wrappers': 7.16.0
     dev: true
 
@@ -1616,7 +1667,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-template-literals/7.18.2_@babel+core@7.18.5:
@@ -1626,7 +1677,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-typeof-symbol/7.17.12_@babel+core@7.18.5:
@@ -1636,7 +1687,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-unicode-escapes/7.16.7_@babel+core@7.18.5:
@@ -1646,7 +1697,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/plugin-transform-unicode-regex/7.16.7_@babel+core@7.18.5:
@@ -1657,7 +1708,7 @@ packages:
     dependencies:
       '@babel/core': 7.18.5
       '@babel/helper-create-regexp-features-plugin': 7.17.12_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
     dev: true
 
   /@babel/preset-env/7.18.2_@babel+core@7.18.5:
@@ -1669,7 +1720,7 @@ packages:
       '@babel/compat-data': 7.18.5
       '@babel/core': 7.18.5
       '@babel/helper-compilation-targets': 7.18.2_@babel+core@7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/helper-validator-option': 7.16.7
       '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.17.12_@babel+core@7.18.5
@@ -1752,7 +1803,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.5
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-proposal-unicode-property-regex': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-dotall-regex': 7.16.7_@babel+core@7.18.5
       '@babel/types': 7.18.4
@@ -1835,6 +1886,39 @@ packages:
       - ts-toolbelt
     dev: false
 
+  /@bluelovers/ipfs-http-client/1.0.93_ipopfif7f4qdywvimsxzhgp3wm:
+    resolution: {integrity: sha512-lzQQEdJqjhgoIgdQ2JO/N5oenScF89xrwBNLaYDFtseIAniWVXk3i1NOxs/Ab7Vq5/p2SeWzYIQqmCsfi2aq8A==}
+    peerDependencies:
+      ipfs-http-client: '*'
+    dependencies:
+      '@lazy-ipfs/check-ipfs-connect': 1.0.9_gzu47r2k63mulkt7z37ymhp47y
+      ipfs-env: 1.0.19
+      ipfs-http-client: 57.0.3_undici@5.7.0
+      ipfs-types: 1.0.46_gzu47r2k63mulkt7z37ymhp47y
+      ts-type: 1.2.40_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ipfs-core-types
+      - ts-toolbelt
+    dev: false
+
+  /@ceramicnetwork/3id-did-resolver/2.1.3:
+    resolution: {integrity: sha512-TJhh9Wi2Jt1Kl2u1ea4hR9NtsLI1L428dF1sAj6PbVr9A8CXRgaw2LD5lai+GwryuPzjmyLHYuYVNrpqipJDpw==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/stream-tile': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      cross-fetch: 3.1.5
+      lru_map: 0.4.1
+      multiformats: 9.7.0
+      uint8arrays: 3.0.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@ceramicnetwork/3id-did-resolver/2.1.3_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-TJhh9Wi2Jt1Kl2u1ea4hR9NtsLI1L428dF1sAj6PbVr9A8CXRgaw2LD5lai+GwryuPzjmyLHYuYVNrpqipJDpw==}
     dependencies:
@@ -1863,6 +1947,28 @@ packages:
       - encoding
     dev: false
 
+  /@ceramicnetwork/common/2.3.0:
+    resolution: {integrity: sha512-/0uqKpCCIEXijWF1ShMXj+IcvlAD3O10f7va9gMM/XMEXr5hYSrUdPqLcjxxvJJHhzQSCZBZSkAorTWgEnsoIg==}
+    dependencies:
+      '@ceramicnetwork/streamid': 2.2.0
+      '@opentelemetry/exporter-prometheus': 0.28.0
+      '@opentelemetry/sdk-metrics-base': 0.28.0
+      '@opentelemetry/semantic-conventions': 1.5.0
+      caip: 1.1.0
+      ceramic-cacao: 1.1.1
+      cross-fetch: 3.1.5
+      flat: 5.0.2
+      jet-logger: 1.1.5
+      lodash.clonedeep: 4.5.0
+      logfmt: 1.3.2
+      multiformats: 9.7.0
+      rxjs: 7.5.6
+      uint8arrays: 3.0.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@ceramicnetwork/common/2.3.0_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-/0uqKpCCIEXijWF1ShMXj+IcvlAD3O10f7va9gMM/XMEXr5hYSrUdPqLcjxxvJJHhzQSCZBZSkAorTWgEnsoIg==}
     dependencies:
@@ -1880,6 +1986,22 @@ packages:
       multiformats: 9.7.0
       rxjs: 7.5.6
       uint8arrays: 3.0.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
+  /@ceramicnetwork/http-client/2.3.0:
+    resolution: {integrity: sha512-nc+m0m/aPRGEA3CesN0yV4zoQrHtxhXDw9S76PxC2k6yF3fiu6PWlhb0911CwOM5/kYLzUGwT15XQxx7+weTpw==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/stream-caip10-link': 2.1.0
+      '@ceramicnetwork/stream-model': 0.3.0
+      '@ceramicnetwork/stream-model-instance': 0.3.0
+      '@ceramicnetwork/stream-tile': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      query-string: 7.1.1
+      rxjs: 7.5.6
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - encoding
@@ -1930,6 +2052,19 @@ packages:
       rpc-utils: 0.6.2
     dev: false
 
+  /@ceramicnetwork/stream-caip10-link/2.1.0:
+    resolution: {integrity: sha512-lAmgmDwsbshg2KDXyg3YJst+yZleFXAmkhUyOKHVn5tGQqn+cy/4lQfIhIETRHIpHUpwCVEN/+RgVLMZtFUUxQ==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      caip: 1.1.0
+      did-resolver: 3.2.2
+      lodash.clonedeep: 4.5.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@ceramicnetwork/stream-caip10-link/2.1.0_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-lAmgmDwsbshg2KDXyg3YJst+yZleFXAmkhUyOKHVn5tGQqn+cy/4lQfIhIETRHIpHUpwCVEN/+RgVLMZtFUUxQ==}
     dependencies:
@@ -1938,6 +2073,20 @@ packages:
       caip: 1.1.0
       did-resolver: 3.2.2
       lodash.clonedeep: 4.5.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
+  /@ceramicnetwork/stream-model-instance/0.3.0:
+    resolution: {integrity: sha512-9Wq+RJgh57l7TlQq3va8QVha0hVgBM9ppMbNlackA8M7EvK/jQUl6I+p+L3Vm479TIxLqrUSqIUbQ6vdlmCIYA==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      '@ipld/dag-cbor': 7.0.2
+      '@stablelib/random': 1.0.1
+      fast-json-patch: 3.1.1
+      uint8arrays: 3.0.0
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - encoding
@@ -1957,6 +2106,22 @@ packages:
       - encoding
     dev: false
 
+  /@ceramicnetwork/stream-model/0.3.0:
+    resolution: {integrity: sha512-8lBLv7ds1fvmDPw2INZNTHvSs79m5jiqnM+e1jdJlz9DE36z7gEPnva5O93jg0/PlJmDXZlYdeAM0yVgnVBRZA==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      '@ipld/dag-cbor': 7.0.2
+      '@stablelib/random': 1.0.1
+      fast-json-patch: 3.1.1
+      json-schema-typed: 8.0.1
+      multihashes: 4.0.3
+      uint8arrays: 3.0.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@ceramicnetwork/stream-model/0.3.0_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-8lBLv7ds1fvmDPw2INZNTHvSs79m5jiqnM+e1jdJlz9DE36z7gEPnva5O93jg0/PlJmDXZlYdeAM0yVgnVBRZA==}
     dependencies:
@@ -1967,6 +2132,21 @@ packages:
       fast-json-patch: 3.1.1
       json-schema-typed: 8.0.1
       multihashes: 4.0.3
+      uint8arrays: 3.0.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
+  /@ceramicnetwork/stream-tile/2.3.0:
+    resolution: {integrity: sha512-rRUUrrH9tOIT7wHpOGHE1+ftDUQFkk1iZr6w/54BkNhbAOYWldIZqX2JYRhI7QmTe+vKzdh6fDI6pHbaTJBfyg==}
+    dependencies:
+      '@ceramicnetwork/common': 2.3.0
+      '@ceramicnetwork/streamid': 2.2.0
+      '@ipld/dag-cbor': 7.0.2
+      '@stablelib/random': 1.0.1
+      fast-json-patch: 3.1.1
+      lodash.clonedeep: 4.5.0
       uint8arrays: 3.0.0
     transitivePeerDependencies:
       - '@opentelemetry/api'
@@ -3024,11 +3204,34 @@ packages:
     engines: {node: '>=14.14'}
     dev: false
 
+  /@glazed/datamodel/0.3.1:
+    resolution: {integrity: sha512-UBd+z9yoHZkFDXKOE3VmnUPdkE0ERla+3jU8Q09jo4pCQPwzk/IvMlLNlRfIqUbGuoYkz8pZkdcuTB012yS/dw==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@glazed/tile-loader': 0.2.1
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@glazed/datamodel/0.3.1_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-UBd+z9yoHZkFDXKOE3VmnUPdkE0ERla+3jU8Q09jo4pCQPwzk/IvMlLNlRfIqUbGuoYkz8pZkdcuTB012yS/dw==}
     engines: {node: '>=14.14'}
     dependencies:
       '@glazed/tile-loader': 0.2.1_@opentelemetry+api@1.1.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
+  /@glazed/did-datastore/0.3.2:
+    resolution: {integrity: sha512-/sNasgFF1bvUFIc4KVIihPzD+Zo2kr/uJ8cZHU1U+rRVsCL1AeYcx/bF27OaaMvxfDlJ9nXMmiaPl5kwnyzviQ==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@ceramicnetwork/streamid': 2.2.0
+      '@glazed/constants': 0.2.0
+      '@glazed/datamodel': 0.3.1
+      '@glazed/tile-loader': 0.2.1
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - encoding
@@ -3047,12 +3250,34 @@ packages:
       - encoding
     dev: false
 
+  /@glazed/did-session/0.0.1:
+    resolution: {integrity: sha512-tI4yZYcUiwVIdFXYLM16B5koZ+Z6kxvDg56A4Kmfr3jLBtvDK7dKYw7ntY80ecKDTD9qoNgQjee7P0TNhQx4Vg==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@ceramicnetwork/blockchain-utils-linking': 2.0.7
+      '@ceramicnetwork/stream-tile': 2.3.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@glazed/did-session/0.0.1_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-tI4yZYcUiwVIdFXYLM16B5koZ+Z6kxvDg56A4Kmfr3jLBtvDK7dKYw7ntY80ecKDTD9qoNgQjee7P0TNhQx4Vg==}
     engines: {node: '>=14.14'}
     dependencies:
       '@ceramicnetwork/blockchain-utils-linking': 2.0.7
       '@ceramicnetwork/stream-tile': 2.3.0_@opentelemetry+api@1.1.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
+  /@glazed/tile-loader/0.2.1:
+    resolution: {integrity: sha512-opICtDY1OIhIYJD8UVTO8BdNDMGD+Ui4MPA1JifpVeUWAO97PtgsXZ1irLLab5l5zDiakmajoiWZxv2PbVGTlA==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@ceramicnetwork/stream-tile': 2.3.0
+      dataloader: 2.1.0
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - encoding
@@ -3609,10 +3834,50 @@ packages:
       - ts-toolbelt
     dev: false
 
+  /@lazy-ipfs/check-ipfs-connect/1.0.9_gzu47r2k63mulkt7z37ymhp47y:
+    resolution: {integrity: sha512-HZOXxz2fKyMtmEYbyo0pNLd4//GwPLuCZHRFKMH0L/dW/EZdE9FZ6hKPEa2GPeszRB7HhDqhIrgkIAzf3vhj2g==}
+    peerDependencies:
+      ipfs-core-types: '*'
+    dependencies:
+      bluebird: 3.7.2
+      err-code: 3.0.1
+      ipfs-core-types: 0.11.1_undici@5.7.0
+      lazy-aggregate-error: 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /@lazy-ipfs/cid-to-string/1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-J7jNMIUD+wYmwE8TNBwAQViusIkQybIGQGu9fyD2AKXXD6pBQ/pj5+yNK2QFVUKy4/innYZP0mKSF/8bqJPumA==}
+    dependencies:
+      '@lazy-ipfs/detect-cid-lib': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
   /@lazy-ipfs/cid-to-string/1.0.11_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-J7jNMIUD+wYmwE8TNBwAQViusIkQybIGQGu9fyD2AKXXD6pBQ/pj5+yNK2QFVUKy4/innYZP0mKSF/8bqJPumA==}
     dependencies:
       '@lazy-ipfs/detect-cid-lib': 1.0.11_i4qbvy6c3ogdh5ewlom2ynnyei
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /@lazy-ipfs/detect-cid-lib/1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-1k18KY9IABGLKxkFXmf1+fynmWmybY9orvNbv2qwmVBM2pLyzzMvOq21qo1zw6y+K3kgUZ8HzHZRpDjTHiwBJA==}
+    dependencies:
+      err-code: 3.0.1
+      multicodec: 3.2.1
+      ts-type: 1.2.40_4yx5l5ymmvyqle2zoh7ivm4dyy
       tslib: 2.4.0
     transitivePeerDependencies:
       - '@types/bluebird'
@@ -3660,12 +3925,48 @@ packages:
       - ts-toolbelt
     dev: false
 
+  /@lazy-ipfs/parse-ipfs-path/1.0.25_cz7m23jm4ckb6ck4tdbzsxk7bi:
+    resolution: {integrity: sha512-pm3usxh8fH1dCN7+kzdPPFdB4XZcYtezQrGd4PpcnCD7PAfLmGOtKdObGd7ouFghYtlRi/Ytb8l/LoRsWExWzw==}
+    dependencies:
+      '@lazy-ipfs/cid-to-string': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      '@lazy-ipfs/detect-cid-lib': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      '@lazy-ipfs/is-cid': 1.0.9
+      '@lazy-ipfs/to-cid': 1.0.34_cz7m23jm4ckb6ck4tdbzsxk7bi
+      err-code: 3.0.1
+      is-ipfs: 6.0.2_node-fetch@2.6.7
+      is-valid-domain: 0.1.6
+      lazy-url: 2.0.4_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - node-fetch
+      - supports-color
+      - ts-toolbelt
+    dev: false
+
   /@lazy-ipfs/to-cid/1.0.34_cn6kfmuxpzmmkgbk6qnw4jtfuy:
     resolution: {integrity: sha512-Bg59+/FgfwR518hoxWtYddT12RwfsPHj72utyoJ0hM8cm+PEi/2XdMabG5HKJ5uqjP77UxrtVZ9rPRALcgbjlg==}
     dependencies:
       '@lazy-ipfs/detect-cid-lib': 1.0.11_i4qbvy6c3ogdh5ewlom2ynnyei
       '@lazy-ipfs/is-cid': 1.0.9
       '@lazy-ipfs/parse-ipfs-path': 1.0.25_cn6kfmuxpzmmkgbk6qnw4jtfuy
+      err-code: 3.0.1
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - node-fetch
+      - supports-color
+      - ts-toolbelt
+    dev: false
+
+  /@lazy-ipfs/to-cid/1.0.34_cz7m23jm4ckb6ck4tdbzsxk7bi:
+    resolution: {integrity: sha512-Bg59+/FgfwR518hoxWtYddT12RwfsPHj72utyoJ0hM8cm+PEi/2XdMabG5HKJ5uqjP77UxrtVZ9rPRALcgbjlg==}
+    dependencies:
+      '@lazy-ipfs/detect-cid-lib': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      '@lazy-ipfs/is-cid': 1.0.9
+      '@lazy-ipfs/parse-ipfs-path': 1.0.25_cz7m23jm4ckb6ck4tdbzsxk7bi
       err-code: 3.0.1
       tslib: 2.4.0
     transitivePeerDependencies:
@@ -4283,6 +4584,15 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
+  /@opentelemetry/core/1.2.0:
+    resolution: {integrity: sha512-QiKp8fBbT9ZhRTP+ZVVMyqH62tD/ZQa4gWPi+GnpNetvK1SWPO/8DmRpaSXHwAhu5FWUDJrbFgpLsrDd1zGPOw==}
+    engines: {node: '>=8.12.0'}
+    peerDependencies:
+      '@opentelemetry/api': '>=1.0.0 <1.2.0'
+    dependencies:
+      '@opentelemetry/semantic-conventions': 1.2.0
+    dev: false
+
   /@opentelemetry/core/1.2.0_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-QiKp8fBbT9ZhRTP+ZVVMyqH62tD/ZQa4gWPi+GnpNetvK1SWPO/8DmRpaSXHwAhu5FWUDJrbFgpLsrDd1zGPOw==}
     engines: {node: '>=8.12.0'}
@@ -4291,6 +4601,17 @@ packages:
     dependencies:
       '@opentelemetry/api': 1.1.0
       '@opentelemetry/semantic-conventions': 1.2.0
+    dev: false
+
+  /@opentelemetry/exporter-prometheus/0.28.0:
+    resolution: {integrity: sha512-1PpJk0xFwVIRXb1vUEDWb+cV2Z8m/5YkZ+zL3+u58iZBiNn5t5VMHQ7iNPE+sV6Hr2BG8X7PtNzIIuJQKXrqsw==}
+    engines: {node: '>=8.12.0'}
+    peerDependencies:
+      '@opentelemetry/api': ^1.0.0
+    dependencies:
+      '@opentelemetry/api-metrics': 0.28.0
+      '@opentelemetry/core': 1.2.0
+      '@opentelemetry/sdk-metrics-base': 0.28.0
     dev: false
 
   /@opentelemetry/exporter-prometheus/0.28.0_@opentelemetry+api@1.1.0:
@@ -4305,6 +4626,16 @@ packages:
       '@opentelemetry/sdk-metrics-base': 0.28.0_@opentelemetry+api@1.1.0
     dev: false
 
+  /@opentelemetry/resources/1.2.0:
+    resolution: {integrity: sha512-S5ZlZa2JF+1qhiF7eb3tTtDfKmTODO//pvam9vEyZvr+/At45rIQ7cyznRdMWCppZbholwXWXnrKml29IIG9vQ==}
+    engines: {node: '>=8.12.0'}
+    peerDependencies:
+      '@opentelemetry/api': '>=1.0.0 <1.2.0'
+    dependencies:
+      '@opentelemetry/core': 1.2.0
+      '@opentelemetry/semantic-conventions': 1.2.0
+    dev: false
+
   /@opentelemetry/resources/1.2.0_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-S5ZlZa2JF+1qhiF7eb3tTtDfKmTODO//pvam9vEyZvr+/At45rIQ7cyznRdMWCppZbholwXWXnrKml29IIG9vQ==}
     engines: {node: '>=8.12.0'}
@@ -4314,6 +4645,18 @@ packages:
       '@opentelemetry/api': 1.1.0
       '@opentelemetry/core': 1.2.0_@opentelemetry+api@1.1.0
       '@opentelemetry/semantic-conventions': 1.2.0
+    dev: false
+
+  /@opentelemetry/sdk-metrics-base/0.28.0:
+    resolution: {integrity: sha512-PFjk9+WWU6Y51ZjxClnPW1rzTtcT79pR1FTiFjTsNmKSG0zU3qvUHAoTo0+jvvrO0Djihj7AE+iIG2xLWY4GNQ==}
+    engines: {node: '>=8.12.0'}
+    peerDependencies:
+      '@opentelemetry/api': ^1.0.0
+    dependencies:
+      '@opentelemetry/api-metrics': 0.28.0
+      '@opentelemetry/core': 1.2.0
+      '@opentelemetry/resources': 1.2.0
+      lodash.merge: 4.6.2
     dev: false
 
   /@opentelemetry/sdk-metrics-base/0.28.0_@opentelemetry+api@1.1.0:
@@ -4581,6 +4924,24 @@ packages:
       '@noble/hashes': 1.1.2
       '@scure/base': 1.1.1
 
+  /@self.id/core/0.4.1:
+    resolution: {integrity: sha512-sczQxU4iujPk0G8qhEi+++QZ3wFk0HOK/PbLwMRA+N8V8fMM2ujQO6MassX4DfpqtB6DWILO2WAlxPp8VmCEFA==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@ceramicnetwork/3id-did-resolver': 2.1.3
+      '@ceramicnetwork/http-client': 2.3.0
+      '@ceramicnetwork/stream-caip10-link': 2.1.0
+      '@glazed/datamodel': 0.3.1
+      '@glazed/did-datastore': 0.3.2
+      '@glazed/tile-loader': 0.2.1
+      caip: 1.1.0
+      did-resolver: 3.2.2
+      key-did-resolver: 2.0.5
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
+    dev: false
+
   /@self.id/core/0.4.1_@opentelemetry+api@1.1.0:
     resolution: {integrity: sha512-sczQxU4iujPk0G8qhEi+++QZ3wFk0HOK/PbLwMRA+N8V8fMM2ujQO6MassX4DfpqtB6DWILO2WAlxPp8VmCEFA==}
     engines: {node: '>=14.14'}
@@ -4597,6 +4958,34 @@ packages:
     transitivePeerDependencies:
       - '@opentelemetry/api'
       - encoding
+    dev: false
+
+  /@self.id/framework/0.3.2_4cc5zw5azim2bix77d63le72su:
+    resolution: {integrity: sha512-zuA/NTgTtaCoAnMZ/p0MVzjwhNQUR2VPqZjrGt0BGnaluu1pa2eVDLZJZBqyDyS9/KvQ1hOXFhpXiGuVpJsLNA==}
+    engines: {node: '>=14.14'}
+    peerDependencies:
+      react: ^17.0.2 || ^18.0.0 || 18.2.0
+    dependencies:
+      '@datamodels/identity-accounts-web': 0.2.0
+      '@datamodels/identity-profile-basic': 0.2.0
+      '@self.id/core': 0.4.1
+      '@self.id/image-utils': 0.3.0
+      '@self.id/react': 0.3.2_4cc5zw5azim2bix77d63le72su
+      '@self.id/web': 0.4.2
+      react: 18.2.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/template'
+      - '@opentelemetry/api'
+      - '@urql/core'
+      - encoding
+      - immer
+      - optics-ts
+      - react-dom
+      - react-native
+      - valtio
+      - wonka
+      - xstate
     dev: false
 
   /@self.id/framework/0.3.2_l43gc23jo7fibgkpegekxdgmki:
@@ -4634,6 +5023,32 @@ packages:
       pica: 9.0.1
     dev: false
 
+  /@self.id/react/0.3.2_4cc5zw5azim2bix77d63le72su:
+    resolution: {integrity: sha512-N0UP3p834NLc1jN2QilCAd3sw0Fl74gDI+7at/kDCqOfar4tLxE+dNgdIJG7gR6P3JSUYE/yJaiF1ZdHjFUV7A==}
+    engines: {node: '>=14.14'}
+    peerDependencies:
+      react: ^17.0.2 || ^18.0.0 || 18.2.0
+    dependencies:
+      '@self.id/core': 0.4.1
+      '@self.id/web': 0.4.2
+      jotai: 1.7.6_u5nsut5xkhmysa5vzkn2wlevpi
+      react: 18.2.0
+      react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/template'
+      - '@opentelemetry/api'
+      - '@urql/core'
+      - encoding
+      - immer
+      - optics-ts
+      - react-dom
+      - react-native
+      - valtio
+      - wonka
+      - xstate
+    dev: false
+
   /@self.id/react/0.3.2_l43gc23jo7fibgkpegekxdgmki:
     resolution: {integrity: sha512-N0UP3p834NLc1jN2QilCAd3sw0Fl74gDI+7at/kDCqOfar4tLxE+dNgdIJG7gR6P3JSUYE/yJaiF1ZdHjFUV7A==}
     engines: {node: '>=14.14'}
@@ -4658,6 +5073,19 @@ packages:
       - valtio
       - wonka
       - xstate
+    dev: false
+
+  /@self.id/web/0.4.2:
+    resolution: {integrity: sha512-S/Mdsd4b0rJREE0rK2dc9qrq1YGtPO5gzrwlPjluYLfM2U67JWV4RZHY8wB0Szuzl5RHS5NDmcdQfzoDFwF3Ag==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      '@3id/connect': 0.4.1
+      '@glazed/did-session': 0.0.1
+      '@self.id/core': 0.4.1
+      dids: 3.2.0
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+      - encoding
     dev: false
 
   /@self.id/web/0.4.2_@opentelemetry+api@1.1.0:
@@ -6153,41 +6581,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web3-citizen/core-wagmi/0.0.0-beta.2_eyudarolhdi4r7b4udxt4ig3vi:
-    resolution: {integrity: sha512-U+TiIS10c1kqndhOq8z2AbItVpmGmihmwiZurVZTjG1BLxzQqdp4eg5JwK5hmuWAxibguudUGL3KOzl5zAQj5g==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@babel/core': 7.18.5
-    dependencies:
-      '@babel/core': 7.18.5
-      '@turbo-eth/core-wagmi': 0.0.0-beta.1_mzf34avalf4lc2syst4fmbrsdm
-      '@turbo-eth/ens-wagmi': 0.0.0-beta.1_mzf34avalf4lc2syst4fmbrsdm
-      classnames: 2.3.1
-      eth-delegatable-utils: 2.1.5
-      ethers: 5.6.9
-      prop-types: 15.8.1
-      react-hook-form: 7.32.2_react@18.2.0
-      wagmi: 0.4.12_2pvqx3wni2imkaucnfdtyrjuiq
-    transitivePeerDependencies:
-      - '@nomiclabs/hardhat-web3'
-      - '@rainbow-me/rainbowkit'
-      - bufferutil
-      - debug
-      - encoding
-      - hardhat
-      - immer
-      - react
-      - react-dom
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - web3
-      - web3-core-helpers
-      - web3-core-promievent
-      - web3-eth-abi
-      - web3-utils
-    dev: false
-
   /@yarnpkg/lockfile/1.1.0:
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
 
@@ -6803,7 +7196,7 @@ packages:
   /axios/0.21.4_debug@4.3.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.1_debug@4.3.4
+      follow-redirects: 1.15.1
     transitivePeerDependencies:
       - debug
     dev: true
@@ -7068,7 +7461,7 @@ packages:
     resolution: {integrity: sha512-Y1IQok9821cC9onCx5otgFfRm7Lm+I+wwxOx738M/WLPZ9Q42m4IG5W0FNX8WLL2gYMZo3JkuXIH2DOpWM+qwA==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/helper-plugin-utils': 7.17.12
+      '@babel/helper-plugin-utils': 7.18.6
       '@istanbuljs/load-nyc-config': 1.1.0
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-instrument: 5.2.0
@@ -8762,6 +9155,16 @@ packages:
   /create-require/1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
+  /crlf-normalize/1.0.7_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-USifFsvW0fI8BuHpR0zqHjr2uQdbQ5awWmk0UbWF/Y3jScR+6gFqukzfavi2FzrjQ65ihSMPNGx07K6CPno8sQ==}
+    dependencies:
+      ts-type: 2.1.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
   /crlf-normalize/1.0.7_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-USifFsvW0fI8BuHpR0zqHjr2uQdbQ5awWmk0UbWF/Y3jScR+6gFqukzfavi2FzrjQ65ihSMPNGx07K6CPno8sQ==}
     dependencies:
@@ -9735,12 +10138,42 @@ packages:
     resolution: {integrity: sha512-GiaH0KJUewYok+eeY05IIgjtAe4Yltygk9Wqp1V5yVWLdhf0hYZchRjNIT9bb0mSwRcIusT3cx7PJUf3zEIfUA==}
     dev: false
 
+  /err-errors/1.0.8_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-0+5fOi12dNvIRR2SVtbdR+d2sTkcXOwzPB1+GoNJXEjOnWaZ7cNo4q5SHzVvOMBNVPE3qc1r+gPnbNIe0l/nGg==}
+    dependencies:
+      array-hyper-unique: 2.0.8
+      check-iterable: 1.0.5
+      err-stack-reduce: 1.0.9_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
   /err-errors/1.0.8_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-0+5fOi12dNvIRR2SVtbdR+d2sTkcXOwzPB1+GoNJXEjOnWaZ7cNo4q5SHzVvOMBNVPE3qc1r+gPnbNIe0l/nGg==}
     dependencies:
       array-hyper-unique: 2.0.8
       check-iterable: 1.0.5
       err-stack-reduce: 1.0.9_i4qbvy6c3ogdh5ewlom2ynnyei
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /err-indent/1.0.8_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-XpXplsDnORz6hveRJ3xUPeYFvFKTkmnRgjTio7XWj8uw6msQE33P7ZzfPiY+V9TZKCc38lhhNbilCF8K4aSoPw==}
+    dependencies:
+      array-hyper-unique: 2.0.8
+      check-iterable: 1.0.5
+      clean-stack: 3.0.1
+      err-errors: 1.0.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+      err-stack-meta: 1.0.10_4yx5l5ymmvyqle2zoh7ivm4dyy
+      error-stack2: 2.0.2_4yx5l5ymmvyqle2zoh7ivm4dyy
+      indent-string: 4.0.0
       tslib: 2.4.0
     transitivePeerDependencies:
       - '@types/bluebird'
@@ -9765,11 +10198,34 @@ packages:
       - ts-toolbelt
     dev: false
 
+  /err-stack-meta/1.0.10_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-9RUoItSUfm7kY4lzDdYeIZNMl+2cKc/gQpLKyiNxDe9HbnCyVgKfZETlED/zoliVh5PReHrjU26EqAthhuZvkA==}
+    dependencies:
+      error-stack2: 2.0.2_4yx5l5ymmvyqle2zoh7ivm4dyy
+      ts-type: 2.1.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
   /err-stack-meta/1.0.10_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-9RUoItSUfm7kY4lzDdYeIZNMl+2cKc/gQpLKyiNxDe9HbnCyVgKfZETlED/zoliVh5PReHrjU26EqAthhuZvkA==}
     dependencies:
       error-stack2: 2.0.2_i4qbvy6c3ogdh5ewlom2ynnyei
       ts-type: 2.1.8_i4qbvy6c3ogdh5ewlom2ynnyei
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /err-stack-reduce/1.0.9_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-zaGpBet5+yv5ptkhifPrD3XJiiBia61IT+jxBWYmZ/E4uGG9jSaGOgf97bemep/zh7AnuWjQ8/NEl0DJhS/ijA==}
+    dependencies:
+      err-stack-meta: 1.0.10_4yx5l5ymmvyqle2zoh7ivm4dyy
       tslib: 2.4.0
     transitivePeerDependencies:
       - '@types/bluebird'
@@ -9805,6 +10261,20 @@ packages:
       capability: 0.2.5
       o3: 1.0.3
       u3: 0.1.1
+    dev: false
+
+  /error-stack2/2.0.2_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-wgATLyzVLbV6uOyuNzPjL9/BXYhBPZChR0vjbGA2RDj2lEqa3OJt7k4BYbL8CPuV8+/itOi6YW2M2wtybpB+xQ==}
+    dependencies:
+      crlf-normalize: 1.0.7_4yx5l5ymmvyqle2zoh7ivm4dyy
+      err-code: 3.0.1
+      string-split-keep2: 1.0.2
+      ts-type: 2.1.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
     dev: false
 
   /error-stack2/2.0.2_i4qbvy6c3ogdh5ewlom2ynnyei:
@@ -12080,30 +12550,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
-
-  /follow-redirects/1.15.1_debug@4.3.3:
-    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.3
-    dev: true
-
-  /follow-redirects/1.15.1_debug@4.3.4:
-    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.4
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -13495,6 +13941,21 @@ packages:
       - ts-toolbelt
     dev: false
 
+  /ipfs-server-list/1.0.77_ipopfif7f4qdywvimsxzhgp3wm:
+    resolution: {integrity: sha512-X9RUelZglDS+RrEAuqIH/h0yg3K6Q/jaEsi6BKu0kZrJ/Uu/tRXxfzOBw1VWajNfZAuWs35JLyZIjxTLIyYvmA==}
+    dependencies:
+      '@bluelovers/ipfs-http-client': 1.0.93_ipopfif7f4qdywvimsxzhgp3wm
+      ipfs-types: 1.0.46_gzu47r2k63mulkt7z37ymhp47y
+      ts-type: 1.2.40_4yx5l5ymmvyqle2zoh7ivm4dyy
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ipfs-core-types
+      - ipfs-http-client
+      - ts-toolbelt
+    dev: false
+
   /ipfs-types/1.0.46_25mone7fwk4zeblyentqcitk2m:
     resolution: {integrity: sha512-tBtBqbg0K/S6Hqyeqr1yvcgVhThNWaYRjRy+/WuPxVp25Sz91AIgQQtv8kbGdQZzrECtAuJLop55UGE98fkjCQ==}
     peerDependencies:
@@ -13503,6 +13964,21 @@ packages:
       '@types/bl': 5.0.2
       ipfs-core-types: 0.11.1_undici@5.7.0
       ts-type: 1.2.40_i4qbvy6c3ogdh5ewlom2ynnyei
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /ipfs-types/1.0.46_gzu47r2k63mulkt7z37ymhp47y:
+    resolution: {integrity: sha512-tBtBqbg0K/S6Hqyeqr1yvcgVhThNWaYRjRy+/WuPxVp25Sz91AIgQQtv8kbGdQZzrECtAuJLop55UGE98fkjCQ==}
+    peerDependencies:
+      ipfs-core-types: '*'
+    dependencies:
+      '@types/bl': 5.0.2
+      ipfs-core-types: 0.11.1_undici@5.7.0
+      ts-type: 1.2.40_4yx5l5ymmvyqle2zoh7ivm4dyy
       tslib: 2.4.0
     transitivePeerDependencies:
       - '@types/bluebird'
@@ -15298,6 +15774,22 @@ packages:
     dependencies:
       language-subtag-registry: 0.3.21
 
+  /lazy-aggregate-error/1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-LjGUF+z3NBqlCbqSwUIBXuQoDtJlJ2vEzXF57/wy3keCQ5nvvj0PElXs2ur48MwN5N5g2g7jCP6BhiiPRMEwIQ==}
+    dependencies:
+      '@bluelovers/extend-bases': 1.0.3
+      aggregate-error-or-core-js: 1.0.4
+      err-indent: 1.0.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+      err-stack-meta: 1.0.10_4yx5l5ymmvyqle2zoh7ivm4dyy
+      error-stack2: 2.0.2_4yx5l5ymmvyqle2zoh7ivm4dyy
+      symbol.inspect: 1.0.1
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
   /lazy-aggregate-error/1.0.11_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-LjGUF+z3NBqlCbqSwUIBXuQoDtJlJ2vEzXF57/wy3keCQ5nvvj0PElXs2ur48MwN5N5g2g7jCP6BhiiPRMEwIQ==}
     dependencies:
@@ -15308,6 +15800,22 @@ packages:
       error-stack2: 2.0.2_i4qbvy6c3ogdh5ewlom2ynnyei
       symbol.inspect: 1.0.1
       tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ts-toolbelt
+    dev: false
+
+  /lazy-url/2.0.4_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-M/B8LtKrYHyrb/15CAbtqfmqK2/hrArsVrZbP8oA4tCmQY2+6CuMNCYif8le3Jpe71Om53Uk55feIL6X7G+nrQ==}
+    dependencies:
+      err-code: 3.0.1
+      err-indent: 1.0.8_4yx5l5ymmvyqle2zoh7ivm4dyy
+      replace-url-protocol: 1.0.9
+      symbol.inspect: 1.0.1
+      ts-type-predicates: 1.0.7
+      tslib: 2.4.0
+      url-parse: 1.5.10
     transitivePeerDependencies:
       - '@types/bluebird'
       - '@types/node'
@@ -19540,7 +20048,7 @@ packages:
     dependencies:
       command-exists: 1.2.9
       commander: 3.0.2
-      follow-redirects: 1.15.1_debug@4.3.4
+      follow-redirects: 1.15.1
       fs-extra: 0.30.0
       js-sha3: 0.8.0
       memorystream: 0.3.1
@@ -19557,7 +20065,7 @@ packages:
     dependencies:
       command-exists: 1.2.9
       commander: 8.3.0
-      follow-redirects: 1.15.1_debug@4.3.3
+      follow-redirects: 1.15.1
       js-sha3: 0.8.0
       memorystream: 0.3.1
       semver: 5.7.1
@@ -20484,6 +20992,26 @@ packages:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
 
+  /to-ipfs-url/1.0.46_hblrp2kl5fvw6hk24id2v7kskq:
+    resolution: {integrity: sha512-MFKWGO7VJQCGxg6FnOgMdaT7MI8Bji9CZ4bcB3QbNQ7qyMYNuxrlo5qmAWkbO++7/wIXyxLKEX1l97FTndX2aQ==}
+    dependencies:
+      '@lazy-ipfs/cid-to-string': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      '@lazy-ipfs/detect-cid-lib': 1.0.11_4yx5l5ymmvyqle2zoh7ivm4dyy
+      '@lazy-ipfs/to-cid': 1.0.34_cz7m23jm4ckb6ck4tdbzsxk7bi
+      err-code: 3.0.1
+      ipfs-server-list: 1.0.77_ipopfif7f4qdywvimsxzhgp3wm
+      is-ipfs: 6.0.2_node-fetch@2.6.7
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - '@types/bluebird'
+      - '@types/node'
+      - ipfs-core-types
+      - ipfs-http-client
+      - node-fetch
+      - supports-color
+      - ts-toolbelt
+    dev: false
+
   /to-ipfs-url/1.0.46_lknq4vidd3mvoh3shrs45gd6iu:
     resolution: {integrity: sha512-MFKWGO7VJQCGxg6FnOgMdaT7MI8Bji9CZ4bcB3QbNQ7qyMYNuxrlo5qmAWkbO++7/wIXyxLKEX1l97FTndX2aQ==}
     dependencies:
@@ -20707,6 +21235,19 @@ packages:
     resolution: {integrity: sha512-NvAe6diIzOZPOPDRrPzsuMt/nU4MTvqI+5SaQCxtD5tzHfwyCFCsX5Q6oyn27RSLzhsHrZPzh2hXq+cGSdYlBQ==}
     dev: false
 
+  /ts-type/1.2.40_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-Ux5e7Frys5pX7w8gYchEd0KfhG1H5puXOQC8yOBgMJ1aEwDSypeHLwxIUpKjecni1IGwtLI3JrxCVZaQO9JKmw==}
+    peerDependencies:
+      '@types/bluebird': '*'
+      '@types/node': '*'
+      ts-toolbelt: ^8.0.7
+    dependencies:
+      '@types/bluebird': 3.5.36
+      '@types/node': 18.0.0
+      tslib: 2.4.0
+      typedarray-dts: 1.0.0
+    dev: false
+
   /ts-type/1.2.40_i4qbvy6c3ogdh5ewlom2ynnyei:
     resolution: {integrity: sha512-Ux5e7Frys5pX7w8gYchEd0KfhG1H5puXOQC8yOBgMJ1aEwDSypeHLwxIUpKjecni1IGwtLI3JrxCVZaQO9JKmw==}
     peerDependencies:
@@ -20717,6 +21258,19 @@ packages:
       '@types/bluebird': 3.5.36
       '@types/node': 18.0.0
       ts-toolbelt: 8.4.0
+      tslib: 2.4.0
+      typedarray-dts: 1.0.0
+    dev: false
+
+  /ts-type/2.1.8_4yx5l5ymmvyqle2zoh7ivm4dyy:
+    resolution: {integrity: sha512-iWYYRpeU1t5lW8AGYSX0px1Lx1el5yTFt9cyr+Y2v+EkdJ7LYwuiM+qIFKaZXS3N1ow9TX3KrMtt6VetuzTDXw==}
+    peerDependencies:
+      '@types/bluebird': '*'
+      '@types/node': '*'
+      ts-toolbelt: ^9.6.0
+    dependencies:
+      '@types/bluebird': 3.5.36
+      '@types/node': 18.0.0
       tslib: 2.4.0
       typedarray-dts: 1.0.0
     dev: false
@@ -20861,137 +21415,137 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
 
-  /turbo-android-arm64/1.3.4:
-    resolution: {integrity: sha512-rAbfiw5dT2rKV7L8XCL6nKwBxSz0TNknUT8F64pE+h3ESiT4y6Ow/hCdNxlb+hcee6lvZ8tB0cynXCVM5bthAA==}
+  /turbo-android-arm64/1.4.0:
+    resolution: {integrity: sha512-k03ztiuVpRqFiXl452HUsDgns0KrDtKL+e19h3eVJZFlr0lXtMBAcjh6qkh9lSmBW99NGSESGbsdaL9cp6F/vw==}
     cpu: [arm64]
     os: [android]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-64/1.3.4:
-    resolution: {integrity: sha512-DZbRwVHH3nKOzVtijKWzkiKLLY+pBjawK90po7VRKMwdN2Db+JkWdu9+6wIqaxQ4WEYnYpwnTm0Aiyua0U/dNg==}
+  /turbo-darwin-64/1.4.0:
+    resolution: {integrity: sha512-uj6p1marrEIFBX1nv4+LRg4e1vTYXTsv2DUB0e/LeAf9G2dRzh/MtSwBWuUaFLCcDvMSsnOeComgEkKuYyeVfw==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-darwin-arm64/1.3.4:
-    resolution: {integrity: sha512-Qfe7iBad/XM4G22G0XAnEQnHiSUO1WR4MgvyHV022WABIf7CgGDsW6DUu/4DOWFlfTO+xCC0Qgu93w6Kli/9uw==}
+  /turbo-darwin-arm64/1.4.0:
+    resolution: {integrity: sha512-O6xBDY3LUJVctQBkbPoHHDsUIhuJTdIgIY/w4ZPRgdv51fj6uBJRolj9lLx1jGioLqjUaj/sXIizlaPar6tm5A==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-freebsd-64/1.3.4:
-    resolution: {integrity: sha512-lXFViR0fnoTRtnRtkeSA/10Q41h+fLgnYC62wzHNzPsq/kCYmiaXBg+gWRJom8Ka2nh+xWQdLG2Dh/uxK/+1Og==}
+  /turbo-freebsd-64/1.4.0:
+    resolution: {integrity: sha512-103LbqCHxDHCz0xmpWis5JHkti2Irlq7n7vAk43+Kkxrz8UqhbrSfe0qUhkYltvxQ/R5cKAOKmBT5eZCO85+Xw==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-freebsd-arm64/1.3.4:
-    resolution: {integrity: sha512-VN9gPZcRaYhQOIo+NlIDIDNlJjhnyM7i+3WvWAK8y5p5GoZoDAahM36GDX05JNjVdPq95WJPnWcxoiQvwnctxg==}
+  /turbo-freebsd-arm64/1.4.0:
+    resolution: {integrity: sha512-Cf+TGpQTpogSd/SsGhz1uQMhNVYYT1GeGg9iJ99rjjzbdC1zjdmeCbgUwyUUx5wVVM832o5fWaCJai3My3PDDQ==}
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-32/1.3.4:
-    resolution: {integrity: sha512-h1oVx85jovYnAaP+KxSmFIPhlKFQmBwVkJBngALnHNU7HTN9+1t/VJ1WKjHEeLXrQ7ujeCMd/+TBm9XRd73RdA==}
+  /turbo-linux-32/1.4.0:
+    resolution: {integrity: sha512-bJn78F+mH45g6xPFTdn7PLzixMuqugGz4Db9dPLijWQzeKzVz52qpN7WGUZwfPZtQOs0HUI8woH6eqAZMdT2ZA==}
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-64/1.3.4:
-    resolution: {integrity: sha512-QJJeksggK9/s3VzS+iMTQh8gO6JLDxKBSc3qnpP1Kaq8hF+M1upfP9KhDFNguz8UEFlOvTblplNdqZdk/wtkXQ==}
+  /turbo-linux-64/1.4.0:
+    resolution: {integrity: sha512-1+WyeJ1CBOnXNQl+Qke4NWvy3Zymp0NoxmJcZAmVBhwqAqGyERypeDznMfFmFtpG99/ZhmT7xwilz3Bw3Eyukw==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm/1.3.4:
-    resolution: {integrity: sha512-vCVDcO4KNJak//UKsss/TnJw0ywYc8OyV88ZlSWyP3WtA+9D8DJNPOKodcR8IbKuV7Tqpr+f7cP+J9jGDkHjQw==}
+  /turbo-linux-arm/1.4.0:
+    resolution: {integrity: sha512-9DEUP1pKWCwMDuriYCuTf+73oBIxTU4VLdkP89dtPoQVXW6mviES4gRXm8jAs6AOzzMI4DHgNKPxk7UKUvuExQ==}
     cpu: [arm]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-arm64/1.3.4:
-    resolution: {integrity: sha512-SSyUvBxZmlS44LQ2hzX5gfDlQueH1Hx5/rFS9mJZKFdgMnAB2g7btxxEvnpm0lgpfP/c3LH0VRks3xYEoQvILg==}
+  /turbo-linux-arm64/1.4.0:
+    resolution: {integrity: sha512-DUtBhN0+o4XULQ9hsnzp6nI4mycMH7PpjKtG2HdmiZIhSYipSKWIMZkvgJpnpVJoRarLe7PmcDJIBp2aXvw2xw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-mips64le/1.3.4:
-    resolution: {integrity: sha512-w7Ib7i/GZhyJRdvQSLA1Be7AOIPgJpuLLjrtT2gUl3wXd4JuiHDvhOS7E0B9izaxeD/2iygU2kQjqD4o9tejlw==}
-    cpu: [mips64el]
+  /turbo-linux-mips64le/1.4.0:
+    resolution: {integrity: sha512-ZJcQvUgmCJ4TFosVL6hEmECP5ysSubF3wMOq5hkBxzRMBjL0djW+BK4aIXutBTpjAz9OyM10S4KeEGeGRS/e3Q==}
+    cpu: [mipsel]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-linux-ppc64le/1.3.4:
-    resolution: {integrity: sha512-xATyouJSGmfgQM6lLk4Da5HrsAw8qoPUArrBuDK1p3Rw1gcRnmlJL10mr6ZmZyRu+3o4M8UlThfus5q8eETmBw==}
+  /turbo-linux-ppc64le/1.4.0:
+    resolution: {integrity: sha512-sk/rOrcGnYRcwNP8yJwmeOOzInv7YzMfWBomVf/TwrpsGL8QrD05zjsMR+lGxYNoNOJIHbroracjHaLvKWZN7A==}
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-32/1.3.4:
-    resolution: {integrity: sha512-1oXgiGxkWuC/7rlBZTng7qC2zjAZ7lYLDDh3ePAycZzp6BprlxqT5+xA0kFJo+WqGRdAQVhanlET2bLGOdBQBQ==}
+  /turbo-windows-32/1.4.0:
+    resolution: {integrity: sha512-5fmS6J3ZvhWRss+sFw2edOElVeKtk0l9yCoCYltPeFSy3+ArXws06ik3Z318SuKlbFu/+VTbM/NyBleKru+0ag==}
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-64/1.3.4:
-    resolution: {integrity: sha512-k7K/oC+399Gtwol42ALvt0espWmZZR7qlRwfgFS3BF4pEetxjGFJMXKNWUMDkOqsHhMxvLIiDbWPmY3fTIWL7g==}
+  /turbo-windows-64/1.4.0:
+    resolution: {integrity: sha512-FZZBHjb8BYpEGbVOpJEEFAjS3xxUVg76MBPXqRb5IUPQeXiCd8VfO4UApn9syjUuTLORBoWLmSf3xp7vd1cIgA==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo-windows-arm64/1.3.4:
-    resolution: {integrity: sha512-jHBuTvQ3t/OElxn//kwHZR2mlPdmpcV7BZy+n18+wwx6ydGj5QDOrer7Dwk81YbA5KtOkp086Xpgr75T73wsSA==}
+  /turbo-windows-arm64/1.4.0:
+    resolution: {integrity: sha512-mJAlDf5/qBVMVv+q+0/2PF5tRHKz4mgtl/DnRn5n/rIfRvElGkjlPbQwJdXuMCEQVE9FMOAGRCstu0dkcdTluQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /turbo/1.3.4:
-    resolution: {integrity: sha512-MsjlfAL29leQaIMdHGnIpK6IKZA4HwSAwDSIoBAs9EAKfAXIsnjLoF50dKDnBlaq5d4aVmiHsT6RYVcTKhSgBQ==}
+  /turbo/1.4.0:
+    resolution: {integrity: sha512-k2x8QqunK/96tqzB7aRCQ601H7N2PnxTcrEH9NoJjN5sJeymnfn/dQ8l6HrSyuYrW259W3N/AWAAUhpXnUyitA==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      turbo-android-arm64: 1.3.4
-      turbo-darwin-64: 1.3.4
-      turbo-darwin-arm64: 1.3.4
-      turbo-freebsd-64: 1.3.4
-      turbo-freebsd-arm64: 1.3.4
-      turbo-linux-32: 1.3.4
-      turbo-linux-64: 1.3.4
-      turbo-linux-arm: 1.3.4
-      turbo-linux-arm64: 1.3.4
-      turbo-linux-mips64le: 1.3.4
-      turbo-linux-ppc64le: 1.3.4
-      turbo-windows-32: 1.3.4
-      turbo-windows-64: 1.3.4
-      turbo-windows-arm64: 1.3.4
+      turbo-android-arm64: 1.4.0
+      turbo-darwin-64: 1.4.0
+      turbo-darwin-arm64: 1.4.0
+      turbo-freebsd-64: 1.4.0
+      turbo-freebsd-arm64: 1.4.0
+      turbo-linux-32: 1.4.0
+      turbo-linux-64: 1.4.0
+      turbo-linux-arm: 1.4.0
+      turbo-linux-arm64: 1.4.0
+      turbo-linux-mips64le: 1.4.0
+      turbo-linux-ppc64le: 1.4.0
+      turbo-windows-32: 1.4.0
+      turbo-windows-64: 1.4.0
+      turbo-windows-arm64: 1.4.0
     dev: true
 
   /tweetnacl-util/0.15.1:

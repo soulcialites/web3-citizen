@@ -1,7 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 export default async function deployContracts(hardhat: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY == "deployer") {
+  if (process.env.DEPLOY == "testnet") {
     const { deployments, getNamedAccounts } = hardhat;
 
     const { deploy } = deployments;

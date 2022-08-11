@@ -29,7 +29,7 @@ const Index = () => {
       <section className="dark: mx-auto bg-gradient-to-b from-neutral-100 via-neutral-100 to-neutral-200 py-12 px-10 text-neutral-500 shadow-sm dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-800 dark:text-white lg:px-20">
         <div className="container mx-auto grid max-w-screen-xl grid-cols-12">
           <div className="col-span-6">
-            <h1 className="m-0 mb-0 text-3xl font-bold">Town Hall</h1>
+            <h1 className="m-0 mb-0 text-3xl font-bold">Nation</h1>
           </div>
           <div className="col-span-6 flex items-center justify-end">
             <h3 className="text-lg font-normal">Manage Roles &amp; Access</h3>

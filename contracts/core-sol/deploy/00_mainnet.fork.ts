@@ -3,7 +3,7 @@ import { ethers } from "hardhat";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 export default async function deployContracts(hardhat: HardhatRuntimeEnvironment) {
-  if (process.env.DEPLOY == "testnet") {
+  if (process.env.DEPLOY == "fork") {
     const { deployments, getNamedAccounts } = hardhat;
 
     const { deploy } = deployments;

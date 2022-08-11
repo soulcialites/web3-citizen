@@ -14,7 +14,8 @@ contract Notary is AccessControl {
   address private _citizenAlpha;
 
   /// @notice Notary Role
-  bytes32 private constant NOTARY = keccak256("NOTARY");
+  bytes32 private constant NOTARY =
+    0x4e4f544152590000000000000000000000000000000000000000000000000000;
 
   /**
    * @notice Notary Constructor

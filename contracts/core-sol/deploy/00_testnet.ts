@@ -96,12 +96,12 @@ export default async function deployContracts(hardhat: HardhatRuntimeEnvironment
     await citizenAlpha.setNotary(notary.address);
     await metadata.appendSource(SourceENS.address);
     await metadata.setToken(CitizenAlpha.address);
-    await notaryServiceDelegatable.transferOwnership(kames);
+    // await notaryServiceDelegatable.transferOwnership(kames);
 
-    await notary.grantRole(
-      utils.keccak256(utils.toUtf8Bytes("NOTARY")),
-      NotaryServiceDelegatable.address
-    );
+    // await notary.grantRole(
+    //   utils.keccak256(utils.toUtf8Bytes("NOTARY")),
+    //   NotaryServiceDelegatable.address
+    // );
     await notary.issue(kames);
   }
 }

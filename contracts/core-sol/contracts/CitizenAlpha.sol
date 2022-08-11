@@ -82,9 +82,13 @@ contract CitizenAlpha is ERC721, Ownable {
   constructor(
     address metadata_,
     string memory name_,
-    string memory symbol_
+    string memory symbol_,
+    address[] memory founders_
   ) ERC721(name_, symbol_) {
     _metadata = metadata_;
+    for (uint256 i = 0; i < founders_.length; i++) {
+      _issue(founders_[i], address(0));
+    }
   }
 
   /* ===================================================================================== */

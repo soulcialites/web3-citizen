@@ -6,15 +6,14 @@ import "@web3-citizen/core-sol/contracts/Nation/Nation.sol";
 import "@web3-citizen/core-sol/contracts/Notary/Notary.sol";
 
 contract Deployer {
-  address private _svgRender;
   address private _metadata;
   address[] private _citizenships;
   address[] private _nations;
   address[] private _notaries;
 
-  event CitizenshipStarted(address indexed citizenship, address indexed founder);
-  event NationStarted(address indexed nation, address indexed founder);
-  event NotaryStarted(address indexed notary, address indexed founder);
+  // event CitizenshipStarted(address indexed citizenship, address indexed founder);
+  // event NationStarted(address indexed nation, address indexed founder);
+  // event NotaryStarted(address indexed notary, address indexed founder);
 
   constructor(address _metadata_) {
     _metadata = _metadata_;
@@ -25,10 +24,10 @@ contract Deployer {
     string memory symbol,
     string memory nationName,
     string memory nationSymbol,
-    address[] memory founders
+    address[] calldata founders
   ) public {
-    CitizenAlpha citizenAlpha_ = deployCitizenship(_metadata, name, symbol);
-    address nation_ = deployNation(nationName, nationSymbol, address(citizenAlpha_), founders);
+    CitizenAlpha citizenAlpha_ = deployCitizenship(_metadata, name, symbol, founders);
+    deployNation(nationName, nationSymbol, address(citizenAlpha_), founders);
     address notary_ = deployNotary(address(citizenAlpha_), founders);
     citizenAlpha_.setNotary(notary_);
   }
@@ -36,11 +35,12 @@ contract Deployer {
   function deployCitizenship(
     address metadata_,
     string memory name_,
-    string memory symbol_
+    string memory symbol_,
+    address[] calldata founders
   ) public returns (CitizenAlpha) {
-    CitizenAlpha citizenship_ = new CitizenAlpha(metadata_, name_, symbol_);
+    CitizenAlpha citizenship_ = new CitizenAlpha(metadata_, name_, symbol_, founders);
     _citizenships.push(address(citizenship_));
-    emit CitizenshipStarted(address(citizenship_), msg.sender);
+    // emit CitizenshipStarted(address(citizenship_), msg.sender);
     return citizenship_;
   }
 
@@ -48,21 +48,21 @@ contract Deployer {
     string memory name,
     string memory symbol,
     address citizenAlpha,
-    address[] memory founders
+    address[] calldata founders
   ) public returns (address) {
     Nation nation_ = new Nation(name, symbol, citizenAlpha, founders);
     _nations.push(address(nation_));
-    emit NationStarted(address(nation_), msg.sender);
+    // emit NationStarted(address(nation_), msg.sender);
     return address(nation_);
   }
 
-  function deployNotary(address _citizenAlpha_, address[] memory notaries)
+  function deployNotary(address _citizenAlpha_, address[] calldata notaries)
     public
     returns (address)
   {
     Notary notary_ = new Notary(_citizenAlpha_, notaries);
     _notaries.push(address(notary_));
-    emit NotaryStarted(address(notary_), msg.sender);
+    // emit NotaryStarted(address(notary_), msg.sender);
     return address(notary_);
   }
 

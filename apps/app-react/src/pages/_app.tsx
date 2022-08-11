@@ -73,8 +73,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
         <CeramicProvider
           client={{
-            ceramic: "https://ceramic-private.3boxlabs.com",
-            connectNetwork: "mainnet",
+            ceramic: "testnet-clay",
+            // connectNetwork: "mainnet",
           }}
         >
           <ModalProvider>

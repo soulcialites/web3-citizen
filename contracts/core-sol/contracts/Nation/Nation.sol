@@ -27,10 +27,12 @@ contract Nation is AccessControlEnumerable {
   address private _citizenAlpha;
 
   /// @notice Founder Role
-  bytes32 private constant FOUNDER = keccak256("FOUNDER");
+  bytes32 private constant FOUNDER =
+    0x464f554e44455200000000000000000000000000000000000000000000000000;
 
   /// @notice Governance Role
-  bytes32 private constant GOVERNANCE = keccak256("GOVERNANCE");
+  bytes32 private constant GOVERNANCE =
+    0x474f5645524e414e434500000000000000000000000000000000000000000000;
 
   /// @notice Global Role AccessControl
   mapping(bytes32 => bool) private _roleActive;
